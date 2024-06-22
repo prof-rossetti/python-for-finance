@@ -1,36 +1,14 @@
 project:
-  type: book
+  type: website # book
   output-dir: _build
   preview:
     port: 3456 # use the same port instead of a new one each time
     browser: true
 
-# https://quarto.org/docs/reference/projects/books.html#section
-book:
+
+# https://quarto.org/docs/reference/projects/websites.html#section
+website:
   title: "Python for Finance"
-  subtitle: "2024 Edition"
-  author: "Michael Rossetti"
-  #date: "2024-06-22"
-  #date-format
-  #abstract: "..."
-  #description: "..."
-  edition: "2024"
-  #doi: "...."
-  #isbn: ""
-  #issn: ""
-  #citation-key: ""
-  #keyword: "..."
-  #language: "en"
-  #license: ""
-
-  #url: ""
-  #favicon: ""
-  #cover-image: "....png"
-  #image: "...png"
-
-  #google-analytics: "X-----"
-  #open-graph:
-
   site-url: https://prof-rossetti.github.io/python-for-finance/
   repo-url: https://github.com/prof-rossetti/python-for-finance
   repo-branch: main
@@ -44,59 +22,151 @@ book:
   back-to-top-navigation: false
   bread-crumbs: true
 
-  # body-header:
-  # body-footer:
+  # https://quarto.org/docs/reference/projects/websites.html#navbar
+  #navbar:
 
-  # https://quarto.org/docs/reference/projects/books.html#navbar
-  # navbar:
+  # https://quarto.org/docs/reference/projects/websites.html#sidebar
+  sidebar:
+    contents:
+      - index.qmd
+      - why-python.qmd
+      #- preface.qmd
+      #- onboarding.qmd
 
-  # https://quarto.org/docs/reference/projects/books.html#sidebar
-  # sidebar:
+      - "---------"
+      - section: dev-tools/index.qmd
+        #text: "0 - Python Development Tools"
+        contents:
+          - href: dev-tools/google-colab/overview.qmd
+            text: "Google Colab Overview"
 
-  # https://quarto.org/docs/books/book-structure.html#parts-appendices
-  chapters:
-    - index.qmd
-    - why-python.qmd
-    #- preface.qmd
-    #- onboarding.qmd
+          - section: dev-tools/google-colab/overview.qmd
+            contents:
+              - href: dev-tools/google-colab/form-inputs.qmd
+                text: "Form Inputs"
+              - href: dev-tools/google-colab/notebook-secrets.qmd
+                text: "Notebook Secrets"
 
-    - "---------"
-    - part: dev-tools/index.qmd
-      #title: "0 - Python Development Tools"
-      #text: "0 - Python Development Tools"
-      chapters:
-        - href: dev-tools/google-colab/overview.qmd
-          text: "Google Colab Overview"
-        #- href: dev-tools/google-colab/form-inputs.qmd
-        #  text: "Form Inputs"
-        #- href: dev-tools/google-colab/notebook-secrets.qmd
-        #  text: "Notebook Secrets"
-        - href: dev-tools/pip.qmd
-          text: "Installing Packages with Pip"
+          - href: dev-tools/pip.qmd
+            text: "Installing Packages with Pip"
 
 
-    - "---------"
-    - part: fin-apps/index.qmd
-      text: "I. Intro to Financial Applications"
-      #chapters:
-      #  - fin-apps/unit2.qmd
+      - "---------"
+      - section: fin-apps/index.qmd
+        text: "I. Intro to Financial Applications"
+        #chapters:
+        #  - fin-apps/unit2.qmd
 
-    - "---------"
-    - part: applied-ds/index.qmd
-      text: "II. Applied Data Science"
-      #chapters:
-      #  - applied-ds/unit2.qmd
+      - "---------"
+      - section: applied-ds/index.qmd
+        text: "II. Applied Data Science"
+        #chapters:
+        #  - applied-ds/unit2.qmd
 
-    - "---------"
-    - part: fin-modeling/index.qmd
-      text: "III. Advanced Financial Modeling"
-      #chapters:
-      #  - applied-ds/unit2.qmd
+      - "---------"
+      - section: fin-modeling/index.qmd
+        text: "III. Advanced Financial Modeling"
+        #chapters:
+        #  - applied-ds/unit2.qmd
 
-    - "---------"
-    - about-author.qmd
+      - "---------"
+      - about-author.qmd
 
-    #- references.qmd
+
+
+
+# https://quarto.org/docs/reference/projects/books.html#section
+#book:
+#  title: "Python for Finance"
+#  subtitle: "2024 Edition"
+#  author: "Michael Rossetti"
+#  #date: "2024-06-22"
+#  #date-format
+#  #abstract: "..."
+#  #description: "..."
+#  edition: "2024"
+#  #doi: "...."
+#  #isbn: ""
+#  #issn: ""
+#  #citation-key: ""
+#  #keyword: "..."
+#  #language: "en"
+#  #license: ""
+#
+#  #url: ""
+#  #favicon: ""
+#  #cover-image: "....png"
+#  #image: "...png"
+#
+#  #google-analytics: "X-----"
+#  #open-graph:
+#
+#  site-url: https://prof-rossetti.github.io/python-for-finance/
+#  repo-url: https://github.com/prof-rossetti/python-for-finance
+#  repo-branch: main
+#  repo-actions: [edit, issue, source]
+#  #downloads: ["pdf", "epub", "docx"]
+#  #sharing: ["facebook", "twitter", "linkedin"]
+#  #code-links:
+#  search: true
+#  reader-mode: false
+#  page-navigation: true
+#  back-to-top-navigation: false
+#  bread-crumbs: true
+#
+#  # body-header:
+#  # body-footer:
+#
+#  # https://quarto.org/docs/reference/projects/books.html#navbar
+#  # navbar:
+#
+#  # https://quarto.org/docs/reference/projects/books.html#sidebar
+#  # sidebar:
+#
+#  # https://quarto.org/docs/books/book-structure.html#parts-appendices
+#  chapters:
+#    - index.qmd
+#    - why-python.qmd
+#    #- preface.qmd
+#    #- onboarding.qmd
+#
+#    - "---------"
+#    - part: dev-tools/index.qmd
+#      #title: "0 - Python Development Tools"
+#      #text: "0 - Python Development Tools"
+#      chapters:
+#        - href: dev-tools/google-colab/overview.qmd
+#          text: "Google Colab Overview"
+#        #- href: dev-tools/google-colab/form-inputs.qmd
+#        #  text: "Form Inputs"
+#        #- href: dev-tools/google-colab/notebook-secrets.qmd
+#        #  text: "Notebook Secrets"
+#        - href: dev-tools/pip.qmd
+#          text: "Installing Packages with Pip"
+#
+#
+#    - "---------"
+#    - part: fin-apps/index.qmd
+#      text: "I. Intro to Financial Applications"
+#      #chapters:
+#      #  - fin-apps/unit2.qmd
+#
+#    - "---------"
+#    - part: applied-ds/index.qmd
+#      text: "II. Applied Data Science"
+#      #chapters:
+#      #  - applied-ds/unit2.qmd
+#
+#    - "---------"
+#    - part: fin-modeling/index.qmd
+#      text: "III. Advanced Financial Modeling"
+#      #chapters:
+#      #  - applied-ds/unit2.qmd
+#
+#    - "---------"
+#    - about-author.qmd
+#
+#    #- references.qmd
 
 #bibliography: references.bib
 
@@ -105,10 +175,10 @@ format:
   html:
     theme: cosmo
     code-copy: true
-    #toc: true
+    toc: true
     #toc-location: left
     number-sections: false
-    #number-depth: 2
+    #number-depth: 1
 
   #pdf:
   #  documentclass: scrreprt
