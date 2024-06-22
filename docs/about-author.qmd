@@ -1,4 +1,4 @@
-# Meet Your Professor {.unnumbered}
+# About the Author {.unnumbered}
 
 Michael Rossetti is a data scientist and software engineer. He has worked as a data analyst for a winning US Presidential campaign, an analytics director for a Silicon Valley startup, and a technology consultant for the US Government.
 

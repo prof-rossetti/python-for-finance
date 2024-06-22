@@ -1,0 +1,5 @@
+# Custom Function Documentation
+
+## Docstrings
+
+## Type Hints

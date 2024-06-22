@@ -1,0 +1,7 @@
+# Dictionaries
+
+## Characteristics
+
+## Accessing Items
+
+## Operations

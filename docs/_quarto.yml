@@ -31,8 +31,8 @@ book:
   #google-analytics: "X-----"
   #open-graph:
 
-  site-url: https://s2t2.github.io/quarto-python-autodoc-template/
-  repo-url: https://github.com/s2t2/quarto-python-autodoc-template
+  site-url: https://prof-rossetti.github.io/python-for-finance/
+  repo-url: https://github.com/prof-rossetti/python-for-finance
   repo-branch: main
   repo-actions: [edit, issue, source]
   #downloads: ["pdf", "epub", "docx"]
@@ -56,36 +56,45 @@ book:
   # https://quarto.org/docs/books/book-structure.html#parts-appendices
   chapters:
     - index.qmd
+    - why-python.qmd
     #- preface.qmd
     #- onboarding.qmd
 
     - "---------"
     - part: dev-tools/index.qmd
-      title: "0 - Python Development Tools"
+      #title: "0 - Python Development Tools"
+      #text: "0 - Python Development Tools"
       chapters:
-        - dev-tools/google-colab/overview.qmd
-        - dev-tools/google-colab/settings.qmd
+        - href: dev-tools/google-colab/overview.qmd
+          text: "Google Colab Overview"
+        #- href: dev-tools/google-colab/form-inputs.qmd
+        #  text: "Form Inputs"
+        #- href: dev-tools/google-colab/notebook-secrets.qmd
+        #  text: "Notebook Secrets"
+        - href: dev-tools/pip.qmd
+          text: "Installing Packages with Pip"
+
 
     - "---------"
     - part: fin-apps/index.qmd
-      title: "I. Intro to Financial Applications"
+      text: "I. Intro to Financial Applications"
       #chapters:
       #  - fin-apps/unit2.qmd
 
     - "---------"
     - part: applied-ds/index.qmd
-      title: "II. Applied Data Science"
+      text: "II. Applied Data Science"
       #chapters:
       #  - applied-ds/unit2.qmd
 
     - "---------"
     - part: fin-modeling/index.qmd
-      title: "III. Advanced Financial Modeling"
+      text: "III. Advanced Financial Modeling"
       #chapters:
       #  - applied-ds/unit2.qmd
 
     - "---------"
-    - meet-professor.qmd
+    - about-author.qmd
 
     #- references.qmd
 
@@ -98,8 +107,8 @@ format:
     code-copy: true
     #toc: true
     #toc-location: left
-    #number-sections: true
-    #number-depth: 3
+    number-sections: false
+    #number-depth: 2
 
   #pdf:
   #  documentclass: scrreprt
