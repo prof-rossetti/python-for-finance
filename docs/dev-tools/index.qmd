@@ -1,0 +1,23 @@
+# Python Development Tools
+
+notebooks vs local development. we're going to focus on notebooks, specifically google drive hosted notebooks called Google Colab.
+
+
+
+## Local Development
+
+For software development, and larger applications.
+
+## Python Notebooks
+
+For data science, quick prototypes, and rapid development.
+
+### Jupyter Notebooks
+
+Run notebooks locally.
+
+### Google Colab
+
+Run notebooks in the cloud.
+
+The next section will give you a tour of Google Colab.
