@@ -1,0 +1,42 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+
+# Python Language Overview
+
+
+Example Code:
+
+```{python}
+# this is a comment
+x = 5
+print(x)
+```
+
+Let's debrief this one concept at a time.
+
+
+## Comments
+
+
+## Built In Functions
+
+Link to docs
+
+### The `print` Function
+
+### The `input` Function
+
+
+## Variables
+
+```{python}
+x = 5
+print(x)
+```

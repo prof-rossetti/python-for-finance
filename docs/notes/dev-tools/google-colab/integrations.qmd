@@ -1,0 +1,18 @@
+# Advanced Integrations
+
+Google Colab offers benefits of integrating with other google services. The code snippets below demonsrate the ability to integrate with helpful google products and services.
+
+
+
+## Google Drive
+
+Mount the drive.
+
+Read files from google drive.
+
+Save files to google drive.
+
+
+## Google Auth
+
+## Google Sheets

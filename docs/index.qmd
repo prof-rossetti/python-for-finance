@@ -1,5 +1,6 @@
 
+# Preface
 
-# Preface {.unnumbered}
+This is a preface.
 
-This is the preface.
+Enjoy!

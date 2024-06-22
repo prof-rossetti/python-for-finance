@@ -23,7 +23,9 @@ website:
   bread-crumbs: true
 
   # https://quarto.org/docs/reference/projects/websites.html#navbar
-  #navbar:
+  navbar:
+    right:
+      - about-author.qmd
 
   # https://quarto.org/docs/reference/projects/websites.html#sidebar
   sidebar:
@@ -33,39 +35,65 @@ website:
       #- preface.qmd
       #- onboarding.qmd
 
-      - "---------"
-      - section: dev-tools/index.qmd
-        #text: "0 - Python Development Tools"
+      #- "---------"
+      - section: notes/dev-tools/index.qmd
         contents:
-          - href: dev-tools/google-colab/overview.qmd
-            text: "Google Colab Overview"
-
-          - section: dev-tools/google-colab/overview.qmd
+          - section: notes/dev-tools/google-colab/overview.qmd
             contents:
-              - href: dev-tools/google-colab/form-inputs.qmd
-                text: "Form Inputs"
-              - href: dev-tools/google-colab/notebook-secrets.qmd
-                text: "Notebook Secrets"
+              - section: notes/dev-tools/google-colab/form-inputs.qmd
+              - section: notes/dev-tools/google-colab/notebook-secrets.qmd
+              - section: notes/dev-tools/google-colab/integrations.qmd
+          - section: notes/dev-tools/pip.qmd
 
-          - href: dev-tools/pip.qmd
-            text: "Installing Packages with Pip"
+      - "---------"
+      - section: courses/fin-apps.qmd
+        text: "I. Financial Applications" # "I. Intro to Financial Applications"
+        contents:
+          - section: notes/python-lang.qmd
+
+          - section: notes/basic-datatypes/index.qmd
+            contents:
+              - notes/basic-datatypes/numbers.qmd
+              - notes/basic-datatypes/strings.qmd
+              - notes/basic-datatypes/booleans.qmd
+
+          - section: notes/python-operators.qmd
+
+          - section: notes/control-flow/index.qmd
+            contents:
+              - notes/control-flow/conditional-logic.qmd
+              - section: notes//control-flow/custom-functions.qmd
+                contents:
+                - notes/control-flow/function-docs.qmd
+                - notes/control-flow/unit-testing.qmd
+
+          - section: notes/container-datatypes/index.qmd
+            contents:
+              - notes/container-datatypes/lists.qmd
+              - notes/container-datatypes/dictionaries.qmd
+
+          - section: notes/python-modules/index.qmd
+            contents:
+              - notes/python-modules/datetime.qmd
+              - notes/python-modules/random.qmd
+              - notes/python-modules/statistics.qmd
+
+
+
+
+
+
 
 
       - "---------"
-      - section: fin-apps/index.qmd
-        text: "I. Intro to Financial Applications"
-        #chapters:
-        #  - fin-apps/unit2.qmd
-
-      - "---------"
-      - section: applied-ds/index.qmd
+      - section: courses/applied-ds.qmd
         text: "II. Applied Data Science"
         #chapters:
         #  - applied-ds/unit2.qmd
 
       - "---------"
-      - section: fin-modeling/index.qmd
-        text: "III. Advanced Financial Modeling"
+      - section: courses/fin-modeling.qmd
+        text: "III. Financial Modeling" #"III. Advanced Financial Modeling"
         #chapters:
         #  - applied-ds/unit2.qmd
 
@@ -73,111 +101,14 @@ website:
       - about-author.qmd
 
 
-
-
-# https://quarto.org/docs/reference/projects/books.html#section
-#book:
-#  title: "Python for Finance"
-#  subtitle: "2024 Edition"
-#  author: "Michael Rossetti"
-#  #date: "2024-06-22"
-#  #date-format
-#  #abstract: "..."
-#  #description: "..."
-#  edition: "2024"
-#  #doi: "...."
-#  #isbn: ""
-#  #issn: ""
-#  #citation-key: ""
-#  #keyword: "..."
-#  #language: "en"
-#  #license: ""
-#
-#  #url: ""
-#  #favicon: ""
-#  #cover-image: "....png"
-#  #image: "...png"
-#
-#  #google-analytics: "X-----"
-#  #open-graph:
-#
-#  site-url: https://prof-rossetti.github.io/python-for-finance/
-#  repo-url: https://github.com/prof-rossetti/python-for-finance
-#  repo-branch: main
-#  repo-actions: [edit, issue, source]
-#  #downloads: ["pdf", "epub", "docx"]
-#  #sharing: ["facebook", "twitter", "linkedin"]
-#  #code-links:
-#  search: true
-#  reader-mode: false
-#  page-navigation: true
-#  back-to-top-navigation: false
-#  bread-crumbs: true
-#
-#  # body-header:
-#  # body-footer:
-#
-#  # https://quarto.org/docs/reference/projects/books.html#navbar
-#  # navbar:
-#
-#  # https://quarto.org/docs/reference/projects/books.html#sidebar
-#  # sidebar:
-#
-#  # https://quarto.org/docs/books/book-structure.html#parts-appendices
-#  chapters:
-#    - index.qmd
-#    - why-python.qmd
-#    #- preface.qmd
-#    #- onboarding.qmd
-#
-#    - "---------"
-#    - part: dev-tools/index.qmd
-#      #title: "0 - Python Development Tools"
-#      #text: "0 - Python Development Tools"
-#      chapters:
-#        - href: dev-tools/google-colab/overview.qmd
-#          text: "Google Colab Overview"
-#        #- href: dev-tools/google-colab/form-inputs.qmd
-#        #  text: "Form Inputs"
-#        #- href: dev-tools/google-colab/notebook-secrets.qmd
-#        #  text: "Notebook Secrets"
-#        - href: dev-tools/pip.qmd
-#          text: "Installing Packages with Pip"
-#
-#
-#    - "---------"
-#    - part: fin-apps/index.qmd
-#      text: "I. Intro to Financial Applications"
-#      #chapters:
-#      #  - fin-apps/unit2.qmd
-#
-#    - "---------"
-#    - part: applied-ds/index.qmd
-#      text: "II. Applied Data Science"
-#      #chapters:
-#      #  - applied-ds/unit2.qmd
-#
-#    - "---------"
-#    - part: fin-modeling/index.qmd
-#      text: "III. Advanced Financial Modeling"
-#      #chapters:
-#      #  - applied-ds/unit2.qmd
-#
-#    - "---------"
-#    - about-author.qmd
-#
-#    #- references.qmd
-
-#bibliography: references.bib
-
 format:
   # https://quarto.org/docs/reference/formats/html.html#table-of-contents
   html:
     theme: cosmo
     code-copy: true
-    toc: true
+    #toc: true
     #toc-location: left
-    number-sections: false
+    #number-sections: false
     #number-depth: 1
 
   #pdf:

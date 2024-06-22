@@ -16,7 +16,7 @@ For data science, quick prototypes, and rapid development.
 
 Run notebooks locally.
 
-### Google Colab
+### Google Colab Notebooks
 
 Run notebooks in the cloud.
 

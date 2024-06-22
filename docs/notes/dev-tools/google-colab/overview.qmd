@@ -1,4 +1,6 @@
-# Getting Started with Google Colab
+# Google Colab Overview
+
+Getting Started with Google Colab
 
 ## Menus
 
