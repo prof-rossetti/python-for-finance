@@ -1,0 +1,25 @@
+project:
+  type: book
+  output-dir: _build
+  preview:
+    port: 3456 # use the same port instead of a new one each time
+    browser: true
+
+book:
+  title: "Python for Finance"
+  subtitle: "2024 Edition"
+  author: "Michael Rossetti"
+  #date: de
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
