@@ -2,11 +2,13 @@
 
 Getting Started with Google Colab
 
-## Menus
+## Colab Menus
 
 
 
-## Cells
+
+
+## Notebook Cells
 
 ### Text Cells
 
@@ -15,20 +17,6 @@ Getting Started with Google Colab
 
 
 
-## Settings
+## Colab Settings
 
-## Filesystem
-
-## Notebook Secrets
-
-## Form Inputs
-
-
-
-
-## Integrations
-
-### Google Drive
-
-
-### Google Auth
+## Colab Filesystem

@@ -1,4 +1,4 @@
 
-# Predictive Modeling for Finance in Python
+# Advanced Financial Modeling in Python
 
 Coming Soon...
