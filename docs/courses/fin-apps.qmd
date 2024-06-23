@@ -2,4 +2,17 @@
 
 # Intro to Financial Applications in Python
 
-Coming Soon...
+## Course Description
+
+Finance professionals can write application software programs to perform analyses, aid decision-making, and drive competitive advantage. In this introductory course, students will learn how to develop practical financial applications in the Python programming language. After gaining familiarity with basic programming concepts, students will practice processing, analyzing and visualizing data, including real-time financial and market data from the Internet, to build decision-support tools such as automated financial dashboards.
+
+## Learning Objectives
+
+1. Learn basic programming concepts in Python, including input/output, variables, functions, loops, datatypes, and file operations.
+1. Load, process, analyze, and visualize JSON-formatted (i.e. nested) data, as well as CSV-formatted (i.e. tabular) data.
+1. Fetch real-time financial data from the Internet, from sources such as Application Programming Interfaces (APIs).
+1. Produce data visualizations, dashboards, and decision support tools.
+1. Gain marketable skills in programming and data analysis.
+1. Have fun!
+
+## Course Outline

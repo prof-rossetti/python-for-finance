@@ -1,3 +1,17 @@
 # Applied Data Science for Finance in Python
 
-Coming Soon...
+## Course Description
+
+Data science is an emerging field which is being applied across a number of business contexts, including finance. In this course, students will build the skills necessary to effectively navigate and analyze financial data sets in Python, empowering them to make data-driven decisions. After gaining confidence in wrangling real-world financial datasets at scale, students will apply statistical techniques to financial data, to perform analyses such as calculating beta to the market. Through project deliverables, students will perform their own real world financial analysis of interest, and practice communicating and presenting their analytical findings.
+
+## Learning Objectives
+
+1. Aggregate data and produce pivot table style reports.
+1. Merge and join datasets to gain insights.
+1. Perform basic statistical analysis in Python, including correlation, variance, and covariance.
+2. Perform practical financial analyses, such as calculating beta to the market.
+3. Produce data visualizations, dashboards, and decision support tools.
+4. Gain marketable skills in programming and data analysis.
+5. Have fun!
+
+## Course Outline

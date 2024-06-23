@@ -47,7 +47,7 @@ website:
             href: notes/dev-tools/google-colab/overview.qmd
             contents:
               - section:
-                href: notes/dev-tools/google-colab/form-inputs.qmd
+                href: notes/dev-tools/google-colab/filesystem.ipynb
               - section:
                 href: notes/dev-tools/google-colab/notebook-secrets.qmd
               - section:
@@ -58,7 +58,7 @@ website:
       - "---------"
       - section:
         href: courses/fin-apps.qmd
-        text: "I. Intro to Financial Applications" # "I. Financial Applications" # "I. Intro to Financial Applications"
+        text: "I. Financial Applications" # "I. Financial Applications" # "I. Intro to Financial Applications"
         contents:
           - section:
             href: notes/python-lang.qmd
@@ -126,7 +126,7 @@ website:
       - "---------"
       - section:
         href: courses/fin-modeling.qmd
-        text: "III. Advanced Financial Modeling" # "III. Advanced Financial Modeling in Python" # "III. Financial Modeling" #"III. Advanced Financial Modeling"
+        text: "III. Financial Modeling" # "III. Advanced Financial Modeling in Python" # "III. Financial Modeling" #"III. Advanced Financial Modeling"
         #contents:
         #  - applied-ds/unit2.qmd
 
@@ -137,7 +137,11 @@ website:
 format:
   # https://quarto.org/docs/reference/formats/html.html#table-of-contents
   html:
-    theme: cosmo
+    # https://bootswatch.com/
+    #
+    theme: pulse #cosmo
+      #light: pulse
+      #dark: superhero
     code-copy: true
     code-fold: false #show
     toc: true

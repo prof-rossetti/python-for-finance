@@ -1,4 +1,19 @@
 
-# Advanced Financial Modeling in Python
+# Financial Modeling in Python
 
-Coming Soon...
+## Course Description
+
+Finance professionals can elevate their modeling skills to drive strategic decision-making in dynamic markets. This course provides an overview of fundamental concepts and techniques for building predictive models in Python. After gaining an understanding of machine learning problem formulation and evaluation metrics, students will train predictive models, including for time-series forecasting purposes.
+
+## Learning Objectives
+
+1. Discuss predictive modeling and machine learning problem formulation.
+1. Train and evaluate regression models for predicting continuous variables.
+1. Train and evaluate classification models for predicting categorical variables.
+2. Test the autocorrelation structure of data and examine autoregressive models.
+3. Explore deep learning models, including recurrent neural networks.
+4. Produce data visualizations, dashboards, and decision support tools.
+5. Gain marketable skills in programming and data analysis.
+6. Have fun!
+
+## Course Outline

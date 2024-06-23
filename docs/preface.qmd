@@ -1,7 +1,21 @@
 
-# Preface {.unnumbered}
+# Welcome {.unnumbered}
 
-This is the preface.
+Welcome to the "Python for Finance" book (online edition)!
+
+Whether you are a finance professional seeking to enhance technical skills, a data scientist interested in finance, or a student aspiring to enter the field, this book should serve as a valuable resource.
+
+The notes and exercises in this book are aimed to help you achieve a working knowledge of Python, and gain confidence in using Python to solve quantitative problems in finance and business.
+
+We hope this book inspires you to harness the power of Python in your financial endeavors, helps you develop marketable technology skills, and opens up new avenues for innovation and efficiency in your work.
 
 
-## Why Python
+## Outline
+
+The book is comprised of a sequence of three courses, each developing on the skills and knowledge learned in previous courses:
+
+[**I. Financial Applications in Python:**](./courses/fin-apps.qmd)
+
+[**II. Applied Data Science for Finance in Python**:](./courses/applied-ds.qmd)
+
+[**III. Financial Modeling in Python**:](./courses/fin-modeling.qmd)

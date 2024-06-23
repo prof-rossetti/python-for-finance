@@ -8,9 +8,15 @@ execute:
 ---
 
 
-# Modules and Imports
+# Python Modules
 
 Some functionality comes from built-in libraries called modules.
+
+## Import Strategies and Namespaces
+
+
+
+## Survey of Popular Modules
 
 ## The `math` Module
 
