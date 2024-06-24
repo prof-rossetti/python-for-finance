@@ -1,8 +1,8 @@
 # Why Python? {.unnumbered}
 
-Many finance professionals already posess a deep knowledge of spreadsheet software. So why is it helpful for them to learn Python as well?
+Many finance professionals already possess a deep knowledge of spreadsheet software. So why is it helpful for them to learn Python as well?
 
-Like any computer programming language, Python offers benefits of automation. And among programming languages, Python is a popular, easy to use, powerful, and versatilie choice.
+Like any computer programming language, Python offers benefits of automation. And among programming languages, Python is a popular, easy to use, powerful, and versatile choice.
 
 ## Automation and Scalability
 
@@ -17,7 +17,12 @@ Python is one of the most popular programming languages. According to a [recent 
 
 This popularity translates into a strong and vibrant community that contributes to the language's development and support.
 
-For finance professionals, this means a wealth of resources, tutorials, and community support is readily available. Additionally, the high demand for Python skills in the job market creates numerous career opportunities for analysts and programmers proficient in Python.
+For finance professionals, this means a wealth of resources, tutorials, and community support is readily available.
+
+Additionally, the high demand for Python skills in the job market creates numerous career opportunities for analysts and programmers proficient in Python, especially in the world of Finance.
+
+![Top jobs related to Python programming and Finance. Source: [US News and World Report](https://money.usnews.com/careers/best-jobs/rankings/the-100-best-jobs)](./images/python-top-jobs.png)
+
 
 ## Ease of Use
 
@@ -33,6 +38,6 @@ Python packages offer powerful capabilities in data processing, analysis, visual
 
 ## Versatility
 
-Python is a versitile language, making it a good choice for a variety of applications, from software development, to data science, and machine learning.
+Python is a versatile language, making it a good choice for a variety of applications, from software development, to data science, and machine learning.
 
-Because Python is a single language that can be used to tackle challenges across a variety of domains, this increases the return on investment of time speant learning the language.
+Because Python is a single language that can be used to tackle challenges across a variety of domains, this increases the return on investment of time spent learning the language.

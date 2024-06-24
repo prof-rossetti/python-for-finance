@@ -48,9 +48,9 @@ When getting started with Python notebooks, take some time to practice creating 
 
 We use text cells to provide context and instructions surrounding our code. For example, to explain a concept, share a finding, or describe setup steps.
 
-In the text cells, we can write in plain text, or in a special syntax called Markdown.
+In the text cells, we can write in plain English, or in a special syntax called Markdown.
 
-Here is some example markdown syntax, for use in a text cell:
+Here is some example Markdown syntax, for use in a text cell:
 
 ```md
 # My First Notebook!
@@ -92,15 +92,9 @@ After writing Python code like this in a code cell, we execute or "run" the code
 
 ## Sidebar Menus
 
-The sidebar menus provide additional functionality. The Table of Contents is fairly straightforward, but you can feel free to review other menus like the [Filesystem](./colab-filesystem.ipynb), Code Snippets, and Notebook Secrets in the future, when we have practical need for them.
+The sidebar menus provide additional functionality. The Table of Contents is fairly straightforward, but you can feel free to skip the rest and return to review other menus in the future, as instructed, when we have practical need for them.
 
-  + [Table of Contents](#table-of-contents)
+  + [Table of Contents](./table-of-contents.qmd)
   + [Colab Filesystem](./filesystem.ipynb)
   + [Notebook Secrets](./notebook-secrets.qmd)
   + [Code Snippets and Advanced Integrations](./integrations.qmd)
-
-### Table of Contents
-
-The table of contents menu shows a document outline, similar to a table of contents in word processing software.
-
-The heading structure of your markdown cells will govern the document structure displayed in the table of contents. It is helpful to practice your ability to implement a document outline by implementing different [Markdown heading levels](https://www.markdownguide.org/basic-syntax/#headings) in your text cells.

@@ -47,6 +47,8 @@ website:
             href: notes/dev-tools/google-colab/overview.qmd
             contents:
               - section:
+                href: notes/dev-tools/google-colab/table-of-contents.qmd
+              - section:
                 href: notes/dev-tools/google-colab/filesystem.ipynb
               - section:
                 href: notes/dev-tools/google-colab/notebook-secrets.qmd
