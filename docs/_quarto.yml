@@ -5,9 +5,10 @@ project:
     port: 3456 # use the same port instead of a new one each time
     browser: true
 
-jupyter: python3
-execute:
-  cache: true # re-render only when source changes
+#jupyter: python3
+#execute:
+#  #cache: true # re-render only when source changes
+# # eval: false
 
 # https://quarto.org/docs/reference/projects/websites.html#section
 website:
@@ -48,12 +49,19 @@ website:
             contents:
               - section:
                 href: notes/dev-tools/google-colab/table-of-contents.qmd
+                text: "Table of Contents"
               - section:
                 href: notes/dev-tools/google-colab/filesystem.ipynb
+                text: "Accessing the Filesystem"
+              - section:
+                href: notes/dev-tools/google-colab/form-inputs.ipynb
+                text: "Forms and Inputs"
               - section:
                 href: notes/dev-tools/google-colab/notebook-secrets.qmd
-              - section:
-                href: notes/dev-tools/google-colab/integrations.qmd
+                text: "Notebook Secrets"
+              #- section:
+              #  href: notes/dev-tools/google-colab/advanced-integrations.ipynb
+              #  text: "Advanced Integrations"
           - section:
             href: notes/dev-tools/pip.qmd
 

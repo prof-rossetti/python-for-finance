@@ -1,4 +1,4 @@
-# Table of Contents
+# Table of Contents in Google Colab
 
 The "Table of contents" menu in the Google Colab sidebar shows a document outline, similar to a table of contents you may be familiar with in word processing software.
 
@@ -26,7 +26,6 @@ This is some text.
 
 This is some text.
 
-
 # Section 2
 
 This is some text.
@@ -49,6 +48,6 @@ This is some text.
 
 ```
 
-::: {.callout-tip}
-NOTE: you may need to place each of the headings in their own text cells for the document oultine to collapse properly.
+::: {.callout-tip title="Note"}
+You may need to place each of the headings in its own separate text cell, for the document outline to collapse properly.
 :::

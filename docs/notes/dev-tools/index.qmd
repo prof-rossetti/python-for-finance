@@ -13,4 +13,8 @@ Python notebooks (".ipynb" documents) provide an easy and intuitive learning exp
 
 Local development environments are used primarily for software development purposes, and for larger-scale applications which may span across dozens of files. The local development environment involves command-line programming tools that can be tricky to install and configure for beginners. For some types of applications, such as web applications, local development would be the only suitable option.
 
-In this book, we will conduct all exercises using [Google Colab Notebooks](./google-colab/overview.qmd), which are a specific type of Python Notebook document that can be executed in the cloud and managed via Google Drive. Google Drive makes it easy to copy and share the documents, and provides a familiar experience for most students. Colab offers GPU and TPU resources which can be helpful when working with large scale data. And because Colab is accessed via the browser and requires no local installations, it a perfect tool for beginners to use to get up and running quickly.
+![An example of local development tools](../../images/local-development.png)
+
+## Recommended Tools
+
+In this book, we will conduct all exercises using [Google Colab Notebooks](./google-colab/overview.qmd), which are a specific type of Python Notebook document that can be executed in the cloud and managed via Google Drive. Google Drive makes it easy to copy and share the documents, and provides a familiar experience for most students. Colab offers GPU and TPU resources which can be helpful when working with large scale data. And because Colab is accessed via the browser and requires no local installations, it is a perfect tool for beginners to use to get up and running quickly.

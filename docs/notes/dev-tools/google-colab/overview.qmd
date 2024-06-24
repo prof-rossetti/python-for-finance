@@ -13,7 +13,7 @@ When creating a new notebook, practice giving the document a title (e.g. "My Fir
 
 From any notebook, it is possible to create a new notebook, make a copy of the notebook, or download the notebook, using the "File" menu.
 
-::: {.callout-note}
+::: {.callout-warning}
 When you access a notebook that has been shared with you, unelss you have "Editor" privileges, you won't be able to save your work, and any edits you make in that document will be lost.
 
 So if you would like to work in a notebook that has been shared with you, you will first need to make a copy of the notebook, using the "File" > "Save a copy in Google Drive" menu option. Then when you make edits in your copy of the document, they will be saved.
@@ -96,5 +96,6 @@ The sidebar menus provide additional functionality. The Table of Contents is fai
 
   + [Table of Contents](./table-of-contents.qmd)
   + [Colab Filesystem](./filesystem.ipynb)
+  + [Forms and Inputs](./form-inputs.ipynb)
   + [Notebook Secrets](./notebook-secrets.qmd)
-  + [Code Snippets and Advanced Integrations](./integrations.qmd)
+  + [Advanced Integrations](./advanced-integrations.ipynb)
