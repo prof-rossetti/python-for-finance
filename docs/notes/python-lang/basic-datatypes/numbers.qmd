@@ -15,7 +15,7 @@ You are already probably familiar with [numbers](https://docs.python.org/3/libra
 
 ## Characteristics
 
-In Python, there are two kinds of numbers: integers and floats. Integers are whole numbers without a decimal component, while floats have decimal component:
+In Python, there are two kinds of numbers: **integers** and **floats**. Integers are whole numbers without a decimal component, while floats have decimal component (even if it is X.0):
 
 
 ```{python}

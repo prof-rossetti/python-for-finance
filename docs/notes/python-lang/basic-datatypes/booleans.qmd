@@ -17,7 +17,7 @@ One of the beautiful things about computer programming, as opposed to other disc
 
 ## Characteristics
 
-In Python, there are two boolean values: either `True` or `False`, with a capital letter, and no quotes:
+In Python, there are two **boolean** values: either `True` or `False`, with a capital letter, and no quotes:
 
 ```{python}
 print(True)

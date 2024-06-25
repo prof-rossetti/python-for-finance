@@ -53,14 +53,18 @@ Let's see an example of why datatypes matter. Consider the following example, wh
 When we use the plus sign operator with numbers, this will perform addition:
 
 ```{python}
-print(2 + 2)
+result = 2 + 2
+print(type(result))
+print(result)
 ```
 
 However when we use the same plus sign operator with strings, this will perform what is known as a "concatenation" operation, which you may be familiar with from spreadsheet software:
 
 
 ```{python}
-print("2" + "2")
+result = "2" + "2"
+print(type(result))
+print(result)
 ```
 
 
@@ -71,7 +75,7 @@ Notice, if we are not paying attention to which datatypes we are using, we might
 #> TypeError: can only concatenate str (not "int") to str
 ```
 
-In this case, we tried to use the plus sign operator with mixed datatypes. Python threw an error because it doesn't know what operation to perform. Should it perform addition? Or concatenation? This is why datatypes are so important to pay attention to!
+In this case, we tried to use the plus sign operator with mixed datatypes. Python threw an error because it doesn't know what operation to perform. Should it perform addition? Or concatenation? This is why it is important to know what datatypes we are working with!
 
 
 ## Datatype Detection Functions
@@ -90,7 +94,6 @@ print(type(4.5))
 
 
 ```{python}
-print(type('HELLO WORLD'))
 print(type("HELLO WORLD"))
 ```
 
@@ -113,10 +116,11 @@ print(type({"first_name": "Michael", "last_name": "Jordan"}))
 Whereas the [`isinstance` function](https://docs.python.org/3/library/functions.html#isinstance) will allow us to ask if an object is an instance of the specified datatype. This function will return either `True` or `False`.
 
 ```{python}
-isinstance(100, int)
-```
-```{python}
-isinstance(100, str)
+print(isinstance(100, int))
+print(isinstance(100, float))
+print(isinstance(100, str))
+print(isinstance(100, list))
+print(isinstance(100, dict))
 ```
 
 

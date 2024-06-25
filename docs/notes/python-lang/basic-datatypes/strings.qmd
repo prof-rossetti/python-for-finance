@@ -9,7 +9,7 @@ execute:
 
 # Strings
 
-The [string datatype](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) is used to represent textual messages.
+The [**string** datatype](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) is used to represent textual messages.
 
 ## Characteristics
 
@@ -62,7 +62,7 @@ print(message)
 
 ## Operations
 
-In practice, some common operations we perform with strings are concatenation, case manipulation, and substring checking.
+In practice, some common operations we perform with strings include concatenation, case manipulation, and substring checking, among others.
 
 ### Concatenation
 
@@ -136,7 +136,8 @@ Note this is case sensitive:
 
 ### Substring Replacement
 
-It is possible to replace
+It is possible to replace all instances of a substring within a larger string:
+
 ```{python}
 "hello world. as the world turns.".replace("world", "globe")
 ```
@@ -144,15 +145,15 @@ It is possible to replace
 
 ### Length Checking
 
-We use the `len` function to count the number of characters in a string:
+A string is like a list of individual characters.
+
+Like a list, we can use the `len` function to count the number of characters in a string:
 
 ```{python}
 len("HELLO WORLD")
 ```
 
 ### String Indexing and Slicing
-
-A string is like a list of individual characters.
 
 Similar to list operations, we can use indices to reference a specific character in the string, or a sequence of characters (i.e. string slicing):
 
