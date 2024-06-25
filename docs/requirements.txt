@@ -14,3 +14,4 @@ jupyter-cache
 # packages required by any python code / notebooks:
 #numpy
 #matplotlib
+#gspread==6.0.2
