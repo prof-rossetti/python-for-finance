@@ -20,6 +20,6 @@ The book is comprised of a sequence of three courses, each developing on the ski
 
 [**I. Financial Applications in Python**](./courses/fin-apps.qmd): in this introductory course, students will master basic Python programming concepts, as well as basic data processing and visualization techniques, to develop practical financial applications and decision-support tools, such as automated financial dashboards.
 
-[**II. Applied Data Science for Finance in Python**](./courses/applied-ds.qmd): in this intermediate course, students will build the skills to effectively navigate, wrangle, and analyze financial datasets in Python, including performing statistical analyses.
+[**II. Applied Data Science for Finance in Python**](./courses/applied-ds.qmd): in this intermediate course, students will build the skills to effectively navigate, wrangle, and analyze financial datasets in Python, including performing statistical analyses, such as calculating beta to the market.
 
-[**III. Financial Modeling in Python**](./courses/fin-modeling.qmd): in this advanced course, students will learn fundamental concepts and techniques for building and evaluating predictive models in Python, including for time series forecasting.
+[**III. Financial Modeling in Python**](./courses/fin-modeling.qmd): in this advanced course, students will learn fundamental concepts and techniques for building and evaluating predictive models in Python, including for time series forecasting of financial and economic data.

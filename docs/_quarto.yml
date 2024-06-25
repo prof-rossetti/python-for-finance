@@ -63,7 +63,8 @@ website:
               #  href: notes/dev-tools/google-colab/advanced-integrations.ipynb
               #  text: "Advanced Integrations"
           - section:
-            href: notes/dev-tools/pip.qmd
+            href: notes/dev-tools/pip.ipynb
+            text: "Installing Packages with Pip"
 
       - "---------"
       - section:
