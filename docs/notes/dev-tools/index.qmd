@@ -9,9 +9,9 @@ You'll need to familiarize yourself with a Python development environment. One o
 
 In Python, we have a general choice between two development environments: Python notebooks vs local development, each offering its own strengths and trade-offs.
 
-Python notebooks (".ipynb" documents) provide an easy and intuitive learning experience for beginners. They have code "cells" we can "play" to see the results and learn along the way. The integration of visual outputs along with code provides strengths in terms of presentation. Notebooks are also a popular choice among data science and machine learning practitioners, especially for quick prototypes, and rapid development. However for larger applications they might not be as suitable.
+Python notebooks (\".ipynb\" documents) provide an easy and intuitive learning experience for beginners. They have code \"cells\" we can "play" to see the results and learn along the way. The integration of visual outputs along with code provides strengths in terms of presentation. Notebooks are also a popular choice among data science and machine learning practitioners, especially for quick prototypes, and rapid development. However for larger applications they might not be as suitable.
 
-Local development environments are used primarily for software development purposes, and for larger-scale applications which may span across dozens of files. The local development environment involves command-line programming tools that can be tricky to install and configure for beginners. For some types of applications, such as web applications, local development would be the only suitable option.
+Local development environments are used primarily for software development purposes, and for larger-scale applications which may span across dozens of files. The local development environment involves command-line programming tools that can be tricky to install and configure for beginners. For some types of applications, such as web applications, local development may be the only suitable option.
 
 ![An example of local development tools](../../images/local-development.png)
 
