@@ -17,13 +17,13 @@ Each object belongs to a given data type. The **data type** of an object determi
 
 ## Python Datatypes
 
-Python has a number of built-in datatypes, each of which represents a different kind of object.
+Python has a number of [built-in datatypes](https://docs.python.org/3/library/stdtypes.html), each of which represents a different kind of object.
 
 In other words, knowing what datatype an object is allows us to understand exactly what we can do with that object.
 
 ### Examples
 
-Here is an example of each of the most popular datatypes. We will cover each of these datatypes and their operations in more detail, but for now just know what these datatypes look like:
+Here is an example of each of the most popular datatypes. We will cover many of these datatypes and their operations in more detail, but for now just know what these datatypes look like.
 
 Basic ("scalar") datatypes that involve a single value:
 
