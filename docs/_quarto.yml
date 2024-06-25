@@ -45,7 +45,7 @@ website:
         href: notes/dev-tools/index.qmd
         contents:
           - section:
-            href: notes/dev-tools/google-colab/overview.qmd
+            href: notes/dev-tools/google-colab/overview.ipynb
             contents:
               - section:
                 href: notes/dev-tools/google-colab/table-of-contents.qmd
@@ -75,7 +75,7 @@ website:
           # PYTHON LANGUAGE OVERVIEW
           #
           - section:
-            href: notes/python-lang/overview.qmd
+            href: notes/python-lang/overview.ipynb
             text: "Python Language Overview"
             contents:
 
