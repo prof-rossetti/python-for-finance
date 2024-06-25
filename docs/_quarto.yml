@@ -71,54 +71,102 @@ website:
         href: courses/fin-apps.qmd
         text: "I. Financial Applications" # "I. Financial Applications" # "I. Intro to Financial Applications"
         contents:
+          #
+          # PYTHON LANGUAGE OVERVIEW
+          #
           - section:
-            href: notes/python-lang.qmd
-
-          - section:
-            href: notes/basic-datatypes/index.qmd
+            href: notes/python-lang/overview.qmd
+            text: "Python Language Overview"
             contents:
-              - section:
-                href: notes/basic-datatypes/numbers.qmd
-              - section:
-                href: notes/basic-datatypes/strings.qmd
-              - section:
-                href: notes/basic-datatypes/booleans.qmd
 
-          - section:
-            href: notes/python-operators.qmd
-
-          - section:
-            href: notes/control-flow/index.qmd
-            contents:
               - section:
-                href: notes/control-flow/conditional-logic.qmd
-              - section:
-                href: notes//control-flow/custom-functions.qmd
+                href: notes/python-lang/basic-datatypes/index.qmd
                 contents:
-                - section:
-                  href: notes/control-flow/function-docs.qmd
-                - section:
-                  href: notes/control-flow/unit-testing.qmd
-                - section:
-                  href: notes/control-flow/errors.qmd
+                  - section:
+                    href: notes/python-lang/basic-datatypes/numbers.qmd
+                  - section:
+                    href: notes/python-lang/basic-datatypes/strings.qmd
+                  - section:
+                    href: notes/python-lang/basic-datatypes/booleans.qmd
 
+              - section:
+                href: notes/python-lang/python-operators.qmd
+
+              - section:
+                href: notes/python-lang/control-flow/index.qmd
+                contents:
+                  - section:
+                    href: notes/python-lang/control-flow/conditional-logic.qmd
+                  - section:
+                    href: notes/python-lang/control-flow/custom-functions.qmd
+                    contents:
+                    - section:
+                      href: notes/python-lang/control-flow/function-docs.qmd
+                    - section:
+                      href: notes/python-lang/control-flow/unit-testing.qmd
+                    - section:
+                      href: notes/python-lang/control-flow/errors.qmd
+
+              - section:
+                href: notes/python-lang/container-datatypes/index.qmd
+                contents:
+                  - section:
+                    href: notes/python-lang/container-datatypes/lists.qmd
+                  - section:
+                    href: notes/python-lang/container-datatypes/dictionaries.qmd
+
+              - section:
+                href: notes/python-modules/index.qmd
+                text: "Python Modules"
+                contents:
+                  - section:
+                    href: notes/python-modules/datetime.qmd
+                  - section:
+                    href: notes/python-modules/random.qmd
+                  - section:
+                    href: notes/python-modules/statistics.qmd
+
+          #
+          # DATA PROCESSING
+          #
           - section:
-            href: notes/container-datatypes/index.qmd
+            href: notes/data-processing/index.qmd
+            text: "Data Processing"
             contents:
               - section:
-                href: notes/container-datatypes/lists.qmd
+                href: notes/data-processing/sorting.qmd
+                text: "Sorting Lists"
               - section:
-                href: notes/container-datatypes/dictionaries.qmd
+                href: notes/data-processing/mapping.qmd
+                text: "Mapping Lists"
+              - section:
+                href: notes/data-processing/filtering.qmd
+                text: "Filtering Lists"
+              - section:
+                href: notes/data-processing/list-comprehensions.qmd
+                text: "List Comprehensions"
 
+          #
+          # DATAVIZ
+          #
           - section:
-            href: notes/python-modules/index.qmd
-            contents:
-              - section:
-                href: notes/python-modules/datetime.qmd
-              - section:
-                href: notes/python-modules/random.qmd
-              - section:
-                href: notes/python-modules/statistics.qmd
+            href: notes/dataviz/overview.qmd
+            text: "Data Visualization"
+            #contents:
+            #  - section:
+            #    href: notes/data-processing/sorting.qmd
+            #    text: "Sorting Lists"
+
+          #
+          # FETCHING DATA FROM THE INTERNET
+          #
+          - section:
+            href: notes/fetching-data/overview.qmd
+            text: "Fetching Data from the Internet"
+            #contents:
+            #  - section:
+            #    href: notes/data-processing/sorting.qmd
+            #    text: "Sorting Lists"
 
 
 
