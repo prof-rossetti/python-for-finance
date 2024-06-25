@@ -29,20 +29,21 @@ Basic ("scalar") datatypes that involve a single value:
 
 | Datatype | Description  |  Example |
 |---|---|---|
-| Integer  | Numeric data (whole number) without decimal component.  | `5` |
-| Float | Numeric data with a decimal component.  | `3.5` |
-| String  | Textual data, within quotes. |  `"HELLO WORLD"` |
-| Boolean  | Two binary values which are the opposite of each other. |  `True` vs `False` only |
-| None Type  | Absence of a value, or a "null" value. |  `None` only |
+| [Integer](./numbers.qmd#integers)  | Numeric data (whole number) without decimal component.  | `5` |
+| [Float](./numbers.qmd#floats) | Numeric data with a decimal component.  | `3.5` |
+| [String](./strings.qmd)  | Textual data, within quotes. |  `"HELLO WORLD"` |
+| [Boolean](booleans.qmd)  | Two binary values which are the opposite of each other. |  `True` vs `False` only |
+| [None Type](https://docs.python.org/3/library/constants.html#None)  | Absence of a value, or a "null" value. |  `None` only |
 
 Container datatypes that hold many values:
 
 | Datatype | Description  |  Example |
 |---|---|---|
-| List  | A sequence of values. Order matters. Can contain duplicates. Mutable (can be updated and changed). | `["vanilla", "chocolate", "strawberry"]`|
-| Tuple  | A sequence of values. Immutable (cannot be changed). | `("vanilla", "chocolate", "strawberry")`|
-| Set  | Like a list, but without order, and cannot contain duplicates. | `{"vanilla", "chocolate", "strawberry"}`|
-| Dictionary  | An object with named attributes, otherwise known as "key value pairs". |  `{"first_name": "Michael", "last_name": "Jordan"}` |
+| [List](../container-datatypes/lists.qmd)  | A sequence of values. Order matters. Can contain duplicates. Mutable (can be updated and changed). | `[5, 3, 1, 5]`|
+| [Tuple](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences)  | A sequence of values. Immutable (cannot be changed). | `(5, 3, 1, 5)`|
+| [Set](https://docs.python.org/3/tutorial/datastructures.html#sets)  | Like a list, but without a particular order, and cannot contain duplicates. | `{5, 3, 1}`|
+| [<span style="white-space:nowrap;">Dictionary</span>](../container-datatypes/dictionaries.qmd)  | An object with named attributes, otherwise known as "key value pairs". |  `{"first_name": "Michael", "last_name": "Jordan"}` |
+
 
 
 ## Why Datatypes Matter
@@ -135,6 +136,8 @@ print(str(2))
 print(bool(0))
 
 print(list("HELLO WORLD"))
+
+print(set([5, 3, 5, 1])) # set conversion will remove duplicates from the list
 ```
 
 
