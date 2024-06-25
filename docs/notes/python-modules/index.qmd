@@ -1,0 +1,47 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+
+# Python Modules
+
+Some functionality comes from built-in libraries called modules.
+
+## Import Strategies and Namespaces
+
+
+
+## Survey of Popular Modules
+
+## The `math` Module
+
+```{python}
+import math
+
+print(math.pi)
+print(math.ceil(6.2))
+```
+
+Importing only the function(s) you care about:
+
+```{python}
+from math import pi, ceil
+
+print(pi)
+print(ceil(6.2))
+```
+
+
+Optional alias for imported module:
+
+```{python}
+import math as m
+
+print(m.pi)
+print(m.ceil(6.2))
+```

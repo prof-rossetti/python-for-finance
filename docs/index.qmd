@@ -1,5 +1,25 @@
-# Preface {.unnumbered}
 
-This is a Quarto book.
+# Welcome {.unnumbered}
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+![Python for Finance book banner image](./images/python-finance-logo-c.png)
+
+Welcome to the "Python for Finance" book (online edition)!
+
+
+
+Whether you are a finance professional seeking to enhance technical skills, a data scientist interested in finance, or a student aspiring to enter the field, this book should serve as a valuable resource.
+
+The notes and exercises in this book are aimed to help you achieve a working knowledge of Python, and gain confidence in using Python to solve quantitative problems in finance and business.
+
+We hope this book inspires you to harness the power of Python in your financial endeavors, helps you develop marketable technology skills, and opens up new avenues for innovation and efficiency in your work.
+
+
+## Outline
+
+The book is comprised of a sequence of three courses, each developing on the skills and knowledge learned in previous courses:
+
+[**I. Financial Applications in Python**](./courses/fin-apps.qmd): in this introductory course, students will master basic Python programming concepts, as well as basic data processing and visualization techniques, to develop practical financial applications and decision-support tools, such as automated financial dashboards.
+
+[**II. Applied Data Science for Finance in Python**](./courses/applied-ds.qmd): in this intermediate course, students will build the skills to effectively navigate, wrangle, and analyze financial datasets in Python, including performing statistical analyses, such as calculating beta to the market.
+
+[**III. Financial Modeling in Python**](./courses/fin-modeling.qmd): in this advanced course, students will learn fundamental concepts and techniques for building and evaluating predictive models in Python, including for time series forecasting of financial and economic data.

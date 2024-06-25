@@ -1,0 +1,13 @@
+# Control Flow
+
+Control flow...
+
+Not all code is executed. Sometimes code is only reached under certain conditions. Some code may never be reached or executed.
+
+Indentation controls the scope.
+
+The simplest way to study control flow is the if statement and [conditional logic](conditional-logic.qmd).
+
+One of the most important parts of programming is defining your own [custom functions](custom-functions.qmd).
+
+[Error handling](errors.qmd) is another common example of control flow in action.
