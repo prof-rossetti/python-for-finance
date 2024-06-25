@@ -59,9 +59,9 @@ website:
               - section:
                 href: notes/dev-tools/google-colab/notebook-secrets.qmd
                 text: "Notebook Secrets"
-              #- section:
-              #  href: notes/dev-tools/google-colab/advanced-integrations.ipynb
-              #  text: "Advanced Integrations"
+              - section:
+                href: notes/dev-tools/google-colab/advanced-integrations.ipynb
+                text: "Advanced Integrations"
           - section:
             href: notes/dev-tools/pip.ipynb
             text: "Installing Packages with Pip"

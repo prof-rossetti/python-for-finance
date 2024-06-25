@@ -98,3 +98,4 @@ The sidebar menus provide additional functionality. The Table of Contents is fai
   + [Colab Filesystem](./filesystem.ipynb)
   + [Forms and Inputs](./form-inputs.ipynb)
   + [Notebook Secrets](./notebook-secrets.qmd)
+  + [Advanced Integrations](./advanced-integrations.ipynb)
