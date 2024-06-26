@@ -1,0 +1,80 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+# Charts with Trendlines
+
+Consider the previous scatter plot example:
+
+
+
+```{python}
+scatter_data = [
+    {"income": 30_000, "life_expectancy": 65.5},
+    {"income": 30_000, "life_expectancy": 62.1},
+    {"income": 50_000, "life_expectancy": 66.7},
+    {"income": 50_000, "life_expectancy": 71.0},
+    {"income": 70_000, "life_expectancy": 72.5},
+    {"income": 70_000, "life_expectancy": 77.3},
+    {"income": 90_000, "life_expectancy": 82.9},
+    {"income": 90_000, "life_expectancy": 80.0},
+]
+
+incomes = []
+expectancies = []
+for item in scatter_data:
+    incomes.append(item["income"])
+    expectancies.append(item["life_expectancy"])
+
+print(incomes)
+print(expectancies)
+```
+
+```{python}
+from plotly.express import scatter
+
+fig = scatter(x=incomes, y=expectancies, height=350,
+          title="Life Expectancy by Income",
+          labels={"x": "Income", "y": "Life Expectancy (years)"},
+)
+fig.show()
+```
+
+Upon viewing the chart, looks like there may be evidence of a trend.
+
+The [`scatter` function](https://plotly.com/python-api-reference/generated/plotly.express.scatter) has some trend-line related parameters:
+
+```{python}
+from plotly.express import scatter
+
+fig = scatter(x=incomes, y=expectancies, height=350,
+          title="Life Expectancy by Income",
+          labels={"x": "Income", "y": "Life Expectancy (years)"},
+          trendline="ols", trendline_color_override="red"
+)
+fig.show()
+```
+
+:::{.callout-note title="FYI"}
+Under the hood, `plotly` uses the `statsmodels` package to calculate the trend, so you may have to install that package as well.
+:::
+
+In addition to "ols" trend, which is an Ordinary Least Squares linear trend, we can use a "lowess" trend which is non-parametric:
+
+```{python}
+from plotly.express import scatter
+
+fig = scatter(x=incomes, y=expectancies, height=350,
+          title="Life Expectancy by Income",
+          labels={"x": "Income", "y": "Life Expectancy (years)"},
+          trendline="lowess", trendline_color_override="red"
+)
+fig.show()
+```
+
+If you notice, for the lowess trend, there is a slight bend in the curve.

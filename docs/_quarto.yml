@@ -167,11 +167,13 @@ website:
           - section:
             href: notes/dataviz/overview.qmd
             text: "Data Visualization"
-            #contents:
-            #  - section:
-            #    href: notes/data-processing/sorting.qmd
-            #    text: "Sorting Lists"
-
+            contents:
+              - section:
+                href: notes/dataviz/trendlines.qmd
+                text: "Charts with Trendlines"
+              - section:
+                href: notes/dataviz/candlestick-charts.qmd
+                text: "Candlestick Charts"
           #
           # FETCHING DATA FROM THE INTERNET
           #

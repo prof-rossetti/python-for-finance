@@ -14,12 +14,14 @@ When we perform [mapping](./mapping.qmd) and [filtering](./filtering.qmd) operat
 
 A [**list comprehension**](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions) is a powerful Python technique that allows us to perform mapping and/or filtering operations using a succinct one-liner syntax.
 
-## List Comprehension for Mapping
+For the examples below, we will consider this simple list of numbers:
 
 ```{python}
 my_numbers = [1, 2, 3, 4, 5, 6, 7]
 print(my_numbers)
 ```
+
+## List Comprehension for Mapping
 
 Mapping, the long way:
 
