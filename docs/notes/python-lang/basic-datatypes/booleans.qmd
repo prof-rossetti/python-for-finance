@@ -11,7 +11,7 @@ execute:
 
 Computers operate on the basis of binary logic, where truth is the opposite of false.
 
-![Binary logic (ones and zeros)](../../../images/binary-logic.png)
+![Binary logic (ones and zeros)](../../../images/binary-logic.png){height=350}
 
 One of the beautiful things about computer programming, as opposed to other disciplines, is that the truth is universal. In other words, there is no question about what is true. There is no blurring the lines or grey area or different subjective experiences. In programming, truth is objective.
 
@@ -27,10 +27,11 @@ print(True)
 print(False)
 ```
 
+They are the opposite of each other.
 
 ## Operations
 
-To exemplify the concept of universal truth, we can use the double equals operator to check if these two values are equal to each other:
+To exemplify the concept of universal truth, we can use the double equals operator (`==`) to check if these two values are equal to each other:
 
 
 ```{python}

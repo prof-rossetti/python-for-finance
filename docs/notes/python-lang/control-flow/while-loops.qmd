@@ -1,0 +1,16 @@
+---
+format:
+  html:
+    code-fold: false
+    #code-line-numbers: true
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+
+
+# While Loops, Counters, and Accumulators
+
+
+Within loops we are able to use control statements (`break`, `continue`, and `pass`).

@@ -1,9 +1,7 @@
 
 # Welcome {.unnumbered}
 
-![Python for Finance book banner image](./images/python-finance-logo-c.png)
-
-Welcome to the "Python for Finance" book (online edition)!
+Welcome to the \"Python for Finance\" book (2024 edition, online)!
 
 
 
@@ -13,6 +11,7 @@ The notes and exercises in this book are aimed to help you achieve a working kno
 
 We hope this book inspires you to harness the power of Python in your financial endeavors, helps you develop marketable technology skills, and opens up new avenues for innovation and efficiency in your work.
 
+![Python for Finance book banner image](./images/python-finance-logo-c.png)
 
 ## Outline
 

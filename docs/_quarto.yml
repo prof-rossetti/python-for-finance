@@ -21,7 +21,7 @@ website:
   #sharing: ["facebook", "twitter", "linkedin"]
   #code-links:
   search: true
-  reader-mode: false
+  reader-mode: true
   page-navigation: true
   back-to-top-navigation: false
   bread-crumbs: true
@@ -43,6 +43,7 @@ website:
       #- "---------"
       - section:
         href: notes/dev-tools/index.qmd
+        text: "Python Development Tools"
         contents:
           - section:
             href: notes/dev-tools/google-colab/overview.qmd
@@ -99,13 +100,16 @@ website:
                     href: notes/python-lang/control-flow/conditional-logic.qmd
                   - section:
                     href: notes/python-lang/control-flow/custom-functions.qmd
-                    contents:
-                    - section:
-                      href: notes/python-lang/control-flow/function-docs.qmd
-                    - section:
-                      href: notes/python-lang/control-flow/unit-testing.qmd
-                    - section:
-                      href: notes/python-lang/control-flow/errors.qmd
+                    #contents:
+                    #- section:
+                    #  href: notes/python-lang/control-flow/function-docs.qmd
+                    #- section:
+                    #  href: notes/python-lang/control-flow/unit-testing.qmd
+                  - section:
+                    href: notes/python-lang/control-flow/errors.qmd
+                  - section:
+                    href: notes/python-lang/control-flow/while-loops.qmd
+                    #text: "While Loops, Counters, and Accumulators"
 
               - section:
                 href: notes/python-lang/container-datatypes/index.qmd
@@ -133,6 +137,9 @@ website:
             href: notes/data-processing/index.qmd
             text: "Data Processing"
             contents:
+              #- section:
+              #  href: notes/data-processing/looping.qmd
+              #  text: "List Iteration and Looping"
               - section:
                 href: notes/data-processing/sorting.qmd
                 text: "Sorting Lists"
@@ -216,6 +223,13 @@ website:
           - section:
             href: notes/dev-tools/google-colab/advanced-integrations.ipynb
             text: "Advanced Integrations"
+      - section:
+        text: "B. Function Documentation and Testing" # In Depth
+        contents:
+          - section:
+            href: notes/python-lang/control-flow/function-docs.qmd
+          - section:
+            href: notes/python-lang/control-flow/unit-testing.qmd
 
 format:
   # https://quarto.org/docs/reference/formats/html.html#table-of-contents
@@ -227,6 +241,7 @@ format:
       #dark: superhero
     code-copy: true
     code-fold: false #show
+    #code-line-numbers: true
     toc: true
     #toc-location: left
     #number-sections: false

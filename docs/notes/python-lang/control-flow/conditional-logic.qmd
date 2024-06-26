@@ -2,6 +2,7 @@
 format:
   html:
     code-fold: false
+    #code-line-numbers: true
 jupyter: python3
 execute:
   cache: true # re-render only when source changes
@@ -32,16 +33,18 @@ print("BOTTOM")
 When we study "if" statements, we encounter the concept of "scope". In Python, scope is represented by indentation level. Some indentation levels may only be reached under certain conditions, while some may never be reached at all.
 
 ```{python}
+# | code-line-numbers: true
+
 print("TOP")
 
 if 2 + 2 == 5:
     print("THEY ARE EQUAL") # NEVER REACHED
-    print("MORE STUFF")
+    print("MORE STUFF") # NEVER REACHED
 
 print("BOTTOM")
 ```
 
-In this case, because the condition was not met, we never reach line 5.
+In this case, because the condition was not met, we never reach lines four and five.
 
 Observe that the "else" clause is optional, and will represent a catch-all condition if the above conditions are not met.
 
