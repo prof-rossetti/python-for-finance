@@ -7,7 +7,7 @@ execute:
   cache: true # re-render only when source changes
 ---
 
-# Basic Datatypes
+# Datatypes
 
 So far we have taken a look at functions, which are like verbs within the scope of our program.
 
@@ -29,13 +29,13 @@ Basic (\"scalar\") datatypes that involve a single value:
 
 | Datatype | Description  |  Example |
 |---|---|---|
+| [Boolean](booleans.qmd)  | Two binary values which are the opposite of each other. |  `True` vs `False` only |
 | [Integer](./numbers.qmd#integers)  | Numeric data (whole number) without decimal component.  | `5` |
 | [Float](./numbers.qmd#floats) | Numeric data with a decimal component.  | `3.5` |
 | [String](./strings.qmd)  | Textual data, within quotes. |  `"HELLO WORLD"` |
-| [Boolean](booleans.qmd)  | Two binary values which are the opposite of each other. |  `True` vs `False` only |
 | [None Type](https://docs.python.org/3/library/constants.html#None)  | Absence of a value, or a "null" value. |  `None` only |
 
-| Container datatypes that hold many values:
+\"Container\" datatypes that can hold many values:
 
 | Datatype | Description  |  Example |
 |---|---|---|

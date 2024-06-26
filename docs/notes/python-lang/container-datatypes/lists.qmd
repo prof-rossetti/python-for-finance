@@ -1,8 +1,18 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
 # Lists
+
+A [**`list`** datatype](https://docs.python.org/3/library/stdtypes.html#lists) represents a numbered, ordered collection of items.
 
 ## Characteristics
 
-A [**`list`** datatype](https://docs.python.org/3/library/stdtypes.html#lists) represents a numbered, ordered collection of items.
 
 A list has square brackets (`[]`) on the extremities, and comma separated items inside.
 
@@ -89,7 +99,7 @@ print(symbols)
 
 Concatenating lists:
 
-```python
+```{python}
 all_symbols = symbols + ["SPOT", "NVDA"]
 print(all_symbols)
 ```
@@ -114,54 +124,11 @@ print("NFLX" in symbols)
 print("NFLX" not in symbols)
 ```
 
+## Data Processing Operations
 
-### Looping
+We will return to work with lists in much more detail, as we study list-based data processing techniques:
 
-We can use a \"for\" loop to access each item one at a time:
-
-```{python}
-print("TOP")
-
-for item in symbols:
-    print("--------")
-    print(item)
-    # NOTHING ELSE, GO TO NEXT ITEM
-
-print("BOTTOM")
-```
-
-When we use a \"for\" loop, we have to fill in some slots. We have no choice but to put the list we want to loop through in the second slot (after the `in`). But we have an absolute arbitrary choice of what variable name to use to reference each item (after the `for`). Whatever varaible name we choose, we must also reference that variable within the scope of the loop:
-
-```{python}
-print("TOP")
-
-for x in symbols:
-    print("--------")
-    print(x)
-    # NOTHING ELSE, GO TO NEXT ITEM
-
-print("BOTTOM")
-```
-
-In practice, if we have a list of items plural (`symbols`), we could call each item the singular version (`symbol`) to make our code readable:
-
-```{python}
-print("TOP")
-
-for symbol in symbols:
-    print("--------")
-    print(symbol)
-    # NOTHING ELSE, GO TO NEXT ITEM
-
-print("BOTTOM")
-```
-
-Loops are essentially important and foundational. They will form the basis of more advanced operations, such as [mapping](../../data-processing/mapping.qmd) and [filtering](../../data-processing/filtering.qmd).
-
-### Data Processing Operations
-
-These chapters go into more depth about list-based data processing techniques:
-
+   + [List Iteration and Looping](../../data-processing/for-loops.qmd)
    + [List Sorting](../../data-processing/sorting.qmd)
    + [List Mapping](../../data-processing/mapping.qmd)
    + [List Filtering](../../data-processing/filtering.qmd)

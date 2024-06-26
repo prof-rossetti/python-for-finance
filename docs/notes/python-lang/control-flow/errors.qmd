@@ -6,7 +6,7 @@ Sometimes our programs will encounter [errors](https://docs.python.org/3/tutoria
 
 In Python, we can use a `try... except` block to handle these errors.
 
-After running into an error for the first time, we should observe what [type of error](https://docs.python.org/3/library/exceptions.html#bltin-exceptions) we are experiencing (e.g. `KeyError`, `IndexError`, `DivisionByZeroError`, etc.).
+After running into an error for the first time, we should observe what [type of error](https://docs.python.org/3/library/exceptions.html#bltin-exceptions) we are experiencing (e.g. `KeyError`, `IndexError`, `ZeroDivisionError`, etc.).
 
 Once we know what type of error we need to handle, we should wrap the problematic code inside the `try` clause, and specify the known error type in the `except` clause:
 

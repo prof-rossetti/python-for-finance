@@ -9,7 +9,7 @@ execute:
 
 # Strings
 
-[**Strings**](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) are textual messages, comprised of any number of alphanumeric characters.
+The [**`string`** datatype](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) represents textual messages, comprised of any number of alphanumeric characters.
 
 ## Characteristics
 
@@ -170,7 +170,7 @@ It is possible to replace all instances of a substring within a larger string:
 
 A string is like a list of individual characters.
 
-Like a list, we can use the `len` function to count the number of characters in a string:
+Like a list, we can use the [`len` function](https://docs.python.org/3/library/functions.html#len) to count the number of characters in a string:
 
 ```{python}
 len("HELLO WORLD")

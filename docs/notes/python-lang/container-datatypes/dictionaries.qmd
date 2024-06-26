@@ -1,8 +1,17 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
 # Dictionaries
 
-## Characteristics
-
 A [**dictionary** datatype](https://docs.python.org/3/library/stdtypes.html#dict) is a container for many values, in which each value is described by a named attribute known as a \"key\". In this way, a dictionary is said to have \"key value pairs\".
+
+## Characteristics
 
 A dictionary has squiggly braces (`{}`) on the extremities, and comma-separated key-value pairs inside, where each key is separated from it's corresponding value by a colon (`:`).
 
