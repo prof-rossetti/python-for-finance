@@ -9,14 +9,14 @@ You should have access to Colab through your (university-issued) Google account.
 
 Visit [Google Colab](https://colab.research.google.com/) to access your existing notebooks and create new notebook documents.
 
-When creating a new notebook, practice giving the document a title (e.g. "My First Notebook"), and updating the notebook's sharing settings, like you would any other Google Drive document.
+When creating a new notebook, practice giving the document a title (e.g. \"My First Notebook\"), and updating the notebook's sharing settings, like you would any other Google Drive document.
 
-From any notebook, it is possible to create a new notebook, make a copy of the notebook, or download the notebook, using the "File" menu.
+From any notebook, it is possible to create a new notebook, make a copy of the notebook, or download the notebook, using the \"File\" menu.
 
 ::: {.callout-warning}
-When you access a notebook that has been shared with you, unelss you have "Editor" privileges, you won't be able to save your work, and any edits you make in that document will be lost.
+When you access a notebook that has been shared with you, unless you have \"Editor\" privileges, you won't be able to save your work, and any edits you make in that document will be lost.
 
-So if you would like to work in a notebook that has been shared with you, you will first need to make a copy of the notebook, using the "File" > "Save a copy in Google Drive" menu option. Then when you make edits in your copy of the document, they will be saved.
+So if you would like to work in a notebook that has been shared with you, you will first need to make a copy of the notebook, using the /"File/" > /"Save a copy in Google Drive/" menu option. Then when you make edits in your copy of the document, they will be saved.
 :::
 
 
@@ -32,7 +32,7 @@ Recommended editor settings:
   + **Enable code folding**: so you can focus on certain parts of the code, and make the code more manageable to navigate.
 
 
-![Recommended editor settings in Google Colab](../../../images/colab-settings.png)
+![Recommended editor settings in Google Colab](../../../images/colab-settings.png){height=450}
 
 Remember to save your preferences before moving on.
 

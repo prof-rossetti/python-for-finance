@@ -1,1 +1,29 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
 # The `random` Module
+
+
+```{python}
+import random
+
+random.random() #> 0.6357193086559119
+```
+
+```{python}
+random.randint(1, 100) #> 43
+```
+
+
+
+```{python}
+options = ["van", "choc", "straw"]
+flavor = random.choice(options)
+print("FLAVOR:", flavor)
+```

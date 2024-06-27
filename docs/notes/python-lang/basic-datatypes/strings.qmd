@@ -9,20 +9,20 @@ execute:
 
 # Strings
 
-The [**string** datatype](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) is used to represent textual messages.
+The [**`string`** datatype](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) represents textual messages, comprised of any number of alphanumeric characters.
 
 ## Characteristics
 
 There are three ways to construct a string: by using single quotes, double quotes, or a multi-line string.
 
-Single quotes on the extremities:
+Single quotes (`'`) on the extremities:
 
 ```{python}
 message = 'HELLO WORLD'
 print(message)
 ```
 
-Double quotes on the extremities:
+Double quotes (`"`) on the extremities:
 
 ```{python}
 message = "HELLO WORLD"
@@ -30,18 +30,18 @@ print(message)
 ```
 
 
-Multiline string (uses triple quotes on the extremities):
+Multiline string, uses triple quotes (`"""`) on the extremities:
 
 
 ```{python}
 message = """
-This is a menu for our game.
+This is a menu for our trading platform.
 
-Do this
+To get started, follow these instructions:
 
-  + 1 __________
-  + 2 ____________
-  + 3 _____________
+  1. __________
+  2. ____________
+  3. _____________
 
 """
 print(message)
@@ -95,6 +95,29 @@ price = 4.5
 print(f"PRICE: ${price}")
 ```
 
+We can use a formatting directive such as `:.2f` to format a number to two decimal places, for example to format a number as US Dollars (USD):
+
+```{python}
+price = 4.5
+print(f"PRICE: ${price:.2f}")
+```
+
+A formatting directive such as `:,` to use a thousands separator:
+
+```{python}
+shares = 120000
+print(f"SHARES: {shares:,}")
+```
+
+Notice, it is possible to inject multiple variables in the format string, and to mix and match formatting directives:
+
+
+```{python}
+price = 4.5
+shares = 120000
+stake = price * shares
+print(f"PRICE: ${price:.2f} | SHARES: {shares:,} | STAKE: ${stake:,.2f}")
+```
 
 
 ### Case Manipulation
@@ -147,7 +170,7 @@ It is possible to replace all instances of a substring within a larger string:
 
 A string is like a list of individual characters.
 
-Like a list, we can use the `len` function to count the number of characters in a string:
+Like a list, we can use the [`len` function](https://docs.python.org/3/library/functions.html#len) to count the number of characters in a string:
 
 ```{python}
 len("HELLO WORLD")

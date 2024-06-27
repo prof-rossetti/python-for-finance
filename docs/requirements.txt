@@ -14,4 +14,6 @@ jupyter-cache
 # packages required by any python code / notebooks:
 #numpy
 #matplotlib
+plotly
+statsmodels # used by plotly for trendline parameter
 #gspread==6.0.2
