@@ -233,32 +233,6 @@ website:
           - section:
             href: notes/dev-tools/google-colab/advanced-integrations.ipynb
             text: "Advanced Integrations"
-<<<<<<< HEAD
-=======
-      - "---------"
-      - section:
-        text: "B. Function Documentation and Testing" # In Depth
-        contents:
-          - section:
-            href: notes/python-lang/control-flow/function-docs.qmd
-          - section:
-            href: notes/python-lang/control-flow/unit-testing.qmd
-      - "---------"
-      - section:
-        text: "C. Handling and Raising Errors"
-        href: notes/python-lang/control-flow/errors.qmd
-      - "---------"
-      - section:
-        href: notes/python-modules/index.qmd
-        text: "D. Python Modules Overview"
-        contents:
-          - section:
-            href: notes/python-modules/datetime.qmd
-          - section:
-            href: notes/python-modules/random.qmd
-          - section:
-            href: notes/python-modules/statistics.qmd
->>>>>>> 827cb06dd45dff5b544831b45c79a80d6c2b3321
 
 format:
   # https://quarto.org/docs/reference/formats/html.html#table-of-contents
