@@ -59,4 +59,4 @@ for symbol in symbols:
 print("BOTTOM")
 ```
 
-Loops are essentially important and foundational. They will form the basis of more advanced operations, such as [mapping](./mapping.qmd) and [filtering](./filtering.qmd).
+Loops are essential and foundational. They will form the basis of more advanced operations, such as [mapping](./mapping.qmd) and [filtering](./filtering.qmd).

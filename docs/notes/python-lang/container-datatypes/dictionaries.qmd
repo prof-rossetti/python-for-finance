@@ -94,8 +94,7 @@ print(dog.keys())
 
 ## Nested Structures
 
-If we have a nested structure, we start on the extremities and go down one level at a time, to reach the value we are interested in:
-
+It is common to encounter nested structures, where one object is nested inside another. Let's consider the following example (dictionary of dictionaries):
 
 ```{python}
 summary_profile = {
@@ -121,10 +120,16 @@ summary_profile = {
         'country': 'United States',
     }
 }
+```
 
+If we have a nested structure, we start on the extremities and go down one level at a time, to reach the value we are interested in:
+
+```{python}
 # chained accessors:
 print(summary_profile["AAPL"]["address1"])
+```
 
+```{python}
 # one step at a time (equivalent):
 apple = summary_profile["AAPL"]
 address = apple["address1"]

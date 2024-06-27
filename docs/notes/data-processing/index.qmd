@@ -2,8 +2,8 @@
 
 Let's work with lists in much more detail, as we study list-based data processing techniques:
 
-   + [List Sorting](./sorting.qmd)
+   + [Sorting Lists](./sorting.qmd)
    + [List Iteration and Looping](./for-loops.qmd)
-   + [List Mapping](./mapping.qmd)
-   + [List Filtering](./filtering.qmd)
+   + [Mapping Lists](./mapping.qmd)
+   + [Filtering Lists](./filtering.qmd)
    + [List Comprehensions](./list-comprehensions.qmd)
