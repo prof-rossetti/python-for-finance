@@ -1,6 +1,9 @@
 # Why Python? {.unnumbered}
 
-Many finance professionals already possess a deep knowledge of spreadsheet software. So why is it helpful for them to learn Python as well?
+
+Many finance professionals already possess a deep knowledge of spreadsheet software. So why is it helpful for them to learn [Python](https://www.python.org/) as well?
+
+![Python logo](./images/python-logo.png){height=150}
 
 Like any computer programming language, Python offers benefits of automation. And among programming languages, Python is a popular, easy to use, powerful, and versatile choice.
 

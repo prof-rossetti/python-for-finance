@@ -21,7 +21,7 @@ website:
   #sharing: ["facebook", "twitter", "linkedin"]
   #code-links:
   search: true
-  reader-mode: false
+  reader-mode: true
   page-navigation: true
   back-to-top-navigation: false
   bread-crumbs: true
@@ -43,6 +43,7 @@ website:
       #- "---------"
       - section:
         href: notes/dev-tools/index.qmd
+        text: "Python Development Tools"
         contents:
           - section:
             href: notes/dev-tools/google-colab/overview.qmd
@@ -81,13 +82,20 @@ website:
 
               - section:
                 href: notes/python-lang/basic-datatypes/index.qmd
+                text: "Basic Datatypes"
                 contents:
+                  # basic datatypes here:
+                  - section:
+                    href: notes/python-lang/basic-datatypes/booleans.qmd
                   - section:
                     href: notes/python-lang/basic-datatypes/numbers.qmd
                   - section:
                     href: notes/python-lang/basic-datatypes/strings.qmd
-                  - section:
-                    href: notes/python-lang/basic-datatypes/booleans.qmd
+                  # container datatypes here:
+                  #- section:
+                  #  href: notes/python-lang/container-datatypes/lists.qmd
+                  #- section:
+                  #  href: notes/python-lang/container-datatypes/dictionaries.qmd
 
               - section:
                 href: notes/python-lang/python-operators.qmd
@@ -99,32 +107,36 @@ website:
                     href: notes/python-lang/control-flow/conditional-logic.qmd
                   - section:
                     href: notes/python-lang/control-flow/custom-functions.qmd
-                    contents:
-                    - section:
-                      href: notes/python-lang/control-flow/function-docs.qmd
-                    - section:
-                      href: notes/python-lang/control-flow/unit-testing.qmd
-                    - section:
-                      href: notes/python-lang/control-flow/errors.qmd
+                    #contents:
+                    #- section:
+                    #  href: notes/python-lang/control-flow/function-docs.qmd
+                    #- section:
+                    #  href: notes/python-lang/control-flow/unit-testing.qmd
+                  #- section:
+                  #  href: notes/python-lang/control-flow/errors.qmd
+                  - section:
+                    href: notes/python-lang/control-flow/while-loops.qmd
+                    #text: "While Loops, Counters, and Accumulators"
 
               - section:
-                href: notes/python-lang/container-datatypes/index.qmd
+                #href: notes/python-lang/container-datatypes/index.qmd
+                text: "Container Datatypes"
                 contents:
                   - section:
                     href: notes/python-lang/container-datatypes/lists.qmd
                   - section:
                     href: notes/python-lang/container-datatypes/dictionaries.qmd
 
-              - section:
-                href: notes/python-modules/index.qmd
-                text: "Python Modules"
-                contents:
-                  - section:
-                    href: notes/python-modules/datetime.qmd
-                  - section:
-                    href: notes/python-modules/random.qmd
-                  - section:
-                    href: notes/python-modules/statistics.qmd
+              #- section:
+              #  href: notes/python-modules/index.qmd
+              #  text: "Python Modules"
+              #  contents:
+              #    - section:
+              #      href: notes/python-modules/datetime.qmd
+              #    - section:
+              #      href: notes/python-modules/random.qmd
+              #    - section:
+              #      href: notes/python-modules/statistics.qmd
 
           #
           # DATA PROCESSING
@@ -133,6 +145,9 @@ website:
             href: notes/data-processing/index.qmd
             text: "Data Processing"
             contents:
+              #- section:
+              #  href: notes/data-processing/looping.qmd
+              #  text: "List Iteration and Looping"
               - section:
                 href: notes/data-processing/sorting.qmd
                 text: "Sorting Lists"
@@ -152,11 +167,13 @@ website:
           - section:
             href: notes/dataviz/overview.qmd
             text: "Data Visualization"
-            #contents:
-            #  - section:
-            #    href: notes/data-processing/sorting.qmd
-            #    text: "Sorting Lists"
-
+            contents:
+              - section:
+                href: notes/dataviz/trendlines.qmd
+                text: "Charts with Trendlines"
+              - section:
+                href: notes/dataviz/candlestick-charts.qmd
+                text: "Candlestick Charts"
           #
           # FETCHING DATA FROM THE INTERNET
           #
@@ -216,6 +233,32 @@ website:
           - section:
             href: notes/dev-tools/google-colab/advanced-integrations.ipynb
             text: "Advanced Integrations"
+<<<<<<< HEAD
+=======
+      - "---------"
+      - section:
+        text: "B. Function Documentation and Testing" # In Depth
+        contents:
+          - section:
+            href: notes/python-lang/control-flow/function-docs.qmd
+          - section:
+            href: notes/python-lang/control-flow/unit-testing.qmd
+      - "---------"
+      - section:
+        text: "C. Handling and Raising Errors"
+        href: notes/python-lang/control-flow/errors.qmd
+      - "---------"
+      - section:
+        href: notes/python-modules/index.qmd
+        text: "D. Python Modules Overview"
+        contents:
+          - section:
+            href: notes/python-modules/datetime.qmd
+          - section:
+            href: notes/python-modules/random.qmd
+          - section:
+            href: notes/python-modules/statistics.qmd
+>>>>>>> 827cb06dd45dff5b544831b45c79a80d6c2b3321
 
 format:
   # https://quarto.org/docs/reference/formats/html.html#table-of-contents
@@ -227,6 +270,7 @@ format:
       #dark: superhero
     code-copy: true
     code-fold: false #show
+    #code-line-numbers: true
     toc: true
     #toc-location: left
     #number-sections: false

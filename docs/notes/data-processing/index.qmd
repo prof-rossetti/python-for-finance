@@ -1,8 +1,9 @@
 # Data Processing in Python
 
-Let's get more practice working with nested structures and the `list` datatype, employing techniques such as the following:
+Let's work with lists in much more detail, as we study list-based data processing techniques:
 
-  + [Sorting Lists](./sorting.qmd)
-  + [Mapping Lists](./mapping.qmd)
-  + [Filtering Lists](./filtering.qmd)
-  + [List Comprehensions](./list-comprehensions.qmd)
+   + [List Sorting](./sorting.qmd)
+   + [List Iteration and Looping](./for-loops.qmd)
+   + [List Mapping](./mapping.qmd)
+   + [List Filtering](./filtering.qmd)
+   + [List Comprehensions](./list-comprehensions.qmd)
