@@ -9,10 +9,10 @@ execute:
 
 # Candlestick Charts with `plotly`
 
-In financial applications, we often have access to OHLC data (containing the open, high, low, and close price. We can use a candlestick chart can help us see the movement of the price within each day.
+In financial applications, we often have access to OHLC data (containing the open, high, low, and close price on each day). We can use a candlestick chart can help us see the movement of the price within each day.
 
 
-Let's make a [candlestick chart](ttps://plotly.com/python/candlestick-charts/), using the [`Candlestick` class](https://plotly.github.io/plotly.py-docs/generated/plotly.graph_objects.Candlestick.html) from plotly's Graph Objects sub-library.
+To implement a [candlestick chart](ttps://plotly.com/python/candlestick-charts/), we can use the [`Candlestick` class](https://plotly.github.io/plotly.py-docs/generated/plotly.graph_objects.Candlestick.html) from plotly's Graph Objects sub-library.
 
 We start with some OHLC data:
 
