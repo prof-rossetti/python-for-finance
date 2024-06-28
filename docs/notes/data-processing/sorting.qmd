@@ -62,7 +62,7 @@ We see that if we have a simple list, such as a list of numbers or list of strin
 print(1 < 2)
 print("a" < "b")
 ```
-But it is not possible to compare dictionaries using greater than operation
+But it is not possible to compare dictionaries using greater than or less than operators:
 
 ```{python}
 # print({} < {}) # INVALID

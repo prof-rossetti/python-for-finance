@@ -196,8 +196,22 @@ website:
       - section:
         href: courses/applied-ds.qmd
         text: "II. Applied Data Science" #"II. Applied Data Science for Finance in Python" #"II. Applied Data Science"
-        #contents:
-        #  - applied-ds/unit2.qmd
+        contents:
+          #
+          # PANDAS PACKAGE OVERVIEW
+          #
+          - section:
+            href: notes/pandas/overview.ipynb
+            text: "Pandas Package Overview"
+            contents:
+              - section:
+                href: notes/pandas/dataframes.qmd
+                text: "Dataframes"
+
+
+
+
+
 
       - "---------"
       - section:
