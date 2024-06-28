@@ -1,5 +1,9 @@
 
 
+
+pip:
+	pip install -r docs/requirements.txt
+
 build:
 	quarto render docs/
 	open docs/_build/index.html

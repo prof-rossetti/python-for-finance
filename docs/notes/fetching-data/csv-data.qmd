@@ -1,0 +1,28 @@
+# Fetching CSV Data
+
+
+If the data you want to fetch is in CSV format, we can use the `pandas` package to fetch and process it.
+
+First we note the URL of where the data resides. Then we pass that as a parameter to the [`read_csv` function](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) from the `pandas` package, to issue an HTTP GET request:
+
+```{python}
+from pandas import read_csv
+
+# the URL of some CSV data we stored online:
+request_url = "https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/gradebook.csv"
+
+df = read_csv(request_url)
+print(type(df))
+df
+```
+
+The resulting data is a [`DataFrame` object](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) from `pandas`. We will return to working with dataframes in more detail in the future. But as some foreshadowing, if we wanted to work with the column of grades, we could access them like this:
+
+```{python}
+df["final_grade"]
+```
+
+```{python}
+print(df["final_grade"].mean())
+print(df["final_grade"].median())
+```

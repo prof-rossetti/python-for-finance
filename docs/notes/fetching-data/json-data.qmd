@@ -1,0 +1,47 @@
+# Fetching JSON Data
+
+If the data you want to fetch is in JSON format, we can use the [`requests` package](https://requests.readthedocs.io/en/latest/) to fetch and process it.
+
+First we note the URL of where the data resides. Then we pass that as a parameter to the `get` function from the `requests` package, to issue an HTTP GET request:
+
+```{python}
+import requests
+
+# the URL of some JSON data we stored online:
+request_url = "https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/gradebook.json"
+
+response = requests.get(request_url)
+print(type(response))
+```
+
+We receive a response object from the server. The response object has a few methods and properties we care about. First, the status code generally tells us if the request was successful:
+
+```{python}
+response.status_code
+```
+
+The `text` property is a string that looks like it could one day be some data:
+
+```{python}
+print(type(response.text))
+response.text
+```
+
+The final step is to convert this JSON-formatted string to actual Python data. We can do this using the `json` method of the response object, or by leveraging the `loads` function from the [`json` module](https://docs.python.org/3/library/json.html):
+
+
+```{python}
+data = response.json()
+print(type(data))
+data
+```
+
+```{python}
+import json
+
+data = json.loads(response.text)
+print(type(data))
+data
+```
+
+This data happens to be dictionary-like at the top level. However be aware, when we fetch JSON, it can be either list-like, or dictionary-like on the top level. So you must observe the structure of your particular data before processing it further.

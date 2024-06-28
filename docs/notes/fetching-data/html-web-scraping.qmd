@@ -1,0 +1,42 @@
+# Fetching HTML Data
+
+If the data you want to fetch is in XML or HTML format, we can use the `requests` package to fetch it, and the `beautifulsoup4` package to process it.
+
+```{python}
+import requests
+
+# the URL of some CSV data we stored online:
+request_url = "https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/gradebook.xml"
+
+response = requests.get(request_url)
+print(type(response))
+```
+
+Pass the response text to the `BeautifulSoup` class constructor.
+
+```{python}
+from bs4 import BeautifulSoup
+
+soup = BeautifulSoup(response.text)
+type(soup)
+```
+
+The soup object is able to intelligently process the data.
+
+
+
+```{python}
+students = soup.find_all("student")
+print(type(students))
+len(students)
+```
+
+
+```{python}
+for student in students:
+    print("-----------")
+    print(type(student))
+    student_id = student.studentid.text
+    final_grade = student.finalgrade.text
+    print(student_id, final_grade)
+```

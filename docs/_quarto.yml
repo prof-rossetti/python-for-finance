@@ -91,11 +91,6 @@ website:
                     href: notes/python-lang/basic-datatypes/numbers.qmd
                   - section:
                     href: notes/python-lang/basic-datatypes/strings.qmd
-                  # container datatypes here:
-                  #- section:
-                  #  href: notes/python-lang/container-datatypes/lists.qmd
-                  #- section:
-                  #  href: notes/python-lang/container-datatypes/dictionaries.qmd
 
               - section:
                 href: notes/python-lang/python-operators.qmd
@@ -116,7 +111,6 @@ website:
                   #  href: notes/python-lang/control-flow/errors.qmd
                   - section:
                     href: notes/python-lang/control-flow/while-loops.qmd
-                    #text: "While Loops, Counters, and Accumulators"
 
               - section:
                 href: notes/python-lang/container-datatypes/index.qmd
@@ -180,11 +174,17 @@ website:
           - section:
             href: notes/fetching-data/overview.qmd
             text: "Fetching Data from the Internet"
-            #contents:
-            #  - section:
-            #    href: notes/data-processing/sorting.qmd
-            #    text: "Sorting Lists"
-
+            contents:
+              - section:
+                href: notes/fetching-data/json-data.qmd
+              - section:
+                href: notes/fetching-data/csv-data.qmd
+              - section:
+                href: notes/fetching-data/html-web-scraping.qmd
+                #text: "HTML Data (Web Scraping)"
+              #- section:
+              #  href: notes/fetching-data/apis.qmd
+              #  text: "APIs"
 
 
 
