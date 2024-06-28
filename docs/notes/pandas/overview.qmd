@@ -1,1 +1,9 @@
 # Processing Tabular Data with `pandas`
+
+**Pandas Package Overview for Data Science (Mega Notebook)**
+
+The [`pandas` package](https://pypi.org/project/pandas/) makes it easy to work with CSV formatted (i.e. \"tabular\") data, by providing us with two new datatypes, called the `DataFrame` and the `Series`.
+
+The pandas `DataFrame` datatype represents tabular data (with rows and columns). Whereas the pandas `Series` datatype represents a single row or single column in the dataset.
+
+Let's explore some common and practical ways of working with these objects.

@@ -20,4 +20,9 @@ requests
 pandas
 beautifulsoup4
 lxml # bs4 needs this to parse XML
+
+scipy
+
+
+
 #gspread==6.0.2

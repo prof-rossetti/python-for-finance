@@ -200,16 +200,39 @@ website:
           #
           # PANDAS PACKAGE OVERVIEW
           #
-          #- section:
-          #  href: notes/pandas/overview.ipynb
-          #  text: "Pandas Package Overview"
-          #  contents:
-          #    - section:
-          #      href: notes/pandas/dataframes.qmd
-          #      text: "Dataframes"
+          - section:
+            href: notes/pandas/overview.qmd
+            text: "Pandas Package Overview"
+            contents:
+              - section:
+                href: notes/pandas/dataframes.qmd
+                text: "Dataframes"
+              #- section:
+              #  href: notes/pandas/dataframes.qmd
+              #  text: "Dataframes"
+              - section:
+                href: notes/pandas/grouping-pivoting.qmd
+                text: "Grouping and Pivoting"
+              - section:
+                href: notes/pandas/shift-methods.qmd
+                text: "Shift based Methods" # "Growth and Cumulative Growth"
+              - section:
+                href: notes/pandas/moving-averages.qmd
+                text: "Moving Averages"
+              - section:
+                href: notes/pandas/joining-merging.ipynb
+                text: "Joining and Merging"
 
-
-
+          - section:
+            href: notes/applied-stats/overview.qmd
+            text: "Applied Statistics"
+            contents:
+              - section:
+                href: notes/applied-stats/basic-tests.ipynb
+                text: "Statistical Tests"
+              - section:
+                href: notes/applied-stats/correlation.ipynb
+                text: "Correlation Analysis"
 
 
 

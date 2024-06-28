@@ -1,0 +1,131 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+# Shift-based Methods
+
+So far we have been performing operations using values within the same row, or by operating on all values in a given column.
+
+But what if we want to compare a value in one row to corresponding values in the rows below or above?
+
+We can use \"shift-based\" methods for this purpose.
+
+
+Let's consider this simple example time series dataset:
+
+```{python}
+from pandas import DataFrame
+
+gdp_df = DataFrame([
+    {"year": 1990, "gdp": 100},
+    {"year": 1991, "gdp": 105},
+    {"year": 1992, "gdp": 110},
+    {"year": 1993, "gdp": 115},
+    {"year": 1994, "gdp": 110}
+
+])
+gdp_df.head()
+```
+
+Before performing shift-based methods, because row order matters, it is important to ensure the rows are sorted in the proper order (usually in ascending order by date).
+
+```{python}
+# sorting by year for good measure:
+gdp_df.sort_values(by=["year"], ascending=True, inplace=True)
+gdp_df.head()
+```
+
+We can use the dataframe's [`shift` method](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.shift.html) to reference a corresponding value in another row above or below by specifying the number of rows above or below via the `periods` parameter.
+
+
+
+We use positive numbers to reference rows above, and negative numbers to reference cells below:
+
+
+```{python}
+gdp_df["gdp"].shift(periods=1) # 1 or -1 depending on order
+```
+
+
+```{python}
+gdp_df["gdp"].shift(periods=-1) # 1 or -1 depending on order
+```
+
+## Growth and Percent Change
+
+By comparing current against previous values, this allows us to perform an ad-hoc percent growth calculation from one period to the next.
+
+Here we illustrate the methods one step at a time.
+
+
+```{python}
+# creating a new column using previous values:
+gdp_df["gdp_prev"] = gdp_df["gdp"].shift(periods=1)
+gdp_df
+```
+
+```{python}
+# calculating change:
+gdp_df["gdp_change"] = gdp_df["gdp"] - gdp_df["gdp_prev"]
+gdp_df
+```
+
+```{python}
+# calculating percent change:
+#gdp_df["gdp_growth"] = (gdp_df["gdp"] - gdp_df["gdp_prev"]) / gdp_df["gdp_prev"]
+
+gdp_df["gdp_pct_change"] = gdp_df["gdp_change"] / gdp_df["gdp_prev"]
+gdp_df
+```
+
+
+Even though we are able to perform this growth calculation ourselves, we should know the dataframe has a dedicated [`pct_change` method](https://pandas.pydata.org/docs/reference/api/pandas.Series.pct_change.html) for this purpose, which allows us to skip the intermediate steps:
+
+```{python}
+# equivalent, leveraging the pct_change method:
+gdp_df["gdp_pct_change"] = gdp_df["gdp"].pct_change(periods=1)
+
+gdp_df[["year", "gdp", "gdp_pct_change"]]
+```
+
+## Cumulative Growth
+
+Alright, we have studied how to calculate growth from one period to another, but what about calculating cumulative growth over the entire time period?
+
+To calculate cumulative growth for a particular period, we can use the([`cumprod` method](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.cumprod.html) to calculate the cumulative product (or the [`product` method](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.product.html), depending on the use case). When calculating cumulative product, each value gets multiplied by the values that follow, in succession.
+
+
+Before we calculate a product, to make the multiplication work, we'll need the growth numbers to be relative to 1, rather than 0. We'll also need to fill in the initial null value with a 1, so the first period represents 100%.
+
+Let's break this down one step at a time, to illustrate each method, before putting them all together at the end.
+
+
+Overwriting an initial null value that results from there being no previous row for the first row:
+
+```{python}
+gdp_df.loc[0, "gdp_pct_change"] = 0
+
+gdp_df
+```
+
+Expressing growth relative to one instead of zero (so we can calculate cumulative product later):
+
+```{python}
+gdp_df["gdp_pct_change"] = gdp_df["gdp_pct_change"] + 1
+```
+
+Calculating the cumulative product of the growth:
+
+
+```{python}
+#gdp_df["cumulative_growth"] = (gdp_df["gdp_growth"] + 1).cumprod()
+
+gdp_df["gdp_cumulative_growth"] = gdp_df["gdp_pct_change"].cumprod()
+
+gdp_df
+```

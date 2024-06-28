@@ -3,6 +3,9 @@
 
 .jupyter_cache
 
+# HTML files recursive:
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

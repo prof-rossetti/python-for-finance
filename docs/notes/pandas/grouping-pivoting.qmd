@@ -1,0 +1,176 @@
+---
+format:
+  html:
+    code-fold: false #show
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+
+
+# Grouping and Pivoting
+
+In this sales dataset, you will see we have a row per date per product sold on that date.
+
+```{python}
+from pandas import read_csv, to_datetime
+
+sales_df = read_csv(f"https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/monthly-sales.csv")
+sales_df["date"] = to_datetime(sales_df["date"])
+sales_df.head()
+```
+
+```{python}
+len(sales_df)
+```
+
+```{python}
+products = sales_df["product"].unique()
+print(products)
+```
+
+```{python}
+days = sales_df["date"].unique()
+print(len(days))
+print(days.min().date(), "...", days.max().date())
+```
+
+We know we can calculate total sales using a `Series` aggregation:
+
+
+```{python}
+sales_df["sales price"].sum().round(2)
+```
+
+But how can we calculate the total sales for each product?
+
+## Grouping
+
+Enter the [`groupby` method](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) for group-based aggregations.
+
+Calculating total sales per product, to identify the top selling products:
+
+```{python}
+sales_by_product = sales_df.groupby("product")["sales price"].sum()
+sales_by_product.sort_values(ascending=False)
+```
+
+Calculating total sales per day:
+
+```{python}
+sales_by_date = sales_df.groupby("date")["sales price"].sum()
+sales_by_date.sort_values(ascending=False).head()
+```
+
+Calculating total sales per day of week:
+
+
+```{python}
+sales_df["weekday"] = sales_df["date"].dt.strftime("%A")
+
+sales_by_weekday = sales_df.groupby("weekday")["sales price"].sum()
+sales_by_weekday.sort_values(ascending=False)
+```
+
+## Pivot Tables
+
+We can alternatively use the [`pivot_table` function](https://pandas.pydata.org/docs/reference/api/pandas.pivot_table.html) to perform more fine-grained grouping and aggregation.
+
+Parameters of the `pivot_table` function:
+
+  + The `index` parameter specifies the rows we want to wind up with (i.e. "row per what?").
+  + The `values` parameter specifies what columns we would like to aggregate.
+  + The `aggfunc` parameter specifies how to aggregate those columns. We can pass our own aggregation function(s) or get them from the `numpy` package. We can aggregate different columns differently.
+
+Pivoting by date:
+
+```{python}
+from pandas import pivot_table
+#import numpy as np
+
+dates_pivot = pivot_table(sales_df,
+    index=["date"],
+    values=["sales price", "units sold"],
+    aggfunc={
+        "sales price": "sum", #np.sum,
+        "units sold": "sum", #np.sum,
+    } # designate the agg function to be used for each original column. can use our own custom functions here as well
+)
+
+dates_pivot.rename(columns={"sales price": "sales_total", "units sold": "units_sold"}, inplace=True)
+dates_pivot.sort_values(by=["sales_total"], ascending=False, inplace=True)
+dates_pivot.head()
+```
+
+Pivoting by product:
+
+```{python}
+products_pivot = pivot_table(sales_df,
+    index=["product"],
+    values=["sales price", "units sold"],
+    aggfunc={
+        "sales price": "sum", #np.sum,
+        "units sold": "sum", #np.sum,
+    }
+)
+
+products_pivot.rename(columns={"sales price": "sales_total", "units sold": "units_sold"}, inplace=True)
+products_pivot.sort_values(by=["sales_total"], ascending=False, inplace=True)
+products_pivot.head()
+```
+
+Pivot by weekday:
+
+```{python}
+weekdays_pivot = pivot_table(sales_df,
+    index=["weekday"],
+    values=["sales price", "units sold"],
+    aggfunc={
+        "sales price": ["sum", "mean"], #np.mean,
+        #"units sold": ["sum", "mean"] #np.mean
+    }
+)
+
+weekdays_pivot.columns = ["sales_avg", "sales_total"]
+weekdays_pivot.sort_values(by=["sales_avg"], ascending=False, inplace=True)
+weekdays_pivot
+```
+
+These pivot tables are now suitable for charting as well:
+
+
+
+```{python}
+import plotly.express as px
+
+chart_df = dates_pivot.copy()
+#chart_df["date"] = chart_df.index
+chart_df.sort_values(by=["sales_total"], ascending=True, inplace=True)
+
+px.bar(chart_df,  #x="date",
+       y="sales_total",
+    title="Sales by Day (March 2024)", height=350
+)
+```
+
+```{python}
+chart_df = products_pivot.copy()
+chart_df["product"] = chart_df.index
+chart_df.sort_values(by=["sales_total"], ascending=True, inplace=True)
+
+px.bar(chart_df,  y="product", x="sales_total", orientation="h",
+    title="Top Selling Products (March 2024)", height=350
+)
+```
+
+
+```{python}
+chart_df = weekdays_pivot.copy()
+chart_df["weekday"] = chart_df.index
+chart_df.sort_values(by=["sales_avg"], ascending=True, inplace=True)
+
+px.bar(chart_df,  y="weekday", x="sales_avg", orientation="h",
+    title="Average Sales per Weekday (March 2024)", height=350
+)
+```

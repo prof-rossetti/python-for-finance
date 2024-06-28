@@ -1,0 +1,80 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+
+# Moving Averages
+
+We can leverage the concept of [shift-based methods](./shift-methods.qmd) to calculate our own trends and moving averages.
+
+We will implement two different kinds of moving average:
+
+  + Rolling Window Averages, using the [`rolling` method](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rolling.html)
+  + Exponential Weighted Moving Averages, using the [`ewm` method](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.ewm.html)
+
+Let's consider the following time series dataset of stock prices:
+
+```{python}
+from pandas import read_csv
+
+request_url = "https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/daily_adjusted_NFLX.csv"
+prices_df = read_csv(request_url)
+prices_df.head()
+```
+
+Sort in preparation to perform shift-based methods:
+
+```{python}
+prices_df.sort_values(by=["timestamp"], inplace=True) #
+prices_df.head()
+```
+
+
+```{python}
+
+
+prices_df["ma_50"] = prices_df["adjusted_close"].rolling(window=50).mean()
+
+prices_df["ema_50"] = prices_df["adjusted_close"].ewm(span=50, min_periods=0, adjust=False, ignore_na=False).mean()
+
+prices_df[["timestamp", "adjusted_close", "ma_50", "ema_50"]]
+```
+
+```{python}
+import plotly.express as px
+
+px.line(prices_df, x="timestamp", y=["close", "ma_50", "ema_50"],
+        title=f"Adjusted Closing Prices",
+        color_discrete_map={
+            "close": "royalblue",
+            "ma_50": "orange",
+            "ema_50":"yellow"
+        }
+)
+```
+
+You'll notice there are no values for the first N number of periods in our rolling window average (where N is the size of the window). This is because there aren't enough values to complete the average. It's OK!
+
+If you would like to change this behavior to be less methodologically strict, we can apply the `min_periods` parameter, setting minimum number of periods to zero, in which case as many values will be used until we get to fifty, at which point the true rolling average takes over:
+
+
+```{python}
+# SETTING MIN PERIODS = ZERO:
+prices_df["ma_50_min_0"] = prices_df["adjusted_close"].rolling(window=50, min_periods=0).mean()
+
+px.line(prices_df, x="timestamp",
+        y=["close", "ma_50_min_0", "ma_50", "ema_50"],
+        title=f"Adjusted Closing Prices",
+        color_discrete_map={
+            "close": "royalblue",
+            "ma_50_min_0": "pink",
+            "ma_50": "orange",
+            "ema_50":"yellow"
+        }
+)
+```
