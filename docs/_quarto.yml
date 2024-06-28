@@ -200,13 +200,13 @@ website:
           #
           # PANDAS PACKAGE OVERVIEW
           #
-          - section:
-            href: notes/pandas/overview.ipynb
-            text: "Pandas Package Overview"
-            contents:
-              - section:
-                href: notes/pandas/dataframes.qmd
-                text: "Dataframes"
+          #- section:
+          #  href: notes/pandas/overview.ipynb
+          #  text: "Pandas Package Overview"
+          #  contents:
+          #    - section:
+          #      href: notes/pandas/dataframes.qmd
+          #      text: "Dataframes"
 
 
 

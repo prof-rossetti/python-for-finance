@@ -44,4 +44,15 @@ print(type(data))
 data
 ```
 
+```{python}
+students = data["students"]
+print(type(students))
+len(students)
+```
+
+```{python}
+for student in students:
+    print(student["studentId"], student["finalGrade"])
+```
+
 This data happens to be dictionary-like at the top level. However be aware, when we fetch JSON, it can be either list-like, or dictionary-like on the top level. So you must observe the structure of your particular data before processing it further.
