@@ -1,3 +1,13 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+
 # Fetching HTML Data
 
 If the data you want to fetch is in XML or HTML format, we can use the `requests` package to fetch it, and the `beautifulsoup4` package to process it.
