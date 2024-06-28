@@ -62,13 +62,9 @@ You'll notice there are no values for the first N number of periods in our rolli
 
 If you would like to change this behavior to be less methodologically strict, we can apply the `min_periods` parameter, setting minimum number of periods to zero, in which case as many values will be used until we get to fifty, at which point the true rolling average takes over:
 
-```{python}
-
-```
-
 
 ```{python}
-# ADDING MIN PERIODS:
+# SETTING MIN PERIODS = ZERO:
 prices_df["ma_50_min_0"] = prices_df["adjusted_close"].rolling(window=50, min_periods=0).mean()
 
 px.line(prices_df, x="timestamp",

@@ -210,9 +210,9 @@ website:
               #- section:
               #  href: notes/pandas/dataframes.qmd
               #  text: "Dataframes"
-              #- section:
-              #  href: notes/pandas/dataframes.qmd
-              #  text: "Dataframes"
+              - section:
+                href: notes/pandas/grouping-pivoting.qmd
+                text: "Grouping and Pivoting"
               - section:
                 href: notes/pandas/shift-methods.qmd
                 text: "Shift based Methods" # "Growth and Cumulative Growth"
