@@ -9,6 +9,10 @@ execute:
 
 # Charts with Trendlines
 
+
+
+
+
 Consider the previous scatter plot example:
 
 
@@ -64,7 +68,7 @@ fig.show()
 Under the hood, `plotly` uses the `statsmodels` package to calculate the trend, so you may have to install that package as well.
 :::
 
-In addition to "ols" trend, which is an Ordinary Least Squares linear trend, we can use a "lowess" trend which is non-parametric:
+In addition to \"ols\" trend, which is an Ordinary Least Squares linear trend, we can use a \"lowess\" trend which is a [non-parametric method](https://www.investopedia.com/terms/n/nonparametric-statistics.asp) that can be a better fit for non-linear relationships:
 
 ```{python}
 from plotly.express import scatter

@@ -47,22 +47,22 @@ website:
         contents:
           - section:
             href: notes/dev-tools/google-colab/overview.qmd
-            #contents:
-            #  - section:
-            #    href: notes/dev-tools/google-colab/table-of-contents.qmd
-            #    text: "Table of Contents"
-            #  - section:
-            #    href: notes/dev-tools/google-colab/filesystem.ipynb
-            #    text: "Accessing the Filesystem"
-            #  - section:
-            #    href: notes/dev-tools/google-colab/form-inputs.ipynb
-            #    text: "Forms and Inputs"
-            #  - section:
-            #    href: notes/dev-tools/google-colab/notebook-secrets.qmd
-            #    text: "Notebook Secrets"
-            #  - section:
-            #    href: notes/dev-tools/google-colab/advanced-integrations.ipynb
-            #    text: "Advanced Integrations"
+            contents:
+              - section:
+                href: notes/dev-tools/google-colab/table-of-contents.qmd
+                text: "Table of Contents"
+              - section:
+                href: notes/dev-tools/google-colab/filesystem.ipynb
+                text: "Accessing the Filesystem"
+              - section:
+                href: notes/dev-tools/google-colab/form-inputs.ipynb
+                text: "Forms and Inputs"
+              - section:
+                href: notes/dev-tools/google-colab/notebook-secrets.qmd
+                text: "Notebook Secrets"
+              - section:
+                href: notes/dev-tools/google-colab/advanced-integrations.ipynb
+                text: "Advanced Integrations"
           - section:
             href: notes/dev-tools/pip.ipynb
             text: "Installing Packages with Pip"
@@ -91,11 +91,6 @@ website:
                     href: notes/python-lang/basic-datatypes/numbers.qmd
                   - section:
                     href: notes/python-lang/basic-datatypes/strings.qmd
-                  # container datatypes here:
-                  #- section:
-                  #  href: notes/python-lang/container-datatypes/lists.qmd
-                  #- section:
-                  #  href: notes/python-lang/container-datatypes/dictionaries.qmd
 
               - section:
                 href: notes/python-lang/python-operators.qmd
@@ -116,10 +111,9 @@ website:
                   #  href: notes/python-lang/control-flow/errors.qmd
                   - section:
                     href: notes/python-lang/control-flow/while-loops.qmd
-                    #text: "While Loops, Counters, and Accumulators"
 
               - section:
-                #href: notes/python-lang/container-datatypes/index.qmd
+                href: notes/python-lang/container-datatypes/index.qmd
                 text: "Container Datatypes"
                 contents:
                   - section:
@@ -127,9 +121,9 @@ website:
                   - section:
                     href: notes/python-lang/container-datatypes/dictionaries.qmd
 
-              #- section:
-              #  href: notes/python-modules/index.qmd
-              #  text: "Python Modules"
+              - section:
+                href: notes/python-modules/index.qmd
+                text: "Python Modules"
               #  contents:
               #    - section:
               #      href: notes/python-modules/datetime.qmd
@@ -145,9 +139,9 @@ website:
             href: notes/data-processing/index.qmd
             text: "Data Processing"
             contents:
-              #- section:
-              #  href: notes/data-processing/looping.qmd
-              #  text: "List Iteration and Looping"
+              - section:
+                href: notes/data-processing/for-loops.qmd
+                text: "List Iteration and Looping"
               - section:
                 href: notes/data-processing/sorting.qmd
                 text: "Sorting Lists"
@@ -180,11 +174,17 @@ website:
           - section:
             href: notes/fetching-data/overview.qmd
             text: "Fetching Data from the Internet"
-            #contents:
-            #  - section:
-            #    href: notes/data-processing/sorting.qmd
-            #    text: "Sorting Lists"
-
+            contents:
+              - section:
+                href: notes/fetching-data/json-data.qmd
+              - section:
+                href: notes/fetching-data/csv-data.qmd
+              - section:
+                href: notes/fetching-data/html-web-scraping.qmd
+                #text: "HTML Data (Web Scraping)"
+              #- section:
+              #  href: notes/fetching-data/apis.qmd
+              #  text: "APIs"
 
 
 
@@ -196,8 +196,22 @@ website:
       - section:
         href: courses/applied-ds.qmd
         text: "II. Applied Data Science" #"II. Applied Data Science for Finance in Python" #"II. Applied Data Science"
-        #contents:
-        #  - applied-ds/unit2.qmd
+        contents:
+          #
+          # PANDAS PACKAGE OVERVIEW
+          #
+          #- section:
+          #  href: notes/pandas/overview.ipynb
+          #  text: "Pandas Package Overview"
+          #  contents:
+          #    - section:
+          #      href: notes/pandas/dataframes.qmd
+          #      text: "Dataframes"
+
+
+
+
+
 
       - "---------"
       - section:
@@ -212,27 +226,27 @@ website:
       #
       # APPENDICES ???
       #
-      - "---------"
-      - text: "Appendices"
       #- "---------"
-      - section:
-        text: "A. Google Colab Extras" # In Depth
-        contents:
-          - section:
-            href: notes/dev-tools/google-colab/table-of-contents.qmd
-            text: "Table of Contents"
-          - section:
-            href: notes/dev-tools/google-colab/filesystem.ipynb
-            text: "Accessing the Filesystem"
-          - section:
-            href: notes/dev-tools/google-colab/form-inputs.ipynb
-            text: "Forms and Inputs"
-          - section:
-            href: notes/dev-tools/google-colab/notebook-secrets.qmd
-            text: "Notebook Secrets"
-          - section:
-            href: notes/dev-tools/google-colab/advanced-integrations.ipynb
-            text: "Advanced Integrations"
+      #- text: "Appendices"
+      ##- "---------"
+      #- section:
+      #  text: "A. Google Colab Extras" # In Depth
+      #  contents:
+      #    - section:
+      #      href: notes/dev-tools/google-colab/table-of-contents.qmd
+      #      text: "Table of Contents"
+      #    - section:
+      #      href: notes/dev-tools/google-colab/filesystem.ipynb
+      #      text: "Accessing the Filesystem"
+      #    - section:
+      #      href: notes/dev-tools/google-colab/form-inputs.ipynb
+      #      text: "Forms and Inputs"
+      #    - section:
+      #      href: notes/dev-tools/google-colab/notebook-secrets.qmd
+      #      text: "Notebook Secrets"
+      #    - section:
+      #      href: notes/dev-tools/google-colab/advanced-integrations.ipynb
+      #      text: "Advanced Integrations"
 
 format:
   # https://quarto.org/docs/reference/formats/html.html#table-of-contents

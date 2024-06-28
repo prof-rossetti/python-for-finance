@@ -138,6 +138,8 @@ fig.show()
 
 ### Scatter Plots
 
+We can use a scatter plot to examine the relationship between two variables (`x` and `y`).
+
 Starting with some example data:
 
 ```{python}

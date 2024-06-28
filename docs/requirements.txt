@@ -16,4 +16,8 @@ jupyter-cache
 #matplotlib
 plotly
 statsmodels # used by plotly for trendline parameter
+requests
+pandas
+beautifulsoup4
+lxml # bs4 needs this to parse XML
 #gspread==6.0.2

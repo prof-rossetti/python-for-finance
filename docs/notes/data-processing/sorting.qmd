@@ -57,12 +57,19 @@ sorted(symbols, reverse=True) # DESCENDING ORDER
 
 We see that if we have a simple list, such as a list of numbers or list of strings, the `sorted` function will know how to sort the items. It understands numeric order in which 2 is greater than 1, and it understands alphabetical order in which "b" is greater than "a".
 
+
 ```{python}
 print(1 < 2)
 print("a" < "b")
 ```
+But it is not possible to compare dictionaries using greater than or less than operators:
 
-However if we have a complex list, such as a list of dictionaries, we need to specify on the basis of which key we should sort on.
+```{python}
+# print({} < {}) # INVALID
+#> TypeError: '<' not supported between instances of 'dict' and 'dict'
+```
+
+So if we have a complex list, such as a list of dictionaries, we need to specify on the basis of which key we should sort on.
 
 
 ```{python}
