@@ -2,4 +2,4 @@
 
 
   + [Statistical Tests](./basic-tests.ipynb)
-  + [Correlation](./correlation.ipynb)
+  + [Correlation](./correlation-2.ipynb)

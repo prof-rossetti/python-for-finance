@@ -231,7 +231,7 @@ website:
                 href: notes/applied-stats/basic-tests.ipynb
                 text: "Statistical Tests"
               - section:
-                href: notes/applied-stats/correlation.ipynb
+                href: notes/applied-stats/correlation-2.ipynb
                 text: "Correlation Analysis"
 
 
