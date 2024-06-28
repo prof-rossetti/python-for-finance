@@ -219,11 +219,20 @@ website:
               - section:
                 href: notes/pandas/moving-averages.qmd
                 text: "Moving Averages"
+              - section:
+                href: notes/pandas/joining-merging.ipynb
+                text: "Joining and Merging"
 
           - section:
             href: notes/applied-stats/overview.qmd
             text: "Applied Statistics"
-
+            contents:
+              - section:
+                href: notes/applied-stats/basic-tests.ipynb
+                text: "Statistical Tests"
+              - section:
+                href: notes/applied-stats/correlation.ipynb
+                text: "Correlation Analysis"
 
 
 

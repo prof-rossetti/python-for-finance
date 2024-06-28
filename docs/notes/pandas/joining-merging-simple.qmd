@@ -1,0 +1,20 @@
+---
+format:
+  html:
+    code-fold: false #show
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+# Joining and Merging
+
+
+![Join strategies: inner vs outer](../../images/joins-inner-outer.jpeg)
+
+
+```{python}
+#from pandas import read_csv, to_datetime
+
+
+```
