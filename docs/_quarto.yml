@@ -205,11 +205,12 @@ website:
             text: "Pandas Package Overview"
             contents:
               - section:
-                href: notes/pandas/dataframes.qmd
+                href: notes/pandas/dataframes-2.ipynb
                 text: "Dataframes"
               #- section:
               #  href: notes/pandas/dataframes.qmd
               #  text: "Dataframes"
+
               - section:
                 href: notes/pandas/grouping-pivoting.qmd
                 text: "Grouping and Pivoting"
