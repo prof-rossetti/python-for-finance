@@ -1,5 +1,5 @@
 # Applied Statistics
 
 
-  + [Statistical Tests](./Basic_Statistics_Overview.ipynb)
-  + [Correlation](Correlation.ipynb)
+  + [Statistical Tests](./basic-tests.ipynb)
+  + [Correlation](./correlation.ipynb)
