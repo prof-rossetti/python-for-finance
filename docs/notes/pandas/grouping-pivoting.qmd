@@ -11,6 +11,8 @@ execute:
 
 # Grouping and Pivoting
 
+Let's study how to create pivot table -style reports.
+
 In this sales dataset, you will see we have a row per date per product sold on that date.
 
 ```{python}

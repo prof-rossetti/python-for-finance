@@ -40,7 +40,7 @@ website:
       - section:
         href: why-python.qmd
 
-      #- "---------"
+      - "---------"
       - section:
         href: notes/dev-tools/index.qmd
         text: "Python Development Tools"
@@ -67,7 +67,7 @@ website:
             href: notes/dev-tools/pip.ipynb
             text: "Installing Packages with Pip"
 
-      #- "---------"
+      - "---------"
       - section:
         href: courses/fin-apps.qmd
         text: "I. Financial Applications" # "I. Financial Applications" # "I. Intro to Financial Applications"
@@ -232,7 +232,7 @@ website:
                 href: notes/applied-stats/basic-tests.ipynb
                 text: "Statistical Tests"
               - section:
-                href: notes/applied-stats/correlation-2.ipynb
+                href: notes/applied-stats/correlation-4.ipynb
                 text: "Correlation Analysis"
 
 

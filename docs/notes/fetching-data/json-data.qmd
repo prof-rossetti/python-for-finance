@@ -48,7 +48,7 @@ response = requests.get(request_url)
 print(type(response))
 ```
 
-We receive a response object from the server. The response object has a few methods and properties we care about. First, the status code generally tells us if the request was successful:
+We receive a response object from the server. The response object has a few methods and properties we care about. First, the status code tells us if the request was generally successful:
 
 ```{python}
 response.status_code
@@ -77,6 +77,8 @@ data = json.loads(response.text)
 print(type(data))
 data
 ```
+
+Once we have the data, we can work with it in the ways we know how. For example, looping through a list of dictionaries:
 
 ```{python}
 students = data["students"]

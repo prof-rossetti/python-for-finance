@@ -1,6 +1,6 @@
 # Fetching Data from the Internet
 
-Alright, we have studied many data processing techniques using example data.
+So far, we have studied many data processing techniques using example data.
 
 But the real fun comes from working with real life data.
 
@@ -12,7 +12,7 @@ In practice, when we fetch data from the internet, it may come in one of a handf
 
   + JSON are nested structures. Like the lists and dictionaries we have studied in Python.
 
-  + CSV is tabular data. Like a spreadsheet.
+  + CSV is tabular data. Like a spreadsheet, with rows and columns.
 
   + XML and HTML contain structured \"tags\" to denote the document structure. Like a webpage.
 
