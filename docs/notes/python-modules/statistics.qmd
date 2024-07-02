@@ -9,6 +9,7 @@ execute:
 
 # The `statistics` Module
 
+The [`statistics` module](https://docs.python.org/3/library/statistics.html) contains statistical related functions, such as measures of central tendency:
 
 ```{python}
 from statistics import mean, median, mode
@@ -16,6 +17,8 @@ from statistics import mean, median, mode
 my_nums = [1, 2, 2, 3, 4, 6, 7, 8, 9]
 
 print(mean(my_nums))
+
 print(median(my_nums))
+
 print(mode(my_nums))
 ```

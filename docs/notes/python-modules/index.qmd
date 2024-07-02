@@ -10,38 +10,54 @@ execute:
 
 # Python Modules
 
-Some functionality comes from built-in libraries called modules.
+Some functionality in Python comes from built-in libraries called [modules](https://docs.python.org/3/library/index.html).
 
 ## Import Strategies and Namespaces
 
+When we use a variable or function that has been defined within one of these modules, we must **import** that functionality, using an `import` statement.
 
+There are two different ways to import in Python.
 
-## Survey of Popular Modules
+First, we can import the entire module. If we do, this loads all the functions defined within, and we'll access those functions through the module **namespace**:
 
-## The `math` Module
+```python
+# EXAMPLE HYPOTHETICAL PSEUDOCODE
+import module_name
 
-```{python}
-import math
-
-print(math.pi)
-print(math.ceil(6.2))
+module_name.function_name()
 ```
 
-Importing only the function(s) you care about:
+Alternatively, we can import only the function(s) we care about. This is slightly more performant, as unused functions are not loaded. If we do, we can invoke the functions directly:
 
-```{python}
-from math import pi, ceil
+```python
+# EXAMPLE HYPOTHETICAL PSEUDOCODE
+from module_name import function_name
 
-print(pi)
-print(ceil(6.2))
+function_name()
 ```
 
+With either approach, we can use an **alias** to give the module or function(s) a short-hand name. If we do, we'll access those functions through the short-hand namespace:
 
-Optional alias for imported module:
 
-```{python}
-import math as m
+```python
+# EXAMPLE HYPOTHETICAL PSEUDOCODE
+import module_name as m
 
-print(m.pi)
-print(m.ceil(6.2))
+m.function_name()
 ```
+
+```python
+# EXAMPLE HYPOTHETICAL PSEUDOCODE
+from module_name import function_name as fn
+
+fn()
+```
+
+## Survey of Python Modules
+
+Here are some common modules in Python, and more information about how to use each:
+
+  + [The `math` Module](./math.qmd)
+  + [The `random` Module](./random.qmd)
+  + [The `statistics` Module](./statistics.qmd)
+  + [The `datetime` Module](./datetime.qmd)

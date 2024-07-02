@@ -9,21 +9,38 @@ execute:
 
 # The `random` Module
 
+The [`random` module](https://docs.python.org/3/library/random.html) contains randomness related functions.
+
+Random number generator:
 
 ```{python}
 import random
 
-random.random() #> 0.6357193086559119
+print(random.random())
+print(random.random())
+print(random.random())
 ```
+
+Random integer between lower and upper bound:
 
 ```{python}
-random.randint(1, 100) #> 43
+print(random.randint(1, 100))
+print(random.randint(1, 100))
+print(random.randint(1, 100))
 ```
 
 
+Choose an item from a list at random:
 
 ```{python}
 options = ["van", "choc", "straw"]
+
+flavor = random.choice(options)
+print("FLAVOR:", flavor)
+
+flavor = random.choice(options)
+print("FLAVOR:", flavor)
+
 flavor = random.choice(options)
 print("FLAVOR:", flavor)
 ```

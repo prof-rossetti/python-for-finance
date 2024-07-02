@@ -124,13 +124,15 @@ website:
               - section:
                 href: notes/python-modules/index.qmd
                 text: "Python Modules"
-              #  contents:
-              #    - section:
-              #      href: notes/python-modules/datetime.qmd
-              #    - section:
-              #      href: notes/python-modules/random.qmd
-              #    - section:
-              #      href: notes/python-modules/statistics.qmd
+                contents:
+                  - section:
+                    href: notes/python-modules/math.qmd
+                  - section:
+                    href: notes/python-modules/random.qmd
+                  - section:
+                    href: notes/python-modules/statistics.qmd
+                  - section:
+                    href: notes/python-modules/datetime.qmd
 
           #
           # DATA PROCESSING
