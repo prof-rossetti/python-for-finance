@@ -17,6 +17,7 @@ website:
   repo-url: https://github.com/prof-rossetti/python-for-finance
   repo-branch: main
   repo-actions: [edit, issue, source]
+  repo-subdir: docs
   #downloads: ["pdf", "epub", "docx"]
   #sharing: ["facebook", "twitter", "linkedin"]
   #code-links:
