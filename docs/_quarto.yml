@@ -279,10 +279,10 @@ format:
   # https://quarto.org/docs/reference/formats/html.html#table-of-contents
   html:
     # https://bootswatch.com/
-    #
     theme: pulse #cosmo
       #light: pulse
       #dark: superhero
+    css: style.css
     code-copy: true
     code-fold: false #show
     #code-line-numbers: true

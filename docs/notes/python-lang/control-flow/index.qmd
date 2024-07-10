@@ -9,11 +9,11 @@ It's essential to understand that Python relies heavily on **indentation** to de
 
 To grasp control flow, you can think of it as a series of decisions and repetitions that guide the program from start to finish. For instance, an **\"if\" statement** allows the program to choose a path based on a condition: if the condition is true, a block of code executes; otherwise, it is skipped. In Python, the scope of this decision-making is defined by indentation.
 
-![Diagram depicting conditional logic flow. Source: [Zen Flowchart](https://www.zenflowchart.com/guides/if-else-flowchart)](../../../images/control-flow-if-else.png){height=350}
+![Diagram depicting conditional logic flow. Source: [Zen Flowchart](https://www.zenflowchart.com/guides/if-else-flowchart)](../../../images/control-flow-if-else.png)
 
 Similarly, loops enable the program to repeat a block of code multiple times. A **\"for\" loop** iterates over a sequence (like a list or range), while a **\"while\" loop** continues as long as a condition remains true. Indentation in these loops indicates which statements are part of the loop body.
 
-![Diagram depicting loop flow. Source: [Zen Flowchart](https://www.zenflowchart.com/blog/for-loop-flowchart)](../../../images/control-flow-loops.png){height=350}
+![Diagram depicting loop flow. Source: [Zen Flowchart](https://www.zenflowchart.com/blog/for-loop-flowchart)](../../../images/control-flow-loops.png)
 
 Understanding how indentation controls scope helps us write clean, readable code and avoid common errors or unexpected behaviors due to incorrect nesting of code blocks.
 
