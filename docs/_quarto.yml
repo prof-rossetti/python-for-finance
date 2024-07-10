@@ -119,7 +119,6 @@ website:
                 contents:
                   - section:
                     href: notes/python-lang/container-datatypes/lists.qmd
-                    title: "Lists"
                   - section:
                     href: notes/python-lang/container-datatypes/dictionaries.qmd
 
