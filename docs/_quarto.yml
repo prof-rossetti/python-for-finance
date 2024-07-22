@@ -183,6 +183,8 @@ website:
               - section:
                 href: notes/fetching-data/csv-data.qmd
               - section:
+                href: notes/fetching-data/xml.qmd
+              - section:
                 href: notes/fetching-data/html-web-scraping.qmd
                 #text: "HTML Data (Web Scraping)"
               #- section:
@@ -287,6 +289,8 @@ format:
     code-fold: false #show
     #code-line-numbers: true
     toc: true
+    #toc-depth: 3 # specify the number of section levels to include in the table of contents
+    #toc-expand: 3 # specify how much of the table of contents to show initially (defaults to 1 with auto-expansion as the user scrolls)
     #toc-location: left
     #number-sections: false
     #number-depth: 1
