@@ -1,0 +1,176 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+
+
+# Correlation
+
+**Correlation** is a measure of how two datasets are related to each other.
+
+
+Reference: <https://www.investopedia.com/terms/c/correlation.asp>
+
+<img src="https://www.investopedia.com/thmb/Xz1Mnf7Ji54AAfAT1fsiwcZvmxM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/correlation_defintion_-9d2d662781724d61af6d6322a2a294b5.jpg" height=250>
+
+
+> Investment managers, traders, and analysts find it very important to calculate correlation because the risk reduction benefits of diversification rely on this statistic.
+
+
+To examine correlation, let's revisit our familiar dataset of economic indicators:
+
+```{python}
+from pandas import read_csv
+
+df = read_csv("https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/monthly-indicators.csv")
+df.head()
+```
+
+```{python}
+print(len(df))
+print(df["timestamp"].min(), "...", df["timestamp"].max())
+```
+
+
+## Correlation Considerations
+
+Let's perform tests for correlation in more official / formal ways.
+
+Certain methods for calculating correlation may depend on the normality of our data's distribution, or the sample size, so we should keep these in mind as we determine if we are able to calculate correlation, and which method to use.
+
+### Parametric vs Nonparametric Methods
+
+Reference: <https://www.investopedia.com/terms/n/nonparametric-method.asp>
+
+
+> The nonparametric method refers to a type of statistic that does not make any assumptions about the characteristics of the sample (its parameters) or whether the observed data is quantitative or qualitative.
+>
+> Nonparametric statistics can include certain descriptive statistics, statistical models, inference, and statistical tests. The model structure of nonparametric methods is not specified a priori but is instead determined from data.
+>
+> Common nonparametric tests include Chi-Square, Wilcoxon rank-sum test, Kruskal-Wallis test, and Spearman's rank-order correlation.
+>
+> In contrast, well-known statistical methods such as ANOVA, Pearson's correlation, t-test, and others do make assumptions about the data being analyzed. One of the most common parametric assumptions is that population data have a "normal distribution."
+
+## Correlation with `scipy`
+
+We can calculate correlation between two lists of numbers, using the `pearsonr` and `spearmanr` functions from the `scipy` package.
+
+One difference between these two correlation methods is that Spearman is more robust to (i.e. less affected by) outliers. Also being nonparametric, the Spearman method does not assume our data is normally distributed.
+
+Reference: <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html>
+
+> Pearson correlation coefficient and p-value for testing non-correlation.
+>
+> The Pearson correlation coefficient [1] measures the linear relationship between two datasets. Like other correlation coefficients, this one varies between -1 and +1 with 0 implying no correlation. Correlations of -1 or +1 imply an exact linear relationship. Positive correlations imply that as x increases, so does y. Negative correlations imply that as x increases, y decreases.
+>
+> This function also performs a test of the null hypothesis that the distributions underlying the samples are uncorrelated and normally distributed. (See Kowalski [3] for a discussion of the effects of non-normality of the input on the distribution of the correlation coefficient.) The p-value roughly indicates the probability of an uncorrelated system producing datasets that have a Pearson correlation at least as extreme as the one computed from these datasets.
+
+Reference: <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html>
+
+> Calculate a Spearman correlation coefficient with associated p-value.
+>
+> The Spearman rank-order correlation coefficient is a nonparametric measure of the monotonicity of the relationship between two datasets. Like other correlation coefficients, this one varies between -1 and +1 with 0 implying no correlation. Correlations of -1 or +1 imply an exact monotonic relationship. Positive correlations imply that as x increases, so does y. Negative correlations imply that as x increases, y decreases.
+>
+> The p-value roughly indicates the probability of an uncorrelated system producing datasets that have a Spearman correlation at least as extreme as the one computed from these datasets. Although calculation of the p-value does not make strong assumptions about the distributions underlying the samples, it is only accurate for very large samples (>500 observations). For smaller sample sizes, consider a permutation test instead (see docs for examples).
+
+
+```{python}
+from scipy.stats import pearsonr, spearmanr
+
+x = df["cpi"]
+y = df["gld"]
+
+print("-----------")
+print("PEARSON:")
+result = pearsonr(x, y)
+print(result)
+
+print("-----------")
+print("SPEARMAN:")
+result = spearmanr(x, y)
+print(result)
+```
+
+
+Here we see the correlation between a given pair of datasets.
+
+What about the correlation between each pair of indicators? We could start to use a loop-based solution. But there is an easier way.
+
+
+## Correlation Matrix with `pandas`
+
+The **correlation matrix** is a great way of displaying and communicating the correlation between each pair of variables.
+
+If we have a pandas dataframe, we can use it's [`corr` method](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html) to produce a correlation matrix, which shows us the "pairwise correlation of columns" (in other words, the correlation of each column with respect to each other column).
+
+
+
+```{python}
+# df.corr()
+# ... method is "pearson" by default
+# ... numeric_only to suppress warning
+
+df.corr(method="pearson", numeric_only=True)
+```
+
+```{python}
+df.corr(method="spearman", numeric_only=True)
+```
+
+We may begin to notice the diagonal of ones values. This is because each dataset is perfectly positively correlated with itself.
+
+We may also start to notice the symmetry of values mirrored across the diagonal. In other words, the value in column 1, row 4 is the same as the value in column 4, row 1.
+
+## Plotting Correlation Matrix
+
+It may not be easy to quickly interpret the rest of the values in the correlation matrix, but if we plot it with colors as a "heat map" then we will be able to use color to more easily interpret the data and tell a story.
+
+### Correlation Heatmap with `plotly`
+
+We can use the [`imshow` function](https://plotly.com/python-api-reference/generated/plotly.express.imshow.html) from `plotly` to create a correlation heatmap:
+
+```{python}
+import plotly.express as px
+
+# https://plotly.com/python/heatmaps/
+# https://plotly.com/python-api-reference/generated/plotly.express.imshow.html
+
+def plot_correlation_matrix(df, method="pearson"):
+    """Params: method (str): "spearman" or "pearson". """
+
+    cor_mat = df.corr(method=method, numeric_only=True)
+
+    title= f"{method.title()} Correlation between Economic Indicators"
+
+    fig = px.imshow(cor_mat,
+                    height=450,
+                    # round to two decimal places:
+                    text_auto= ".2f",
+                    color_continuous_scale="Blues",
+                    # set color midpoint at zero
+                    # because correlation coefficient ranges from -1 to 1:
+                    color_continuous_midpoint=0,
+                    labels={"x": "Indicator", "y": "Indicator"},
+    )
+    # center title (h/t: https://stackoverflow.com/questions/64571789/)
+    fig.update_layout(title={'text': title, 'x':0.485, 'xanchor': 'center'})
+    fig.show()
+```
+
+```{python}
+plot_correlation_matrix(df, "pearson")
+```
+
+```{python}
+plot_correlation_matrix(df, "spearman")
+```
+
+
+What stories can we tell with the correlation heatmap? Which indicators are most positively correlated? Which are most negatively correlated?
+
+Is gold a hedge against inflation?

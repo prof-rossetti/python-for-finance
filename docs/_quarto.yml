@@ -243,8 +243,11 @@ website:
                 href: notes/applied-stats/basic-tests.qmd
                 text: "Statistical Tests"
               - section:
-                href: notes/applied-stats/correlation-4.ipynb
-                text: "Correlation Analysis"
+                href: notes/applied-stats/data-scaling.qmd
+                text: "Data Scaling"
+              - section:
+                href: notes/applied-stats/correlation.qmd
+                text: "Correlation"
 
 
 

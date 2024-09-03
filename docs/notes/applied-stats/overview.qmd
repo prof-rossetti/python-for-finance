@@ -3,4 +3,5 @@
 
   + [Summary Statistics](./summary-stats.qmd)
   + [Statistical Tests](./basic-tests.qmd)
-  + [Correlation](./correlation-2.ipynb)
+  + [Data Scaling](./data-scaling.qmd)
+  + [Correlation](./correlation.qmd)

@@ -1,0 +1,91 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+
+
+# Data Scaling
+
+**Data scaling** is a process that adjusts a data set to improve its informational content and conform to specific requirements. It's also known as feature scaling or data normalization.
+
+To illustrate the motivations behind data scaling, let's revisit our familiar dataset of economic indicators:
+
+```{python}
+from pandas import read_csv
+
+df = read_csv("https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/monthly-indicators.csv")
+df.head()
+```
+
+```{python}
+print(len(df))
+print(df["timestamp"].min(), "...", df["timestamp"].max())
+```
+
+
+When we plot this data on a graph, we are not able to see the movement of the federal funds rate, because its scale is so much smaller than the other indicators:
+
+
+```{python}
+import plotly.express as px
+
+chart_df = df.copy()
+chart_df.index = df["timestamp"]
+chart_df.drop(columns=["timestamp"], inplace=True)
+
+px.line(chart_df, y=["cpi", "fed", "spy", "gld"],
+        title="Financial indicators over time (unscaled)"
+)
+```
+
+
+Let's fix this by scaling the data.
+
+Scaling the data will make it easier to plot all these different series on a graph, so we can start to get a sense of how their movements might correlate (in an unofficial way).
+
+## Min-Max Scaling
+
+One scaling approach is by dividing each value over the maximum value in that column, essentially expressing each value as a percentage of the greatest value.
+
+```{python}
+scaled_df = df.copy()
+scaled_df.index = df["timestamp"]
+scaled_df.drop(columns=["timestamp"], inplace=True)
+
+# MIN-MAX SCALING:
+# dividing each value by that column's maximum value
+scaled_df = scaled_df / scaled_df.max()
+
+px.line(scaled_df, y=["cpi", "fed", "spy", "gld"],
+        title="Financial indicators over time (min-max scaled)"
+)
+```
+
+When we use min-max scaling, resulting values will be expressed on a scale between zero and one.
+
+## Standard Scaling
+
+An alternative, more rigorous, scaling approach mean-centers the data and normalizes by the standard deviation:
+
+```{python}
+scaled_df = df.copy()
+scaled_df.index = df["timestamp"]
+scaled_df.drop(columns=["timestamp"], inplace=True)
+
+# STANDARD SCALING:
+# standardization / normalization
+scaled_df = (scaled_df - scaled_df.mean()) / scaled_df.std()
+
+px.line(scaled_df, y=["cpi", "fed", "spy", "gld"],
+        title="Financial indicators over time (standard/z-score scaled)"
+)
+```
+
+When we use standard scaling, resulting values will be expressed on a scale which is centered around zero.
+
+Now that we have scaled the data, we can more easily compare the movements of all the datasets. Which indicators have been moving up or down at a time when another indicator has been moving up or down. Are there any time periods where we might start to suspect correlation in a positive or negative way?
