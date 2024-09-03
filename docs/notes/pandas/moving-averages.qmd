@@ -27,7 +27,7 @@ prices_df = read_csv(request_url)
 prices_df.head()
 ```
 
-Sort in preparation to perform shift-based methods:
+Because we'll be using shift-based methods, we must first sort the data, as usual, by date in ascending order:
 
 ```{python}
 prices_df.sort_values(by=["timestamp"], inplace=True) #

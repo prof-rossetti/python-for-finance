@@ -97,6 +97,16 @@ del symbols[-1]
 print(symbols)
 ```
 
+Removing an item, using the `remove` method:
+
+```{python}
+flavors = ["vanilla", "chocolate", "strawberry"]
+
+flavors.remove("chocolate")
+
+print(flavors)
+```
+
 Concatenating lists:
 
 ```{python}
