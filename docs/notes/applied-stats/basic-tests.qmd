@@ -23,12 +23,13 @@ df.head()
 
 ## Normality Tests
 
-We can conduct a [normality test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html) to see if a given distribution is normally distributed.
+We can use the [`normaltest` function](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html) from to conduct a normality test, to see if a given variable is normally distributed.
 
 > This function tests the null hypothesis that a sample comes from a normal distribution.
 >
 > If the p-value is "small" - that is, if there is a low probability of sampling data from a normally distributed population that produces such an extreme value of the statistic - this may be taken as evidence against the null hypothesis in favor of the alternative: the weights were not drawn from a normal distribution.
 
+In this example, we pass a column or list of values to the `normaltest` function, which produces a result containing the statistic and p value:
 
 ```{python}
 from scipy.stats import normaltest
@@ -39,7 +40,7 @@ result = normaltest(x)
 print(result)
 ```
 
-### Interpreting the results.
+Interpreting the results:
 
 
 > To determine whether the data do not follow a normal distribution, compare the p-value to the significance level. Usually, a significance level (denoted as α or alpha) of 0.05 works well. A significance level of 0.05 indicates a 5% risk of concluding that the data do not follow a normal distribution when the data do follow a normal distribution.
@@ -47,9 +48,9 @@ print(result)
 > P-value ≤ α: The data do not follow a normal distribution (Reject H0)
 > If the p-value is less than or equal to the significance level, the decision is to reject the null hypothesis and conclude that your data do not follow a normal distribution.
 >
-> P-value > α: You cannot conclude that the data do not follow a normal distribution (Fail to reject H0). If the p-value is larger than the significance level, the decision is to fail to reject the null hypothesis. You do not have enough evidence to conclude that your data do not follow a normal distribution. - [source](https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistics/basic-statistics/how-to/normality-test/interpret-the-results/key-results/
-)
+> P-value > α: You cannot conclude that the data do not follow a normal distribution (Fail to reject H0). If the p-value is larger than the significance level, the decision is to fail to reject the null hypothesis. You do not have enough evidence to conclude that your data do not follow a normal distribution. - [source](https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistics/basic-statistics/how-to/normality-test/interpret-the-results/key-results/)
 
+We examine the p value. If the p value is less than some significance level we set (in this case 0.05), we reject the null hypothesis, and conclude the data is not normally distributed. Otherwise, we fail to reject the null hypothesis, and conclude it is possible the data could be normally distributed:
 
 ```{python}
 
@@ -118,7 +119,7 @@ Reference: <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tte
 >
 > This is a test for the null hypothesis that 2 independent samples have identical average (expected) values. This test assumes that the populations have identical variances by default.
 >
-> The t-test quantifies the difference between the arithmetic means of the two samples. The p-value quantifies the probability of observing as or more extreme values assuming the null hypothesis, that the samples are drawn from populations with the same population means, is true. A p-value larger than a chosen threshold (e.g. 5% or 1%) indicates that our observation is not so unlikely to have occurred by chance. Therefore, we do not reject the null hypothesis of equal population means. If the p-value is smaller than our threshold, then we have evidence against the null hypothesis of equal population means. - [source](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html)
+> The t-test quantifies the difference between the arithmetic means of the two samples. The p-value quantifies the probability of observing as or more extreme values assuming the null hypothesis, that the samples are drawn from populations with the same population means, is true. A p-value larger than a chosen threshold (e.g. 5% or 1%) indicates that our observation is not so unlikely to have occurred by chance. Therefore, we do not reject the null hypothesis of equal population means. If the p-value is smaller than our threshold, then we have evidence against the null hypothesis of equal population means. -
 
 ```{python}
 print(rates_recent.var())
@@ -145,11 +146,13 @@ Reference: <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tte
 
 > Calculate the T-test for the mean of ONE group of scores.
 >
-> This is a test for the null hypothesis that the expected value (mean) of a sample of independent observations a is equal to the given population mean, popmean.
+> This is a test for the null hypothesis that the expected value (mean) of a sample of independent observations is equal to the given population mean, popmean.
 >
-> Under certain assumptions about the population from which a sample is drawn, the confidence interval with confidence level 95% is expected to contain the true population mean in 95% of sample replications. - [source](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html)
+> Under certain assumptions about the population from which a sample is drawn, the confidence interval with confidence level 95% is expected to contain the true population mean in 95% of sample replications.
 
 Suppose we wish to test the null hypothesis that the mean of the fed funds rates is equal to 2.5%.
+
+We pass as parameters the column of values, and the population mean we wish to test. Then we inspect the p value to interpret the results.
 
 ```{python}
 from scipy.stats import ttest_1samp
@@ -166,6 +169,8 @@ if result.pvalue <= 0.05:
 else:
     print("NOT ABLE TO REJECT (MEAN COULT BE EQUAL TO POPMEAN)")
 ```
+
+Finally, we can access information about the confidence interval for this test:
 
 ```{python}
 ci = result.confidence_interval(confidence_level=0.95)

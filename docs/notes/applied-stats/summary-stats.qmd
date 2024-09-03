@@ -34,7 +34,7 @@ We can use the dataframe's [`describe` method](https://pandas.pydata.org/docs/re
 df.describe()
 ```
 
-This will show us the number of rows, mean and median, min and max, and quantiles for each column.
+This will show us the number of rows, mean and standard deviation, min and max, and quantiles for each column.
 
 As you may be aware, we can alternatively calculate these metrics ourselves, using `Series` aggregations:
 
@@ -61,7 +61,7 @@ series.describe() # for comparison
 
 ## Distribution Plots
 
-In order to learn more about the distribution of this data, we can create distribution plots of the federal funds rate, to tell a story about the summary statistics for this indicator.
+In order to learn more about the distribution of this data, we can create distribution plots, to tell a story about the summary statistics.
 
 
 A box plot:
@@ -94,8 +94,8 @@ px.histogram(df, x="fed", #nbins=12,
 
 ```
 
-When we make a histogram, we can specify the number of bins.
+When we make a histogram, we can specify the number of bins, using the `nbins` parameter.
 
 These charts help us visually identify distributions in the data.
 
-Looks like the recent higher funds rates are potential outliers. Based on this view, is hard to say for sure if this data is normally distributed, or whether it is too skewed by the outliers. In the next chapter, we will perform more official statistical tests to determine whether this data is normally distributed.
+Based on this view, is hard to say for sure if this data is normally distributed, or multi-modal, or whether it is too skewed by the outliers. In the next chapter, we will perform more official statistical tests to determine if this data is normally distributed.
