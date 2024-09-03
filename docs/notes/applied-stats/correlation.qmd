@@ -56,7 +56,7 @@ Reference: <https://www.investopedia.com/terms/n/nonparametric-method.asp>
 >
 > In contrast, well-known statistical methods such as ANOVA, Pearson's correlation, t-test, and others do make assumptions about the data being analyzed. One of the most common parametric assumptions is that population data have a "normal distribution."
 
-## Correlation with `scipy`
+## Calculating Correlation with `scipy`
 
 We can calculate correlation between two lists of numbers, using the `pearsonr` and `spearmanr` functions from the `scipy` package.
 
@@ -97,9 +97,9 @@ print(result)
 ```
 
 
-Here we see the correlation between a given pair of datasets.
+Here we see the correlation between a given pair of variables.
 
-What about the correlation between each pair of indicators? We could start to use a loop-based solution. But there is an easier way.
+What about the correlation between each pair of indicators? We could start to use a loop-based solution, and compare each combination of variables. But there is an easier way.
 
 
 ## Correlation Matrix with `pandas`
@@ -128,7 +128,7 @@ We may also start to notice the symmetry of values mirrored across the diagonal.
 
 ## Plotting Correlation Matrix
 
-It may not be easy to quickly interpret the rest of the values in the correlation matrix, but if we plot it with colors as a "heat map" then we will be able to use color to more easily interpret the data and tell a story.
+It may not be easy to quickly interpret the rest of the values in the correlation matrix, but if we plot this matrix with colors as a "heat map", then we will be able to use color to more easily interpret the data and tell a story.
 
 ### Correlation Heatmap with `plotly`
 
@@ -148,12 +148,9 @@ def plot_correlation_matrix(df, method="pearson"):
     title= f"{method.title()} Correlation between Economic Indicators"
 
     fig = px.imshow(cor_mat,
-                    height=450,
-                    # round to two decimal places:
-                    text_auto= ".2f",
+                    height=450, # title=title,
+                    text_auto= ".2f", # round to two decimal places
                     color_continuous_scale="Blues",
-                    # set color midpoint at zero
-                    # because correlation coefficient ranges from -1 to 1:
                     color_continuous_midpoint=0,
                     labels={"x": "Indicator", "y": "Indicator"},
     )
