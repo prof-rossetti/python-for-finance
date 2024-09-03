@@ -1,0 +1,173 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+# Statistical Tests
+
+We can use the [`scipy` package](https://pypi.org/project/scipy/) to perform basic statistical tests.
+
+For these examples, let's us this familiar example dataset of monthly financial and economic indicators:
+
+```{python}
+from pandas import read_csv
+
+df = read_csv("https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/monthly-indicators.csv")
+df.head()
+```
+
+
+## Normality Tests
+
+We can conduct a [normality test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html) to see if a given distribution is normally distributed.
+
+> This function tests the null hypothesis that a sample comes from a normal distribution.
+>
+> If the p-value is "small" - that is, if there is a low probability of sampling data from a normally distributed population that produces such an extreme value of the statistic - this may be taken as evidence against the null hypothesis in favor of the alternative: the weights were not drawn from a normal distribution.
+
+
+```{python}
+from scipy.stats import normaltest
+
+x = df["fed"]
+
+result = normaltest(x)
+print(result)
+```
+
+### Interpreting the results.
+
+
+> To determine whether the data do not follow a normal distribution, compare the p-value to the significance level. Usually, a significance level (denoted as α or alpha) of 0.05 works well. A significance level of 0.05 indicates a 5% risk of concluding that the data do not follow a normal distribution when the data do follow a normal distribution.
+>
+> P-value ≤ α: The data do not follow a normal distribution (Reject H0)
+> If the p-value is less than or equal to the significance level, the decision is to reject the null hypothesis and conclude that your data do not follow a normal distribution.
+>
+> P-value > α: You cannot conclude that the data do not follow a normal distribution (Fail to reject H0). If the p-value is larger than the significance level, the decision is to fail to reject the null hypothesis. You do not have enough evidence to conclude that your data do not follow a normal distribution. - [source](https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistics/basic-statistics/how-to/normality-test/interpret-the-results/key-results/
+)
+
+
+```{python}
+
+if result.pvalue <= 0.05:
+    print("REJECT (NOT NORMAL)")
+else:
+    print("NOT ABLE TO REJECT (COULD BE NORMAL)")
+```
+
+Looks like the federal fuds rate does not have a normal distribution (as this notebook was run on June 28th 2024).
+
+How about the market?
+
+
+```{python}
+x = df["spy"]
+
+result = normaltest(x)
+print(result)
+
+if result.pvalue <= 0.05:
+    print("REJECT (NOT NORMAL)")
+else:
+    print("NOT ABLE TO REJECT (COULD BE NORMAL)")
+```
+
+
+## T-Tests
+
+Reference: <https://www.investopedia.com/terms/t/t-test.asp>
+
+> A t-test is an inferential statistic used to determine if there is a significant difference between the means of two groups and how they are related. T-tests are used when the data sets follow a normal distribution and have unknown variances, like the data set recorded from flipping a coin 100 times.
+
+### T-Test Considerations
+
+Reference: <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6676026/#sec-2title>
+
+In order to conduct a T-Test, the data needs to be normally distributed. So the examples below may not be the most methodologically sound. However they should provide code examples you can adapt for other use cases in the future.
+
+### 2 Sample T-Test
+
+A two sample T-test is used to determine whether two independent samples come from the same distribution.
+
+
+Let's split the most recent year's rates from the rest. And see if the most recent years are statistically different.
+
+```{python}
+
+#cutoff_date = "2022-06-01" # you can chose a different one if you'd like
+cutoff_date = "2022-10-01"
+
+rates_recent = df[df["timestamp"] >= cutoff_date]["fed"]
+print(len(rates_recent))
+print(rates_recent)
+```
+
+```{python}
+rates_historic = df[df["timestamp"] < cutoff_date]["fed"]
+print(len(rates_historic))
+print(rates_historic)
+```
+
+Reference: <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html>
+
+> Calculate the T-test for the means of two independent samples of scores.
+>
+> This is a test for the null hypothesis that 2 independent samples have identical average (expected) values. This test assumes that the populations have identical variances by default.
+>
+> The t-test quantifies the difference between the arithmetic means of the two samples. The p-value quantifies the probability of observing as or more extreme values assuming the null hypothesis, that the samples are drawn from populations with the same population means, is true. A p-value larger than a chosen threshold (e.g. 5% or 1%) indicates that our observation is not so unlikely to have occurred by chance. Therefore, we do not reject the null hypothesis of equal population means. If the p-value is smaller than our threshold, then we have evidence against the null hypothesis of equal population means. - [source](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html)
+
+```{python}
+print(rates_recent.var())
+print(rates_historic.var())
+```
+
+```{python}
+from scipy.stats import ttest_ind
+
+result = ttest_ind(rates_recent, rates_historic)
+print(result)
+
+if result.pvalue <= 0.05:
+    print("REJECT (MEANS NOT THE SAME)")
+else:
+    print("NOT ABLE TO REJECT (MEANS COULD BE THE SAME)")
+```
+
+
+### 1 Sample T-Test
+
+Reference: <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html>
+
+
+> Calculate the T-test for the mean of ONE group of scores.
+>
+> This is a test for the null hypothesis that the expected value (mean) of a sample of independent observations a is equal to the given population mean, popmean.
+>
+> Under certain assumptions about the population from which a sample is drawn, the confidence interval with confidence level 95% is expected to contain the true population mean in 95% of sample replications. - [source](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html)
+
+Suppose we wish to test the null hypothesis that the mean of the fed funds rates is equal to 2.5%.
+
+```{python}
+from scipy.stats import ttest_1samp
+
+x = df["fed"]
+print(x.mean())
+
+popmean = 2.5 # for example
+result = ttest_1samp(x, popmean=popmean)
+print(result)
+
+if result.pvalue <= 0.05:
+    print("REJECT (MEAN NOT EQUAL TO POPMEAN)")
+else:
+    print("NOT ABLE TO REJECT (MEAN COULT BE EQUAL TO POPMEAN)")
+```
+
+```{python}
+ci = result.confidence_interval(confidence_level=0.95)
+print(ci)
+```

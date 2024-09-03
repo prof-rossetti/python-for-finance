@@ -233,8 +233,14 @@ website:
             href: notes/applied-stats/overview.qmd
             text: "Applied Statistics"
             contents:
+              #- section:
+              #  href: notes/applied-stats/basic-tests.ipynb
+              #  text: "Statistical Tests"
               - section:
-                href: notes/applied-stats/basic-tests.ipynb
+                href: notes/applied-stats/summary-stats.qmd
+                text: "Summary Statistics"
+              - section:
+                href: notes/applied-stats/basic-tests.qmd
                 text: "Statistical Tests"
               - section:
                 href: notes/applied-stats/correlation-4.ipynb

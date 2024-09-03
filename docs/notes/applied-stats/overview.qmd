@@ -1,5 +1,6 @@
 # Applied Statistics
 
 
-  + [Statistical Tests](./basic-tests.ipynb)
+  + [Summary Statistics](./summary-stats.qmd)
+  + [Statistical Tests](./basic-tests.qmd)
   + [Correlation](./correlation-2.ipynb)

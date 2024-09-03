@@ -1,0 +1,101 @@
+---
+format:
+  html:
+    code-fold: false
+jupyter: python3
+execute:
+  cache: true # re-render only when source changes
+---
+
+# Summary Statistics
+
+The `pandas` package makes it easy to calculate basic summary statistics.
+
+Let's consider this example dataset of monthly financial and economic indicators:
+
+```{python}
+from pandas import read_csv
+
+df = read_csv("https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/monthly-indicators.csv")
+df.head()
+```
+
+It contains over 200 months, spanning a time period from 2004 to 2024:
+
+```{python}
+print(len(df))
+print(df["timestamp"].min(), "...", df["timestamp"].max())
+```
+
+
+We can use the dataframe's [`describe` method](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) to quickly see the basic summary statistics for each numeric column in the dataset:
+
+```{python}
+df.describe()
+```
+
+This will show us the number of rows, mean and median, min and max, and quantiles for each column.
+
+As you may be aware, we can alternatively calculate these metrics ourselves, using `Series` aggregations:
+
+```{python}
+# https://pandas.pydata.org/docs/reference/api/pandas.Series.html
+# https://pandas.pydata.org/docs/reference/api/pandas.Series.quantile.html
+
+series = df["fed"]
+
+print("COUNT:", len(series))
+print("MEAN:", series.mean().round(6))
+print("STD:", series.std().round(6))
+print("-------------")
+print("MIN:", series.min())
+print("25TH:", series.quantile(.25))
+print("MED:", series.median())
+print("75TH:", series.quantile(.75))
+print("MAX:", series.max())
+```
+
+```{python}
+series.describe() # for comparison
+```
+
+## Distribution Plots
+
+In order to learn more about the distribution of this data, we can create distribution plots of the federal funds rate, to tell a story about the summary statistics for this indicator.
+
+
+A box plot:
+
+```{python}
+import plotly.express as px
+
+# https://plotly.com/python-api-reference/generated/plotly.express.box.html
+px.box(df, x="fed", orientation="h", points="all",
+        title="Distribution of Federal Funds Rate (Monthly)",
+        hover_data=["timestamp"]
+)
+```
+
+A violin plot:
+
+```{python}
+# https://plotly.com/python-api-reference/generated/plotly.express.violin.html
+px.violin(df, x="fed", orientation="h", points="all", box=True,
+        title="Distribution of Federal Funds Rate (Monthly)",
+        hover_data=["timestamp"]
+)
+```
+
+A histogram:
+```{python}
+# https://plotly.com/python-api-reference/generated/plotly.express.histogram.html
+px.histogram(df, x="fed", #nbins=12,
+        title="Distribution of Federal Funds Rate (Monthly)", height=350)
+
+```
+
+When we make a histogram, we can specify the number of bins.
+
+These charts help us visually identify distributions in the data.
+
+Looks like the recent higher funds rates are potential outliers. Based on this view, is hard to say for sure if this data is normally distributed, or whether it is too skewed by the outliers. In the next chapter, we will perform more official statistical tests to determine whether this data is normally distributed.
