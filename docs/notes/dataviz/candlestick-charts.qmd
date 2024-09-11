@@ -18,11 +18,16 @@ We start with some OHLC data:
 
 ```{python}
 ohlc_data = [
-    {"date": "2030-03-16", "open": 236.2800, "high": 240.0550, "low": 235.9400, "close": 237.7100, "volume": 28092196},
-    {"date": "2030-03-15", "open": 234.9600, "high": 235.1850, "low": 231.8100, "close": 234.8100, "volume": 26042669},
-    {"date": "2030-03-12", "open": 234.0100, "high": 235.8200, "low": 233.2300, "close": 235.7500, "volume": 22653662},
-    {"date": "2030-03-11", "open": 234.9600, "high": 239.1700, "low": 234.3100, "close": 237.1300, "volume": 29907586},
-    {"date": "2030-03-10", "open": 237.0000, "high": 237.0000, "low": 232.0400, "close": 232.4200, "volume": 29746812}
+    {"date": "2030-03-16", "open": 236.2800, "high": 240.0550, 
+      "low": 235.9400, "close": 237.7100, "volume": 28092196},
+    {"date": "2030-03-15", "open": 234.9600, "high": 235.1850, 
+      "low": 231.8100, "close": 234.8100, "volume": 26042669},
+    {"date": "2030-03-12", "open": 234.0100, "high": 235.8200, 
+      "low": 233.2300, "close": 235.7500, "volume": 22653662},
+    {"date": "2030-03-11", "open": 234.9600, "high": 239.1700, 
+      "low": 234.3100, "close": 237.1300, "volume": 29907586},
+    {"date": "2030-03-10", "open": 237.0000, "high": 237.0000, 
+      "low": 232.0400, "close": 232.4200, "volume": 29746812}
 ]
 ```
 
@@ -53,9 +58,10 @@ Finally, creating the chart:
 
 
 ```{python}
-from plotly.graph_objects import Figure, Candlestick #, Scatter
+from plotly.graph_objects import Figure, Candlestick
 
-stick = Candlestick(x=dates, open=opens, high=highs, low=lows, close=closes)
+stick = Candlestick(x=dates, open=opens, high=highs, 
+                              low=lows, close=closes)
 
 fig = Figure(data=[stick])
 fig.update_layout(title="Example Candlestick Chart")
