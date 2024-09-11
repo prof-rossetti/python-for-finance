@@ -60,8 +60,7 @@ Finally, creating the chart:
 ```{python}
 from plotly.graph_objects import Figure, Candlestick
 
-stick = Candlestick(x=dates, open=opens, high=highs, 
-                              low=lows, close=closes)
+stick = Candlestick(x=dates, open=opens, high=highs, low=lows, close=closes)
 
 fig = Figure(data=[stick])
 fig.update_layout(title="Example Candlestick Chart")
