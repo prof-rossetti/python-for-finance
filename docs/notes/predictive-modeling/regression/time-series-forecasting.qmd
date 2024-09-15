@@ -1,10 +1,5 @@
----
-format:
-  html:
-    code-overflow: scroll
----
-
 # Regression for Time Series Forecasting
+
 
 Let's explore an example of how to use regression to perform trend analysis with time series data.
 

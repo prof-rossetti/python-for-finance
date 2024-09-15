@@ -285,6 +285,9 @@ website:
                   - section:
                     href: notes/predictive-modeling/regression/time-series-forecasting.qmd
                     text: "Time Series Forecasting"
+                  - section:
+                    href: notes/predictive-modeling/regression/seasonality.qmd
+                    text: "Seasonality Analysis"
 
                   - section:
                     href: notes/predictive-modeling/regression/autoregressive-models.qmd
