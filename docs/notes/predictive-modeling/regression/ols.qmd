@@ -17,7 +17,7 @@ df.head()
 
 ## Data Exploration
 
-Checking for Nulls:
+Checking for null values:
 
 ```{python}
 df["StudyHours"].isna().sum()
@@ -28,7 +28,7 @@ df["StudyHours"].isna().sum()
 df.tail()
 ```
 
-Dropping Nulls:
+Dropping null values:
 
 ```{python}
 df.dropna(inplace=True)

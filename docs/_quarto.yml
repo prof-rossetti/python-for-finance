@@ -337,27 +337,16 @@ website:
       #
       # APPENDICES ???
       #
+      - "---------"
+      - text: "Appendices"
       #- "---------"
-      #- text: "Appendices"
-      ##- "---------"
-      #- section:
-      #  text: "A. Google Colab Extras" # In Depth
-      #  contents:
-      #    - section:
-      #      href: notes/dev-tools/google-colab/table-of-contents.qmd
-      #      text: "Table of Contents"
-      #    - section:
-      #      href: notes/dev-tools/google-colab/filesystem.ipynb
-      #      text: "Accessing the Filesystem"
-      #    - section:
-      #      href: notes/dev-tools/google-colab/form-inputs.ipynb
-      #      text: "Forms and Inputs"
-      #    - section:
-      #      href: notes/dev-tools/google-colab/notebook-secrets.qmd
-      #      text: "Notebook Secrets"
-      #    - section:
-      #      href: notes/dev-tools/google-colab/advanced-integrations.ipynb
-      #      text: "Advanced Integrations"
+      - section:
+        text: "Financial Data Sources"
+        contents:
+          - section:
+            href: notes/financial-data-sources/pandas-datareader.qmd
+            text: "Pandas Datareader"
+
 
 format:
   # https://quarto.org/docs/reference/formats/html.html#table-of-contents

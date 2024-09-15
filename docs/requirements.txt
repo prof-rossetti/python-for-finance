@@ -24,6 +24,9 @@ lxml # bs4 needs this to parse XML
 scipy
 
 
+pandas_datareader
+
+
 # predictive modeling:
 scikit-learn
 joblib

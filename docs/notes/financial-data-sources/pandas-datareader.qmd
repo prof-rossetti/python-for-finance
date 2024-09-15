@@ -1,0 +1,91 @@
+# The `pandas-datareader` Pacakge
+
+## FRED Data
+
+FRED (Federal Reserve Economic Data) provides a wide range of economic datasets covering various aspects such as national accounts, labor markets, prices, interest rates, exchange rates, and more. Below is a list of some key datasets that you can access from FRED, along with their dataset IDs, which you can use directly in `pandas_datareader` or through the FRED API.
+
+1. **National Accounts (GDP, Income, and Expenditure)**
+   - **Gross Domestic Product (GDP):** `GDP` (Quarterly)
+   - **Real GDP:** `GDPC1` (Quarterly, Inflation-adjusted)
+   - **Personal Consumption Expenditures (PCE):** `PCE` (Monthly)
+   - **Government Consumption Expenditures & Investment:** `GCEC1` (Quarterly)
+
+2. **Employment and Unemployment**
+   - **Civilian Unemployment Rate:** `UNRATE` (Monthly)
+   - **Civilian Employment-Population Ratio:** `EMRATIO` (Monthly)
+   - **Nonfarm Payroll Employment:** `PAYEMS` (Monthly)
+   - **Initial Claims for Unemployment Insurance:** `ICSA` (Weekly)
+
+3. **Prices and Inflation**
+   - **Consumer Price Index for All Urban Consumers (CPI-U):** `CPIAUCSL` (Monthly)
+   - **Producer Price Index (PPI):** `PPIACO` (Monthly)
+   - **Core CPI (Excluding Food and Energy):** `CPILFESL` (Monthly)
+   - **Personal Consumption Expenditures Price Index:** `PCEPI` (Monthly)
+
+4. **Interest Rates**
+   - **Effective Federal Funds Rate:** `FEDFUNDS` (Daily/Monthly)
+   - **10-Year Treasury Constant Maturity Rate:** `DGS10` (Daily/Monthly)
+   - **30-Year Fixed-Rate Mortgage Average:** `MORTGAGE30US` (Weekly)
+   - **Prime Bank Loan Rate:** `MPRIME` (Monthly)
+
+5. **Money, Banking, and Finance**
+   - **M1 Money Stock:** `M1SL` (Monthly)
+   - **M2 Money Stock:** `M2SL` (Monthly)
+   - **Commercial Bank Loans:** `LOANS` (Monthly)
+   - **Bank Prime Loan Rate:** `MPRIME` (Monthly)
+
+6. **Exchange Rates**
+   - **US Dollar to Euro Exchange Rate:** `DEXUSEU` (Daily/Monthly)
+   - **US Dollar to Japanese Yen Exchange Rate:** `DEXJPUS` (Daily/Monthly)
+   - **US Dollar Index:** `DTWEXM` (Monthly)
+
+7. **Population and Demographics**
+   - **Total Population (Monthly):** `POPTHM`
+   - **Total Population (Annual):** `POP`
+   - **Civilian Noninstitutional Population (16 Years and Over):** `CNP16OV` (Monthly)
+
+8. **Housing and Real Estate**
+   - **House Price Index (HPI):** `CSUSHPINSA` (Monthly)
+   - **New Privately-Owned Housing Units Started:** `HOUST` (Monthly)
+   - **New One-Family Houses Sold:** `HSN1F` (Monthly)
+
+9. **Trade and International Transactions**
+   - **U.S. International Trade in Goods and Services:** `BOPGSTB` (Monthly)
+   - **Current Account Balance:** `IEABC` (Quarterly)
+
+10. **Manufacturing and Industrial Output**
+   - **Industrial Production Index:** `INDPRO` (Monthly)
+   - **Manufacturing Output:** `IPMAN` (Monthly)
+   - **Capacity Utilization:** `TCU` (Monthly)
+
+11. **Business and Consumer Sentiment**
+   - **University of Michigan Consumer Sentiment Index:** `UMCSENT` (Monthly)
+   - **Consumer Confidence Index:** `CONCCONF` (Monthly)
+
+12. **Corporate Profits**
+   - **Corporate Profits after Tax:** `CP` (Quarterly)
+   - **Corporate Profits before Tax:** `A445RC1Q027SBEA` (Quarterly)
+
+
+You can access these datasets directly in Python using the `pandas_datareader` library, as follows:
+
+```{python}
+from pandas_datareader import get_data_fred
+
+df = get_data_fred('GDP')
+df.head()
+```
+
+
+Specifying start and end dates, as desired:
+
+```{python}
+from datetime import datetime
+from pandas_datareader import get_data_fred
+
+start = datetime(1900, 1, 1)
+end = datetime(2023, 1, 1)
+
+df = get_data_fred('GDP', start, end)
+df.head()
+```
