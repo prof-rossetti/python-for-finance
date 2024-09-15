@@ -1,1 +1,4 @@
 # Machine Learning Foundations
+
+
+its about predicting something, x/y (target and features), supervised vs unsupervised (ground truth labels / test set or not), regression vs classification

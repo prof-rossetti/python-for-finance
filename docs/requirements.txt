@@ -24,5 +24,11 @@ lxml # bs4 needs this to parse XML
 scipy
 
 
+# predictive modeling:
+scikit-learn
+joblib
+ucimlrepo
+
+
 
 #gspread==6.0.2

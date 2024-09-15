@@ -1,6 +1,88 @@
+---
+#format:
+#  html:
+#    code-fold: show
+#    code-summary: "Show the code"
+---
+
 # Saving and Loading Models
+
+Let's consider the [linear regression](../regression/linear.qmd) model we have previously trained to predict grades given study hours:
+
+```{python}
+#| code-fold: show
+#| code-overflow: scroll
+
+from pandas import read_csv
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+request_url = "https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/grades.csv"
+df = read_csv(request_url)
+df.dropna(inplace=True)
+
+x = df[["StudyHours"]]
+y = df["Grade"]
+x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=99)
+
+model = LinearRegression()
+model.fit(x_train, y_train)
+```
+
+Although this particular model completed its training fairly quickly, it is normal for some more complicated models to take hours, days, or even weeks or months to train.
+
+Once the training script has completed (or the training notebook has restarted its session), we unfortunately lose access to the trained model. And we would need to re-train the model to make more predictions.
+
+To save time and avoid re-training the model each time we need to make predictions, we can train it once, and save the trained model with its learned weights. Then anytime we want to use the model again, we can load it from its saved state.
+
+
+
 
 ## Saving Trained Models
 
+To save and load models, we can use the `pickle` module, or the [`joblib` package](https://joblib.readthedocs.io/en/stable/) (preferred):
+
+```{python}
+import os
+import joblib
+
+# creating a directory to store the model:
+MODEL_DIRNAME = "grades-linear-regression"
+os.makedirs(MODEL_DIRNAME, exist_ok=True)
+
+# creating a filepath for the model in that directory:
+MODEL_FILEPATH = os.path.join(MODEL_DIRNAME, "model.joblib")
+
+# saving the model to the given filepath:
+joblib.dump(model, MODEL_FILEPATH)
+```
+
+:::{.callout-note title="Model Naming Conventions"}
+When using the `joblib` library and related tools to save and load models, it is a convention to call the saved model file "model.joblib" specifically. So to differentiate between models, this is why we customize the name of the directory where the model file is stored (in this case "grades-linear-regression").
+:::
 
 ## Loading Pre-trained Models
+
+Once we have saved a pre-trained model to a given filepath, we can load it from file:
+
+```{python}
+presaved_model = joblib.load(MODEL_FILEPATH)
+
+presaved_model
+```
+
+This model is the same as the one we previously trained, so we can use it to make predictions:
+
+```{python}
+from pandas import DataFrame
+
+x_new = DataFrame({"StudyHours": [0, 4, 8, 12, 16, 20]})
+
+presaved_model.predict(x_new)
+```
+
+Observe the predicted values from the loaded model are the same as before:
+
+```{python}
+model.predict(x_new)
+```

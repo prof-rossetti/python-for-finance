@@ -1,4 +1,4 @@
-# Advanced Regression Models
+# Weight-adjusting Regression Models
 
 ## Ridge
 
