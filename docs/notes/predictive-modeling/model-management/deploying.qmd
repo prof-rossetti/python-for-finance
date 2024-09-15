@@ -1,1 +1,74 @@
 # Deploying Machine Learning Models
+
+Let's consider the [linear regression](../regression/linear.qmd) model we have previously trained to predict grades given study hours, and [saved](./saving-loading.qmd) to a local file:
+
+```{python}
+#| code-fold: show
+#| code-overflow: scroll
+
+from urllib.request import urlopen
+import joblib
+
+MODEL_URL = "https://github.com/prof-rossetti/python-for-finance/raw/main/docs/notes/predictive-modeling/model-management/grades-linear-regression/model.joblib"
+presaved_model = joblib.load(urlopen(MODEL_URL))
+
+presaved_model
+```
+
+When we save this model to a local file, it doesn't take much memory (in this case only 864 Bytes).
+
+However in practice some of the more complicated models can have millions or billions of parameters, and saving them to file would take a lot more memory.
+
+Unfortunately when we want to use these models in a production (user-facing) application, the production server might not have enough room to store the saved model. Or it might have "ephemeral" storage which would make it more difficult to save files to disk.
+
+In these situations where saving it locally may consume significant disk space, we can alternatively upload the trained model to a cloud storage provider such as [Amazon S3](https://aws.amazon.com/s3/), or [Google Cloud Storage](https://cloud.google.com/storage?hl=en) (preferred). Cloud storage scales easily without the need to manage physical storage hardware.
+
+## Cloud Storage
+
+### Advantages of Cloud Storage
+
+1. **Scalability & Availability**:
+   - **Access Anywhere**: Models stored in the cloud can be accessed from anywhere, enabling easy sharing and collaboration between team members across different locations.
+   - **Cross-Platform Access**: The model can be accessed by other cloud services, tools, or applications without being limited to local hardware.
+   - **Redundancy & Backups**: Cloud providers typically offer built-in redundancy and backup features, reducing the risk of data loss.
+
+2. **Integration with Cloud Services**:
+   - Cloud storage integrates well with cloud-based machine learning pipelines, such as AWS SageMaker, Google AI Platform, or Azure ML, simplifying deployment and management.
+   - Cloud storage can be directly linked to other services like automated retraining or model serving platforms, improving workflow efficiency.
+
+3. **Storage and Compute Resources**:
+   - If the model is large, saving it locally may consume significant disk space. Cloud storage scales easily without the need to manage physical storage hardware.
+
+4. **Security**:
+   - Cloud providers often offer advanced security features, such as encryption at rest and in transit, access control mechanisms, and detailed logging, providing a secure environment for sensitive models.
+
+### Disadvantages of Cloud Storage
+
+1. **Cost**:
+   - Cloud storage incurs ongoing costs, especially for large models, frequent accesses, or long-term storage.
+   - Data transfer costs may also apply if you frequently download the model from the cloud.
+
+2. **Latency**:
+   - Accessing a model from the cloud can introduce latency compared to retrieving it from a local file, which could impact workflows that require fast or real-time model loading.
+
+3. **Dependency on Internet Connectivity**:
+   - Cloud storage requires a stable internet connection. If connectivity is slow or unreliable, accessing or saving the model could be problematic.
+
+4. **Security Risks**:
+   - While cloud providers offer strong security features, there is always a risk of data breaches or misconfigurations (e.g., incorrect access permissions), potentially exposing sensitive models.
+
+### When to Use Cloud Storage
+
+- Distributed teams need access to the model.
+- The model is part of a cloud-based pipeline (training, serving, etc.).
+- The model is large or frequently updated, making local storage inconvenient.
+- There is a need for built-in redundancy and backup.
+
+### When to Use Local Storage
+
+- The model is small or only used locally.
+- You want to avoid the cost of cloud storage.
+- Latency is critical and local access is faster.
+- The infrastructure doesn't require cloud integration, or security risks are a concern.
+
+In summary, cloud storage is beneficial for scalability, collaboration, and cloud-based workflows, but local storage can be faster and more cost-effective for simpler or smaller-scale operations.

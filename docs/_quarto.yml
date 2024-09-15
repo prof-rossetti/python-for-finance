@@ -304,15 +304,14 @@ website:
             text: "Model Management"
             contents:
               - section:
-                href: notes/predictive-modeling/model-optimization/grid-search.qmd
-                text: "Model Optimization"
-              - section:
                 href: notes/predictive-modeling/model-management/saving-loading.qmd
                 text: "Model Management"
               - section:
                 href: notes/predictive-modeling/model-management/deploying.qmd
                 text: "Model Deployment"
-
+              - section:
+                href: notes/predictive-modeling/model-optimization/grid-search.qmd
+                text: "Model Optimization"
 
           - "--------------"
           - section:
