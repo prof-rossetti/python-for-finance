@@ -1,15 +1,17 @@
-# Linear Regression
+# Linear Regression with `sklearn`
 
 ## Data Loading
 
 Loading the data:
 
 ```{python}
+#| code-overflow: scroll
+
 from pandas import read_csv
 
 request_url = "https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/grades.csv"
 df = read_csv(request_url)
-df
+df.head()
 ```
 
 ## Data Exploration
@@ -18,6 +20,10 @@ Checking for Nulls:
 
 ```{python}
 df["StudyHours"].isna().sum()
+```
+
+```{python}
+df.tail()
 ```
 
 Dropping Nulls:
@@ -39,7 +45,7 @@ px.scatter(df, x="StudyHours", y="Grade", height=350,
 )
 ```
 
-Checking for outliers:
+Checking for normality and outliers:
 
 ```{python}
 px.violin(df, x="StudyHours", box=True, points="all", height=350,
@@ -57,19 +63,24 @@ px.violin(df, x="Grade", box=True, points="all", height=350,
 
 ### X/Y Split
 
-If we have a single feature variable, we reference it as a list of one, to keep the data in dataframe format (two-dimensional array) instead of a list or `Series` (one-dimensional array).
+Identifying the dependent and independent variables.
 
 ```{python}
 #x = df["StudyHours"] # ValueError: Expected 2D array, got 1D array instead
-x = df[["StudyHours"]] # model wants x to be a matrix
+x = df[["StudyHours"]] # model wants x to be a matrix / DataFrame
 print(x.shape)
 
 y = df["Grade"]
 print(y.shape)
 ```
 
+:::{.callout-note title="Note"}
+When using `sklearn`, we must construct the features as a two-dimensional array (even if the data only contains one column).
+:::
 
 ### Train Test Split
+
+Splitting the data randomly into test and training sets. We will train the model on the training set, and evaluate the model using the training set. This helps for generalizability, and to prevent overfitting.
 
 ```{python}
 from sklearn.model_selection import train_test_split
@@ -156,7 +167,7 @@ px.scatter(test_set, x="StudyHours", y=["Grade", "PredictedGrade"],
 )
 ```
 
-To get a measure for how well the model did across the entire dataset, we can use any number of desired regression metrics (r-squared score, mean squared error, mean absolute error, root mean sqared error), to see how well the model does.
+To get a measure for how well the model did across the entire test dataset, we can use any number of desired regression metrics (r-squared score, mean squared error, mean absolute error, root mean sqared error), to see how well the model does.
 
 
 It is possible for us to roll our own metrics:

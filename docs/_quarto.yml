@@ -278,7 +278,10 @@ website:
                 contents:
                   - section:
                     href: notes/predictive-modeling/regression/linear.qmd
-                    text: "Linear Regression"
+                    text: "Linear Regression w/ sklearn"
+                  - section:
+                    href: notes/predictive-modeling/regression/ols.qmd
+                    text: "Linear Regression w/ statsmodels"
                   - section:
                     href: notes/predictive-modeling/regression/time-series-forecasting.qmd
                     text: "Time Series Forecasting"
