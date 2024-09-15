@@ -255,8 +255,79 @@ website:
       - section:
         href: courses/fin-modeling.qmd
         text: "III. Financial Modeling" # "III. Advanced Financial Modeling in Python" # "III. Financial Modeling" #"III. Advanced Financial Modeling"
-        #contents:
-        #  - applied-ds/unit2.qmd
+        contents:
+
+          - section:
+            href: notes/predictive-modeling/ml-foundations/index.qmd
+            text: "Machine Learning Foundations"
+            contents:
+
+              - section:
+                href: notes/predictive-modeling/ml-foundations/data-encoding.qmd
+                text: "Data Encoding"
+
+          - "--------------"
+          - section:
+            href: notes/predictive-modeling/supervised-learning.qmd
+            text: "Supervised Learning"
+            contents:
+
+              - section:
+                href: notes/predictive-modeling/regression/index.qmd
+                text: "Regression"
+                contents:
+                  - section:
+                    href: notes/predictive-modeling/regression/linear.qmd
+                    text: "Linear Regression"
+                  - section:
+                    href: notes/predictive-modeling/regression/time-series-forecasting.qmd
+                    text: "Time Series Forecasting"
+
+                  - section:
+                    href: notes/predictive-modeling/regression/autoregressive-models.qmd
+                    text: "Autoregressive Models"
+
+              - section:
+                href: notes/predictive-modeling/classification/index.qmd
+                text: "Classification"
+                contents:
+                  - section:
+                    href: notes/predictive-modeling/classification/binary.qmd
+                    text: "Binary Classification"
+                  - section:
+                    href: notes/predictive-modeling/classification/multiclass.qmd
+                    text: "Multi-class Classification"
+
+          - "--------------"
+          - section:
+            href: notes/predictive-modeling/model-management/index.qmd
+            text: "Model Management"
+            contents:
+              - section:
+                href: notes/predictive-modeling/model-optimization/grid-search.qmd
+                text: "Model Optimization"
+              - section:
+                href: notes/predictive-modeling/model-management/saving-loading.qmd
+                text: "Model Management"
+              - section:
+                href: notes/predictive-modeling/model-management/deploying.qmd
+                text: "Model Deployment"
+
+
+          - "--------------"
+          - section:
+            href: notes/predictive-modeling/unsupervised-learning.qmd
+            text: "Unsupervised Learning"
+            contents:
+
+              - section:
+                href: notes/predictive-modeling/dimensionality-reduction/pca.qmd
+                text: "Dimensionality Reduction"
+
+              - section:
+                href: notes/predictive-modeling/clustering/index.qmd
+                text: "Clustering"
+
 
       #- "---------"
       #- about-author.qmd

@@ -1,0 +1,10 @@
+# Generalization
+
+overfit vs underfit,
+
+
+
+
+## Train-Test Split
+
+## Cross Validation
