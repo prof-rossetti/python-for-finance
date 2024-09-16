@@ -320,8 +320,6 @@ x_monthly
 Predict the residual (i.e. degree to which we will be over or under trend), based on which month it is?
 
 ```{python}
-
-
 y_monthly = df["residual"]
 
 ols_monthly = sm.OLS(y_monthly, x_monthly)
@@ -334,3 +332,26 @@ print(results_monthly.summary())
 ```
 
 Observe the coefficients tell us how each month contributes towards the regression residuals, in other words, for each month, to what degree does the model predict we will be above or below trend?
+
+***Monthly Predictions of Residuals**
+
+```{python}
+df["prediction_monthly"] = results_monthly.fittedvalues
+df["residual_monthly"] = results_monthly.resid
+```
+
+```{python}
+#height = 450
+
+#px.line(df, y=["employment", "prediction"], title="Employment vs trend", height=height)
+```
+
+
+```{python}
+#px.line(df, y="prediction_monthly", title="Employment vs seasonal trend", height=height)
+```
+
+
+```{python}
+px.line(df, y="residual_monthly", title="Employment seasonal trend residual", height=450)
+```
