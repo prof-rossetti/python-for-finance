@@ -36,7 +36,7 @@ Here is some more information about the ["POPTHM" dataset](https://fred.stlouisf
 :::
 
 
-Wrangling the data, including renaming columns and converting the date index to be datetime-aware, may make it easier for us to work with this data:
+Wrangling the data, including renaming columns and [converting the date index](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#converting-to-timestamps) to be datetime-aware, may make it easier for us to work with this data:
 
 ```{python}
 from pandas import to_datetime

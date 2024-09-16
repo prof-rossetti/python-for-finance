@@ -1,5 +1,35 @@
 # Data Encoding
 
+
+When preparing features (`x` values) for training machine learning models, the models need the data to be in numeric format, in order to perform math with the values.
+
+So if we have categorical or textual data, we will need to use a **data encoding** strategy to represent the data in a different way.
+
+
+use either an ordinal or one-hot encoding strategy, depending on whether there is a certain ordered relationship.
+
+
 ## Ordinal Encoding
 
+If the data has an order about it, where one category means more or less than others, then we will convert the categories into a linear range of numbered values.
+
+
+## Time Step Encoding
+
+When dealing with time series data, we need to convert the dates to numbers. We can create an ordered list of time step integers, where 1 represents the first time point, 2 represents the second time point, etc.
+
+
+
+
 ## One-hot Encoding
+
+
+If the data is truly categorical, where there is no ordinal relationship present, we will perform "one-hot" encoding.
+
+
+
+
+
+
+
+## Bag of Words for Natural Language Processing
