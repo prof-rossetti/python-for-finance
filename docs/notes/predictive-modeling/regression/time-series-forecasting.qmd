@@ -49,7 +49,7 @@ df
 
 ## Data Exploration
 
-Exploring the relationship between variables:
+Exploring trends:
 
 ```{python}
 import plotly.express as px
@@ -83,10 +83,10 @@ We will use the numeric time step as our input variable (`x`), to predict the po
 Identifying dependent and independent variables:
 
 ```{python}
-y = df["population"]
-
 #x = df[["date"]] # we need numbers not strings
 x = df[["time_step"]]
+
+y = df["population"]
 
 print("X:", x.shape)
 print("Y:", y.shape)
@@ -97,11 +97,28 @@ print("Y:", y.shape)
 Splitting into training vs testing datasets:
 
 ```{python}
-from sklearn.model_selection import train_test_split
+#from sklearn.model_selection import train_test_split
+#
+#x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=99)
+#print("TRAIN:", x_train.shape, y_train.shape)
+#print("TEST:", x_test.shape, y_test.shape)
+```
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=99)
-print("TRAIN:", x_train.shape, y_train.shape)
-print("TEST:", x_test.shape, y_test.shape)
+Splitting data sequentially where earlier data is used in training and recent data is use for testing:
+
+```{python}
+print(len(df))
+
+training_size = round(len(df) * .8)
+print(training_size)
+
+x_train = x.iloc[:training_size] # slice all before
+y_train = y.iloc[:training_size] # slice all before
+
+x_test = x.iloc[training_size:] # slice all after
+y_test = y.iloc[training_size:] # slice all after
+print("TRAIN:", x_train.shape)
+print("TEST:", x_test.shape)
 ```
 
 ## Model Selection and Training
@@ -151,13 +168,22 @@ A very high r-squared value represents a strong linear trend.
 
 Plotting predictions (trend line):
 
+```{python}
+#df_preds = df.copy()
+#df_preds["prediction"] = model.predict(df_preds[["time_step"]])
+#df_preds["error"] = df_preds["population"] - df_preds["prediction"]
+#
+#px.line(df_preds, y=["population", "prediction"], height=350,
+#    title="US Population (Monthly) vs Regression Predictions (Trend)",
+#    labels={"value":""}
+#)
+```
 
 ```{python}
-df_preds = df.copy()
-df_preds["prediction"] = model.predict(df_preds[["time_step"]])
-df_preds["error"] = df_preds["population"] - df_preds["prediction"]
+df["prediction"] = model.predict(df[["time_step"]])
+df["error"] = df["population"] - df["prediction"]
 
-px.line(df_preds, y=["population", "prediction"], height=350,
+px.line(df, y=["population", "prediction"], height=350,
     title="US Population (Monthly) vs Regression Predictions (Trend)",
     labels={"value":""}
 )
@@ -171,8 +197,8 @@ Assembling a dataset of future dates and time steps (which we can use as inputs 
 ```{python}
 from pandas import date_range, DateOffset, DataFrame
 
-last_time_step = df_preds['time_step'].iloc[-1]
-last_date = df_preds.index[-1]
+last_time_step = df['time_step'].iloc[-1]
+last_date = df.index[-1]
 next_date = last_date + DateOffset(months=1)
 
 FUTURE_MONTHS = 36
@@ -197,12 +223,12 @@ Concatenating historical data with future data:
 ```{python}
 from pandas import concat
 
-chart_df = concat([df_preds, df_future])
+chart_df = concat([df, df_future])
 chart_df
 ```
 
 :::{.callout-note}
-The population and error values for future dates are null, because we don't know them yet. Although we are able to make predictions about these values.
+The population and error values for future dates are null, because we don't know them yet. Although we are able to make predictions about these values, based on historical trends.
 :::
 
 Plotting trend vs actual, with future predictions:

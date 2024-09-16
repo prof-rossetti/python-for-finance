@@ -289,9 +289,9 @@ website:
                     href: notes/predictive-modeling/regression/seasonality.qmd
                     text: "Seasonality Analysis"
 
-                  - section:
-                    href: notes/predictive-modeling/regression/autoregressive-models.qmd
-                    text: "Autoregressive Models"
+              - section:
+                href: notes/predictive-modeling/regression/autoregressive-models.qmd
+                text: "Autoregressive Models"
 
               - section:
                 href: notes/predictive-modeling/classification/index.qmd
