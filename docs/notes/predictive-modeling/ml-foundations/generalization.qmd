@@ -17,7 +17,7 @@ In technical terms, overfitting happens when a model has low bias but high varia
 
 Common causes of overfitting include:
 
-  + Using a model that is too complex for the given data (e.g., deep neural networks on small datasets).
+  + Using a model that is too complex for the given data (e.g. deep neural networks on small datasets).
   + Training the model for too long without proper regularization.
   + Using too many features or irrelevant features.
 
@@ -35,7 +35,7 @@ In technical terms, underfitting happens when a model has high bias but low vari
 
 Common causes of underfitting include:
 
-  + Using a model that is too simple for the task at hand (e.g., linear regression for non-linear data).
+  + Using a model that is too simple for the task at hand (e.g. linear regression for non-linear data).
   + Not training the model long enough or with sufficient data.
   + Using too few features or ignoring important features.
 
@@ -46,9 +46,18 @@ Symptoms of underfitting:
 
 ### Finding a Balance
 
-The goal in predictive modeling is to find a model that strikes a balance between overfitting and underfitting. This balance is achieved by using appropriate model complexity, proper data preprocessing, and regularization techniques. A model that generalizes well will have low error on both the training and testing datasets.
+In the context of generalization, bias and variance represent two types of errors that can affect a model's performance. **Bias** refers to errors introduced by overly simplistic models that fail to capture the underlying patterns in the data, leading to underfitting. A high-bias model makes strong assumptions about the data, resulting in consistently poor predictions on both the training and test sets. On the other hand, **variance** refers to errors caused by overly complex models that fit the training data too closely, capturing noise along with the signal. This leads to overfitting, where the model performs well on the training data but poorly on unseen test data.
 
-![Three different models, illustrating trade-offs between overfitting and underfitting. Source: [AWS Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html)](../../../images/aws-underfitting-overfitting.png)
+
+![Illustration of bias vs variance, using a bulls-eye. Source: [Gudivada 2017 Data](https://www.researchgate.net/publication/318432363_Data_Quality_Considerations_for_Big_Data_and_Machine_Learning_Going_Beyond_Data_Cleaning_and_Transformations).](../../../images/bias-variance-tradeoff.ppm)
+
+The challenge in machine learning is to find the right balance between bias and variance, often called the bias-variance tradeoff, in order to achieve good generalization. A model with the right balance will generalize well to new data by capturing the essential patterns without being too sensitive to specific details in the training data.
+
+
+![Three different models, illustrating trade-offs between overfitting and underfitting. Source: [AWS Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html).](../../../images/aws-underfitting-overfitting.png)
+
+
+
 
 
 
