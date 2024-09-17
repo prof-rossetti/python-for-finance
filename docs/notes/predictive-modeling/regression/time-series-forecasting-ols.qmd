@@ -1,4 +1,4 @@
-# Regression for Time Series Forecasting (with `sklearn`)
+# Regression for Time Series Forecasting (with `statsmodels`)
 
 
 Let's explore an example of how to use regression to perform trend analysis with time series data.

@@ -7,7 +7,7 @@ Let's discuss key concepts related to generalization, including the trade-off be
 
 ## Overfitting vs Underfitting
 
-![Three different models, illustrating trade-offs between overfitting and underfitting](../../../images/sklearn-underfitting-overfitting.png)
+![Three different models, illustrating trade-offs between overfitting and underfitting. Source: [`sklearn` package](https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html)](../../../images/sklearn-underfitting-overfitting.png)
 
 ### Overfitting
 
@@ -48,8 +48,8 @@ Symptoms of underfitting:
 
 The goal in predictive modeling is to find a model that strikes a balance between overfitting and underfitting. This balance is achieved by using appropriate model complexity, proper data preprocessing, and regularization techniques. A model that generalizes well will have low error on both the training and testing datasets.
 
+![Three different models, illustrating trade-offs between overfitting and underfitting. Source: [AWS Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html)](../../../images/aws-underfitting-overfitting.png)
 
-![Three different models, illustrating trade-offs between overfitting and underfitting](../../../images/sklearn-underfitting-overfitting.png)
 
 
 
@@ -60,50 +60,50 @@ Additional resources about generalization:
   + <https://developers.google.com/machine-learning/crash-course/overfitting/overfitting>
 
 
-## Data Splitting
+## Data Splitting Strategies
 
 When building a machine learning model, it is important to evaluate its performance on data that the model has not seen during training. This ensures that the model is not overfitting and can generalize to new data.
 
 ### Two-way Splits
 
-To do this, we split the available data into training and testing datasets:
+To keep some of the data unseen, we split the available data into training and testing datasets:
 
   + **Training set**: This is the portion of the data that the model is trained on. The model learns patterns and relationships in the data using this set.
   + **Testing set**: This is a separate portion of the data that the model has never seen before. After training the model, the test set is used to evaluate its generalization ability.
 
 A common strategy for splitting the data is the train-test split, where a portion of the data (often 70-80%) is reserved for training, and the remaining (20-30%) is used for testing. This approach allows us to estimate the model's performance on unseen data.
 
-![Two-way split (training and test sets). Source: [Google ML Concepts](https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets)](../../../images/partition-two-sets.png)
+![Two-way split (training and test sets). Source: [Google ML Concepts](https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets).](../../../images/partition-two-sets.png)
 
 
-### Three Way Splits
+### Three-way Splits
 
 In practice, we often use a **validation set** in addition to the training and test sets, particularly when fine-tuning a model's hyperparameters. The validation set allows us to adjust and optimize the model's hyperparameters across multiple runs without ever exposing the model to the test set. This reduces the risk of overfitting to the test data.
 
-![Three-way split (training, validation, and test sets). Source: [Google ML Concepts](https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets)](../../../images/partition-three-sets.png)
+![Three-way split (training, validation, and test sets). Source: [Google ML Concepts](https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets).](../../../images/partition-three-sets.png)
 
 After training the model on the training data, we evaluate its performance on the validation set. This process can be repeated iteratively, adjusting hyperparameters and retraining the model until the performance is satisfactory.
 
+![Workflow using validation set. Source: [Google ML Concepts](https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets).](../../../images/workflow-with-validation-set.svg)
 
 Once we believe the model is well-optimized, we use the test set to evaluate its true generalization ability on unseen data. By limiting the model's exposure to the test set until the final evaluation, we ensure that the test results provide an unbiased estimate of real-world performance.
 
-![Workflow using validation set. Source: [Google ML Concepts](https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets)](../../../images/workflow-with-validation-set.svg)
 
 
 ### Cross Validation
 
 With **cross validation**, instead of relying on a single training or validation set, we use multiple validation sets to improve the model's robustness and reduce the risk of overfitting.
 
-![K-fold cross validation. Source: [Google ML Concepts](https://developers.google.com/machine-learning/glossary#k-fold-cross-validation)](../../../images/k-fold-cross-validation.png)
+![K-fold cross validation (k=4). Source: [Google ML Concepts](https://developers.google.com/machine-learning/glossary#k-fold-cross-validation).](../../../images/k-fold-cross-validation.png)
 
 
-The dataset is divided into several folds (commonly called K-fold cross-validation), and the model is trained and validated on different subsets of the data in each iteration. This provides a more comprehensive understanding of the model’s performance across various data splits, making it less sensitive to any specific partitioning.
+The dataset is divided into several folds (commonly called **K-fold cross-validation**), and the model is trained and validated on different subsets of the data in each iteration. This provides a more comprehensive understanding of the model’s performance across various data splits, making it less sensitive to any specific partitioning.
 
 
 Cross validation is especially valuable when fine-tuning model hyperparameters, as it prevents overfitting to a specific validation set or the test set by providing a more generalized evaluation before the final test set assessment.
 
 
-## Methods for Splitting Data
+## Data Splitting Methods
 
 This section provides some practical methods for splitting data in Python.
 
@@ -133,10 +133,11 @@ The `random_state` parameter ensures that the same random shuffling and splittin
 
 
 
-### Sequential Splits for Time Series Forecasting
+### Sequential Splits for Time-series Forecasting
 
+Most of the time we want to shuffle the data when splitting, however this may not be the case with time-series data.
 
-If you shuffle the data when performing a train/test split for time series forecasting, several critical issues arise due to the nature of time-dependent data:
+If we shuffle the data when performing a train/test split for time-series forecasting, several critical issues arise due to the nature of time-dependent data:
 
   + **Data Leakage**: Shuffling can lead to training on future data points and testing on past ones, which is unrealistic in real-world forecasting. This would allow the model to "see the future," resulting in overly optimistic performance during evaluation. In practice, you'll never have access to future data when making predictions​.
 
@@ -144,4 +145,21 @@ If you shuffle the data when performing a train/test split for time series forec
 
   + **Unreliable Performance Metrics**: If the model is trained on future data, performance metrics like accuracy or RMSE will be unrealistically high, but once deployed, the model's performance will significantly degrade as it won't have access to future data in a real-time scenario​.
 
-In short, shuffling time series data before splitting leads to unrealistic results and invalidates the model's ability to generalize properly. The correct approach is to split based on time (e.g., using methods like time-based cross-validation or time series splits), ensuring that the training set only contains past data relative to the test set.
+Instead of shuffling, we can split based on time, using methods like time series splits, or time-based cross-validation, ensuring that the training set only contains past data relative to the test set.
+
+To implement a sequential split, assuming your data is sorted by date in ascending order, pick a cutoff date, and use all samples before the cutoff in the training set, and samples after the cutoff date in the test set. This ensures the model can't rely on data from the future when making predictions for the test set.
+
+```python
+print(len(df))
+
+training_size = round(len(df) * .8)
+print(training_size)
+
+x_train = x.iloc[:training_size] # all before cutoff
+y_train = y.iloc[:training_size] # all before cutoff
+
+x_test = x.iloc[training_size:] # all after cutoff
+y_test = y.iloc[training_size:] # all after cutoff
+print("TRAIN:", x_train.shape)
+print("TEST:", x_test.shape)
+```

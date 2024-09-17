@@ -263,6 +263,9 @@ website:
             contents:
 
               - section:
+                href: notes/predictive-modeling/ml-foundations/generalization.qmd
+                text: "Generalization"
+              - section:
                 href: notes/predictive-modeling/ml-foundations/data-encoding.qmd
                 text: "Data Encoding"
 

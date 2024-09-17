@@ -6,22 +6,32 @@ When preparing features (`x` values) for training machine learning models, the m
 So if we have categorical or textual data, we will need to use a **data encoding** strategy to represent the data in a different way.
 
 
-use either an ordinal or one-hot encoding strategy, depending on whether there is a certain ordered relationship.
+For categorical data, we'll use either an ordinal or one-hot encoding strategy, depending on whether there is a certain ordered relationship in the data or not.
 
 
-## Ordinal Encoding
+## Ordinal Encoding for Categorical Data
 
 If the data has an order about it, where one category means more or less than others, then we will convert the categories into a linear range of numbered values.
 
 
-## Time Step Encoding
+## Time Step Encoding for Time-series Data
 
-When dealing with time series data, we need to convert the dates to numbers. We can create an ordered list of time step integers, where 1 represents the first time point, 2 represents the second time point, etc.
+When dealing with time-series data, we need to convert the dates to numbers.
+
+We can take advantage of the linear nature of time, and model dates as integer time steps. For example, starting at one for the earliest data point, and incrementing by one with each subsequent data point. This assumes our observations are over uniform time intervals (i.e. daily, monthly, annual frequency, etc.).
+
+To create an ordered list of time step integers, we sort our dataset by date in ascending order, putting the earliest date first. Then we add a column of integers incrementing from one to the length of the dataset:
+
+```python
+df.sort_values(by="date", ascending=True, inplace=True)
+
+df["time_step"] = range(1, len(df) + 1)
+df
+```
 
 
 
-
-## One-hot Encoding
+## One-hot Encoding for Categorical Data
 
 
 If the data is truly categorical, where there is no ordinal relationship present, we will perform "one-hot" encoding.
