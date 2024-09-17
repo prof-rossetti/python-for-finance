@@ -1,1 +1,11 @@
 # Unsupervised Learning
+
+
+
+
+## Unsupervised Learning Tasks
+
+
+  + **Clustering**: Groups similar data points together (e.g. customer segmentation). Algorithms like K-means, hierarchical clustering, and DBSCAN are commonly used.
+
+  + **Dimensionality Reduction**: Reduces the number of features in a dataset while retaining important information, making the data easier to visualize or process. Principal Component Analysis (PCA) and T-SNE are common techniques.

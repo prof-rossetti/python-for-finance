@@ -1,1 +1,26 @@
 # Regression
+
+## Regression Objectives
+
+
+
+## Regression Models
+
+Regression Models:
+
+  + Linear Regression
+  + Ridge Regression
+  + Lasso Regression
+  + etc.
+
+
+## Regression Metrics
+
+
+Regression Metrics:
+
+  + R^2 Score
+  + Mean Squared Error
+  + Mean Absolute Error
+  + Root Mean Square Error
+  + etc.

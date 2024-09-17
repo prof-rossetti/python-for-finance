@@ -268,6 +268,9 @@ website:
               - section:
                 href: notes/predictive-modeling/ml-foundations/data-encoding.qmd
                 text: "Data Encoding"
+              - section:
+                href: notes/applied-stats/data-scaling.qmd
+                text: "Data Scaling"
 
           - "--------------"
           - section:

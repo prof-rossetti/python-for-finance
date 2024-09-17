@@ -1,0 +1,31 @@
+
+
+
+
+# Predictive Modeling Process
+
+Define the Problem:
+
+  + What is the target output variable (`y`) we want to predict? Do we have the ground truth labels or not?
+  + What are the input features (`x`) we can use to make the prediction?
+  + What kind of model(s) should we use to do the predicting?
+  + What scoring metrics should we use?
+
+Prepare the Data:
+
+  + Checking for Nulls
+  + Checking for Outliers
+  + Examining Relationships
+  + Data Scaling
+  + Data Encoding
+  + Data Splitting
+
+
+Train and Evaluate the Model(s):
+
+  + Choose an appropriate model.
+  + Train the model on the training dataset (x and y), so it knows the "right answers".
+  + Evaluate the model on the testing dataset, which contains data it hasn't yet "seen"
+
+Prediction and Forecasting:
+  + Use the model to make predictions on real

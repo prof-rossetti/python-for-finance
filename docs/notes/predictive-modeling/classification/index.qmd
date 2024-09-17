@@ -1,1 +1,26 @@
 # Classification
+
+## Classification Objectives
+
+
+
+## Classification Models
+
+Classification Models:
+
+  + Logistic Regression (yes, this is a classification, not a regression model)
+  + Decision Tree
+  + Random Forest
+  + etc.
+
+## Classification Metrics
+
+
+Classification Metrics:
+
+  + Accuracy
+  + Precision
+  + Recall
+  + F-1 Score
+  + ROC AUC
+  + etc.

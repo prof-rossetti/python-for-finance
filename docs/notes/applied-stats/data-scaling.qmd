@@ -50,7 +50,7 @@ Scaling the data will make it easier to plot all these different series on a gra
 
 ## Min-Max Scaling
 
-One scaling approach is by dividing each value over the maximum value in that column, essentially expressing each value as a percentage of the greatest value.
+One scaling approach called **min-max scaling** calls for dividing each value over the maximum value in that column, essentially expressing each value as a percentage of the greatest value.
 
 ```{python}
 scaled_df = df.copy()
@@ -70,7 +70,7 @@ When we use min-max scaling, resulting values will be expressed on a scale betwe
 
 ## Standard Scaling
 
-An alternative, more rigorous, scaling approach mean-centers the data and normalizes by the standard deviation:
+An alternative, more rigorous, scaling approach, called **standard scaling** or z-score normalization, mean-centers the data and normalizes by the standard deviation:
 
 ```{python}
 scaled_df = df.copy()
@@ -93,6 +93,6 @@ Now that we have scaled the data, we can more easily compare the movements of al
 
 ## Importance for Machine Learning
 
-Data scaling is important in machine learning because many algorithms are sensitive to the range of the input data. Algorithms including gradient descent-based methods (e.g. neural networks, logistic regression) and distance-based models (e.g. k-nearest neighbors, support vector machines) perform better when features are on a similar scale.
+Data scaling is relevant in machine learning when using multiple input features that have different scales. Many algorithms are sensitive to the range of the input data, and perform better when all features are on a similar scale. If features are not scaled, those features with larger ranges may disproportionately influence the model, leading to biased predictions or slower convergence during training.
 
-If features are not scaled, those with larger ranges may disproportionately influence the model, leading to biased predictions or slower convergence during training. By scaling data—whether through techniques like min-max scaling or z-score normalization, we ensure that each feature contributes equally, improving model performance, training efficiency, and the accuracy of predictions.
+By scaling data, using techniques like min-max scaling or standard scaling, we ensure that each feature contributes equally, improving model performance, training efficiency, and the accuracy of predictions.
