@@ -89,3 +89,10 @@ px.line(scaled_df, y=["cpi", "fed", "spy", "gld"],
 When we use standard scaling, resulting values will be expressed on a scale which is centered around zero.
 
 Now that we have scaled the data, we can more easily compare the movements of all the datasets. Which indicators have been moving up or down at a time when another indicator has been moving up or down. Are there any time periods where we might start to suspect correlation in a positive or negative way?
+
+
+## Importance for Machine Learning
+
+Data scaling is important in machine learning because many algorithms are sensitive to the range of the input data. Algorithms including gradient descent-based methods (e.g. neural networks, logistic regression) and distance-based models (e.g. k-nearest neighbors, support vector machines) perform better when features are on a similar scale.
+
+If features are not scaled, those with larger ranges may disproportionately influence the model, leading to biased predictions or slower convergence during training. By scaling data—whether through techniques like min-max scaling or z-score normalization, we ensure that each feature contributes equally, improving model performance, training efficiency, and the accuracy of predictions.
