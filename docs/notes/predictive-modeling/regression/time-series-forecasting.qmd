@@ -148,6 +148,7 @@ In this case, we interpret the line of best fit to observe how much the populati
 Remember in this dataset the population is expressed in thousands.
 :::
 
+
 ## Model Prediction and Evaluation
 
 We use the trained model to make predictions on the test set, and then calculate regression metrics to see how well the model is doing:

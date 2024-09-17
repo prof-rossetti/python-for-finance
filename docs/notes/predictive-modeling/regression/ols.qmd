@@ -129,6 +129,14 @@ print(results.summary())
 The training results contain an r-squared score, however this represents the error for the training data. To get the real results of how the model generalizes to the test data, we will calculate the r-squared score and other metrics on the test results later.
 :::
 
+:::{.callout-note title="Interpreting P-values"}
+In the OLS training results summary, the column labeled P>|t| represents the p-value for the corresponding t-statistic of each coefficient.
+
+The t-statistic is used to test whether a particular coefficient is significantly different from zero. The p-value (P>|t|) tells you the probability of observing a t-statistic at least as extreme as the one calculated, assuming the null hypothesis is true (where the null hypothesis typically posits that the coefficient is zero, meaning the feature has no significant effect on the dependent variable).
+
+  + A low p-value (typically less than 0.05) suggests that you can reject the null hypothesis, meaning the coefficient is statistically significant and likely has an impact on the dependent variable.
+  + A high p-value (greater than 0.05) indicates that the coefficient is not statistically significant, implying that the feature may not contribute meaningfully to the model.
+:::
 
 The part of the training results we care about are the the learned weights (i.e. coefficients), which we use to arrive at the line of best fit:
 
@@ -259,7 +267,7 @@ fig.add_scatter(x=chart_df["StudyHours"], y=chart_df['Prediction'],
 fig.add_scatter(x=chart_df["StudyHours"], y=chart_df['Prediction'],
                 mode='lines+markers',
                 name='Prediction (with CI)',
-                marker=dict(color='mediumturquoise', #size=10, symbol="x"
+                marker=dict(color='red', size=10, #symbol="x"
                 ),
                 error_y=dict(type='data', symmetric=False,
                              array=chart_df['CI Upper'],

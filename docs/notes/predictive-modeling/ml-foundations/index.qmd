@@ -2,3 +2,152 @@
 
 
 its about predicting something, x/y (target and features), supervised vs unsupervised (ground truth labels / test set or not), regression vs classification
+
+
+
+
+
+
+## Predictive Modeling Process
+
+Define the Problem:
+
+  + What kind of task is this (i.e. regression vs classification)?
+  + What is the target output variable (`y`) we want to predict?
+  + What are the input features (`x`) we can use to make the prediction?
+  + What kind of model(s) should we use to do the predicting?
+  + What scoring metrics should we use?
+
+Prepare the Data:
+
+  + Checking for Nulls
+  + Checking for Outliers
+  + Examining Relationships
+  + Data Scaling
+  + Data Encoding
+  + Data Splitting
+
+
+Train and Evaluate the Model(s):
+  + Train the model on the training dataset (x and y), so it knows the "right answers"
+  + Evaluate the model on the testing dataset, which contains data it hasn't yet "seen"
+
+Use Trained Model for Predictions and Forecasting
+
+
+
+
+
+
+
+
+
+
+
+
+## Types of Machine Learning Tasks
+
+**Supervised Learning**: when the data contains the "right answers" (a.k.a. "labels", or "target" prediction values). We share some of the right answers with the model, to help it learn what the desired output value is for a given set of inputs.
+
+Supervised Tasks: Regression, Classification, etc.
+
+**Unsupervised Learning**: when the data does not contain the "right answers" (i.e. lack of target prediction values). In these situations it is the model's responsibility to identify patterns in the given set of inputs.
+
+Unsupervised Tasks: Clustering, Dimensionality Reduction, etc.
+
+Reinforcement Learning:
+
+
+
+
+## Supervised Learning Tasks
+
+**Regression**: when the target variable we wish to predict is continuous - usually numeric.
+
+Examples:
+
+  + House Prices (in dollars)
+  + Life Expectancy (in years)
+  + Employee Salary (in dollars)
+  + Distance to the Nearest Galaxy (in light years)
+
+**Classification**: when the target variable we wish to predict is discrete - usually binary or categorical.
+
+Examples:
+
+  + Spam or Not (binary)
+  + Success or Failure (binary)
+  + Handwritten numeric digits (categorical)
+  + 1-5 star rating scale (categorical???? )
+
+## Unsupervised Learning Tasks
+
+**Dimensionality Reduction**: ___________________
+
+
+## Model Selection
+
+Regression Models:
+
+  + Linear Regression
+  + Ridge Regression
+  + Lasso Regression
+  + etc.
+
+Classification Models:
+
+  + Logistic Regression (yes, this is a classification, not a regression model)
+  + Decision Tree
+  + Random Forest
+  + etc.
+
+Dimensionality Reduction Models:
+
+  + Principal Component Analysis (PCA)
+  + T-SNE
+  + UMAP
+  + etc.
+
+## Metric Selection
+
+Regression Metrics:
+
+  + R^2 Score
+  + Mean Squared Error
+  + Mean Absolute Error
+  + Root Mean Square Error
+  + etc.
+
+Classification Metrics:
+
+  + Accuracy
+  + Precision
+  + Recall
+  + F-1 Score
+  + ROC AUC
+  + etc.
+
+
+## Data Preprocessing
+
+Checking for Nulls: When we explore the data, we should pay attention to whether or not there are missing or null values. We might need to either drop rows with null values, or "impute" (a.k.a. fill-in) the null values. For example, we might choose to fill in some missing values using the mean or median of all other values in that column.
+
+Checking for Outliers: We should also pay attention to whether or not there are any significant outliers, and consider dropping rows that contain these outliers, if it will help improve the performance of our model.
+
+
+Examining Existing Relationships: We might use statistical techniques to examine the relationships between individual variables. This might help us select or exclude certain features as appropriate. If one column has a high correlation with the target column, perhaps we should select it as a feature. However, if the target column was directly derived from other columns, those columns should not be used as features. Also, if multiple feature columns are highly correlated with each other (collinearity), we could consider dropping the redundant ones.
+
+
+Scaling Numeric Variables: Pay attention to the range of values for numeric variables. Some models may be more sensitive to the distance between the values, in which case we might choose to scale them into a new domain, for example between 0 and 1.
+
+Encoding Categorical Variables: If we have categorical features, we may need to convert the category values to numeric space. For example, we might use "one-hot encoding" to create a matrix of 0/1 binary values for each word in a sentence, to represent the contents of the sentence in a way the model can understand.
+
+Engineering New Features: Based on the problem definition and characteristics of the available features, it may sometimes be advantageous to create new features.
+
+## Splitting
+
+Generally we aim to split the original raw dataset into two different subsets: "train" and "test". We train the model on the training data ONLY. We use most of the data (~80% of rows) for training, and the remaining (~20%) for test.
+
+Sometimes models can be too well fit to the training data and don't generalize well enough on unseen data. This is why we reserve the test dataset for evaluating the model's performance on data it has not yet seen. A more advanced version of this technique, called "Cross Validation", essentially uses many different combinations of test datasets to prevent overfitting.
+
+We'll want to split our datasets using random sampling, to prevent training issues that may arise from similarities and relationships in the underlying data. Sometimes we will use a specific kind of sampling called stratification, which retains the same proportion of target class values. Stratification may be applicable for classification tasks.

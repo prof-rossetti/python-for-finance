@@ -1,31 +1,56 @@
 # Data Encoding
 
 
-When preparing features (`x` values) for training machine learning models, the models need the data to be in numeric format, in order to perform math with the values.
-
-So if we have categorical or textual data, we will need to use a **data encoding** strategy to represent the data in a different way.
+When preparing features (`x` values) for training machine learning models, it's essential to convert the data into a numeric format. This is because most machine learning algorithms perform mathematical operations on the data, which require numerical inputs.
 
 
-For categorical data, we'll use either an ordinal or one-hot encoding strategy, depending on whether there is a certain ordered relationship in the data or not. For time-series data, we can use time step encoding.
+So if we have categorical or textual data, we need to use a **data encoding** strategy to represent the data in a different way, transforming them into numbers.
+
+We'll choose an encoding strategy based on the nature of the data. For categorical data, we'll use either ordinal encoding if there's an inherent order among the categories, or one-hot encoding if no such order exists. For time-series data, we can apply time step encoding to represent the temporal sequence of observations.
 
 
 ## Ordinal Encoding for Categorical Data
 
-If the data has an order about it, where one category means more or less than others, then we will convert the categories into a linear range of numbered values.
+When the data has a natural order (i.e. where one category is "greater" or "less" than another), we use **ordinal encoding**. This involves converting the categories into a sequence of numbered values. For example, in a dataset containing ticket classes like first, second, and third, we can map these to integers (e.g. 1, 2, 3), maintaining the ordered relationship.
+
+
+![Example of ordinal encoding (passenger ticket classes).](../../../images/ordinal-encoding-passenger-class.png)
+
+
+With ordinal encoding, we start with a column of categories, and we wind up with a column of numbers.
 
 ## One-hot Encoding for Categorical Data
 
+When the categorical data has no inherent order, we use **one-hot encoding**. In one-hot encoding, each unique category is represented as a binary vector, where only one element is 1, and the rest are 0.
 
-If the data is truly categorical, where there is no ordinal relationship present, we will perform "one-hot" encoding.
+For example, if we have five color categories (blue, green, red, purple, yellow), one-hot encoding will transform a single column of colors into five columns of binary values (0 or 1), where 1 represents presence of a given color, and 0 represents absence of that color.
 
+![Example of one-hot encoding for categorical data (diamond colors).](../../../images/one-hot-encoding-diamond-color.png)
+
+With ordinal encoding, we start with a column of categories, and we wind up with as many columns as there were unique values in the original column. This can potentially lead to a large number of features if there are a large number of categories present.
+
+
+## One-hot Encoding for Textual Data
+
+In natural language processing, we can split a sentence into words or tokens, and then note the presence or absence of a word in that sentence, using a one-hot encoding or related approach. Within the contents of natural language processing, this is called a "bag of words" vectorization approach.
+
+
+In natural language processing (NLP), we can apply one-hot encoding to represent words or tokens in a sentence. This is typically referred to as the bag of words approach, where each unique word in a document is represented by a binary vector, denoting its presence or absence.
+
+
+![Example of one-hot encoding for textual data.](../../../images/bag-of-words.png)
+
+
+The bag of words approach is a simple count-based text embedding approach, however more advanced alternative approaches include Term Frequency-Inverse Document Frequency (TF-IDF), and word embeddings.
 
 ## Time Step Encoding for Time-series Data
 
-When dealing with time-series data, we need to convert the dates to numbers.
+When working with time-series data, it's important to encode dates in a way that preserves the temporal structure. A common approach is to use time step encoding, which involves assigning sequential integer values to each timestamp.
 
-We can take advantage of the linear nature of time, and model dates as integer time steps. For example, starting at one for the earliest data point, and incrementing by one with each subsequent data point. This assumes our observations are over uniform time intervals (i.e. daily, monthly, annual frequency, etc.).
+For example, if our data is recorded daily, we can assign the earliest date the value 1, the next day 2, and so on. This works well when observations are recorded at uniform time intervals, such as daily, monthly, or annual frequencies.
 
-To create an ordered list of time step integers, we sort our dataset by date in ascending order, putting the earliest date first. Then we add a column of integers incrementing from one to the length of the dataset:
+
+To create an ordered list of time step integers, we sort our dataset by date in ascending order, putting the earliest date first. Then we add a column of sequential integers:
 
 ```python
 df.sort_values(by="date", ascending=True, inplace=True)

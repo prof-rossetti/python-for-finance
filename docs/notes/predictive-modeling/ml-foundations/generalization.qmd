@@ -69,7 +69,7 @@ Additional resources about generalization:
   + <https://developers.google.com/machine-learning/crash-course/overfitting/overfitting>
 
 
-## Data Splitting Strategies
+## Data Splitting
 
 When building a machine learning model, it is important to evaluate its performance on data that the model has not seen during training. This ensures that the model is not overfitting and can generalize to new data.
 
@@ -112,7 +112,7 @@ The dataset is divided into several folds (commonly called **K-fold cross-valida
 Cross validation is especially valuable when fine-tuning model hyperparameters, as it prevents overfitting to a specific validation set or the test set by providing a more generalized evaluation before the final test set assessment.
 
 
-## Data Splitting Methods
+## How to Split
 
 This section provides some practical methods for splitting data in Python.
 
@@ -121,13 +121,17 @@ This section provides some practical methods for splitting data in Python.
 
 In most machine learning problems, we typically perform a shuffled split, where the order of the data is randomized before partitioning it into training and testing sets. This helps ensure that the distribution in the training set closely resembles that of the test set, which reduces potential biases.
 
+![Shuffled train/test split. Source: [Real Python](https://files.realpython.com/media/fig-1.c489adc748c8.png).](../../../images/shuffled-train-test-split.webp)
+
+
 One common way of implementing a shuffled two-way split is to leverage the [`train_test_split` function](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) from `sklearn`:
 
 
 ```python
 from sklearn.model_selection import train_test_split
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=99)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2,
+                                                          random_state=99)
 print("TRAIN:", x_train.shape, y_train.shape)
 print("TEST:", x_test.shape, y_test.shape)
 ```
