@@ -258,6 +258,10 @@ website:
         contents:
 
           - section:
+            href: notes/predictive-modeling/index.qmd
+            text: "Predictive Modeling"
+
+          - section:
             href: notes/predictive-modeling/ml-foundations/index.qmd
             text: "Machine Learning Foundations"
             contents:
