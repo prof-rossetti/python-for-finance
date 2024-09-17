@@ -14,7 +14,7 @@ In traditional software development, humans explicitly write the rules or instru
 
 This shift enables machine learning to handle far more complex and nuanced tasks than traditional programming, especially when patterns in the data are subtle or too complicated to capture with simple rules.
 
-## Machine Learning Concepts
+## Models and Training
 
 A machine learning **model** is a mathematical representation that captures patterns or relationships in the data.
 
@@ -25,9 +25,12 @@ The model is trained on input data known as **features**, which are the variable
 
 When available, the corresponding output or target variable, called the **label**, serves as the outcome the model is trying to predict.
 
+
 ![Features and labels. Source: [Google ML](https://developers.google.com/machine-learning/intro-to-ml/supervised).](../../../images/features-labels.png)
 
-For example, in a loan default prediction scenario, the features might include an applicant's credit score and income, while the label would indicate whether the applicant defaulted on the loan.
+
+
+
 
 
 ## Types of Machine Learning Approaches
@@ -38,13 +41,20 @@ Machine learning can be broadly divided into three categories: supervised learni
 
 In **supervised learning**, the model is trained on a dataset where both the features and the corresponding labels are known. The system learns to map input features to the correct output labels, allowing it to make predictions or classifications on new data.
 
-Example supervised learning tasks include **regression**, where the variable we are trying to predict is continuous; and **classification**, where the variable we are trying to predict is categorical or discrete.
+Example supervised learning tasks include:
+
+  + **Regression**, where the variable we are trying to predict is continuous (e.g. housing prices); and
+  + **Classification**, where the variable we are trying to predict is categorical or discrete (e.g. whether or not an applicant will default on a loan).
+
 
 ### Unsupervised Learning
 
 In contrast, **unsupervised learning** deals with data that lacks labeled outcomes. The model is tasked with finding patterns or groupings in the data without any explicit guidance. While supervised learning focuses on predicting specific outcomes, unsupervised learning seeks to uncover hidden structures or relationships within the data.
 
-Example unsupervised learning tasks include **clustering**, where the model tries to arrange similar datapoints into groups; and **dimensionality reduction**, where the model reduces the number of features in a dataset while retaining important information.
+Example unsupervised learning tasks include:
+
+  + **Clustering**, where the model tries to arrange similar datapoints into groups ; and
+  + **Dimensionality Reduction**, where the model reduces the number of features in a dataset while retaining important information.
 
 
 ### Reinforcement Learning
@@ -58,13 +68,13 @@ Machine learning problem formulation refers to the process of clearly defining t
 
   + Defining the Objective: Identifying the specific problem to solve, such as predicting future stock prices, classifying emails as spam or not, or detecting fraudulent transactions. This is the first step in understanding what the model should accomplish.
 
-  + Choosing the Type of Problem: Determining whether the problem is one of classification (e.g., categorizing emails), regression (e.g., predicting continuous values like housing prices), clustering (e.g., grouping similar customers), or a decision-making task (e.g., optimizing a trading strategy).
+  + Choosing the Type of Problem: Determining whether what type of approach to use (regression, classification, etc.), usually based on the nature of the target variable and the presence or absence of data labels.
 
   + Identifying Features and Labels: Specifying the input variables (features) that the model will use to make predictions and, in the case of supervised learning, the corresponding output or target variable (label) that the model should predict.
 
-  + Data Availability and Quality: Assessing what data is available, its format, and whether it’s sufficient for training a model. Good data is key to a successful formulation, as noisy or incomplete data can lead to poor model performance.
+  + Data Availability and Quality: Assessing what data is available, its format, and whether it’s sufficient for training a model. Good data is key, as noisy or incomplete data can lead to poor model performance.
 
-  + Evaluation Metrics: Establishing how the model’s success will be measured. This could involve metrics like accuracy, precision, recall for classification problems, or mean squared error for regression problems.
+  + Evaluation Metrics: Establishing how the model's success will be measured. This could involve metrics like accuracy, precision, recall for classification problems, or r-squared or mean squared error for regression problems.
 
 Proper problem formulation ensures that the right machine learning approach is chosen and that the model development process is aligned with the business or research objectives.
 
