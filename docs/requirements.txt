@@ -24,6 +24,7 @@ lxml # bs4 needs this to parse XML
 scipy
 
 
+openpyxl # for pandas.read_excel
 pandas_datareader
 yahooquery
 yfinance
