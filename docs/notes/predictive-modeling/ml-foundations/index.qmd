@@ -72,7 +72,7 @@ Machine learning problem formulation refers to the process of clearly defining t
 
   + Identifying Features and Labels: Specifying the input variables (features) that the model will use to make predictions and, in the case of supervised learning, the corresponding output or target variable (label) that the model should predict.
 
-  + Data Availability and Quality: Assessing what data is available, its format, and whether it’s sufficient for training a model. Good data is key, as noisy or incomplete data can lead to poor model performance.
+  + Data Availability and Quality: Assessing what data is available, its format, and whether it's sufficient for training a model. Good data is key, as noisy or incomplete data can lead to poor model performance.
 
   + Evaluation Metrics: Establishing how the model's success will be measured. This could involve metrics like accuracy, precision, recall for classification problems, or r-squared or mean squared error for regression problems.
 

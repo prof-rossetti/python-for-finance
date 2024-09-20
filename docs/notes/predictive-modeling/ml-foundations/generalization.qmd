@@ -106,7 +106,7 @@ With **cross validation**, instead of relying on a single training or validation
 ![K-fold cross validation (k=4). Source: [Google ML Concepts](https://developers.google.com/machine-learning/glossary#k-fold-cross-validation).](../../../images/k-fold-cross-validation.png)
 
 
-The dataset is divided into several folds (commonly called **K-fold cross-validation**), and the model is trained and validated on different subsets of the data in each iteration. This provides a more comprehensive understanding of the model’s performance across various data splits, making it less sensitive to any specific partitioning.
+The dataset is divided into several folds (commonly called **K-fold cross-validation**), and the model is trained and validated on different subsets of the data in each iteration. This provides a more comprehensive understanding of the model's performance across various data splits, making it less sensitive to any specific partitioning.
 
 
 Cross validation is especially valuable when fine-tuning model hyperparameters, as it prevents overfitting to a specific validation set or the test set by providing a more generalized evaluation before the final test set assessment.
@@ -163,16 +163,57 @@ Instead of shuffling, we can split based on time, using methods like time series
 To implement a sequential split, assuming your data is sorted by date in ascending order, pick a cutoff date, and use all samples before the cutoff in the training set, and samples after the cutoff date in the test set. This ensures the model can't rely on data from the future when making predictions for the test set.
 
 ```python
-print(len(df))
-
 training_size = round(len(df) * .8)
-print(training_size)
 
 x_train = x.iloc[:training_size] # all before cutoff
 y_train = y.iloc[:training_size] # all before cutoff
 
 x_test = x.iloc[training_size:] # all after cutoff
 y_test = y.iloc[training_size:] # all after cutoff
-print("TRAIN:", x_train.shape)
-print("TEST:", x_test.shape)
+
+print("TRAIN:", x_train.shape, y_train.shape)
+print("TEST:", x_test.shape, y_test.shape)
+```
+
+Helper function:
+
+```python
+def sequential_split(df, training_size=0.8, test_size=None):
+    """Splits x and y sequentially, for time-series data.
+      Assumes data is already sorted by date in ascending order.
+      Assumes x is same size as y.
+      Calculates a cutoff based on the desired training or test size.
+      Gives training set as all datapoints before the cutoff,
+        and test set as all datapoints after the cutoff.
+
+    Args:
+        x (DataFrame): X values to be split.
+
+        y (Series): Y values to be split.
+
+        training_size (float, optional): The proportion of the data to use for training.
+            Defaults to 0.8.
+
+        test_size (float, optional): The proportion of the data to use for testing.
+            If provided, it overrides `training_size`. Should be between 0 and 1.
+
+    """
+    if test_size:
+        training_size = 1 - test_size
+
+    assert len(x) == len(y)
+    cutoff = round(len(x) * training_size)
+
+    x_train = x.iloc[:cutoff] # all before cutoff
+    y_train = y.iloc[:cutoff] # all before cutoff
+
+    x_test = x.iloc[cutoff:] # all after cutoff
+    y_test = y.iloc[cutoff:] # all after cutoff
+
+    return x_train, x_test, y_train, y_test
+
+
+x_train, x_test, y_train, y_test = sequential_split(x, y, test_size=.2)
+print("TRAIN:", x_train.shape, y_train.shape)
+print("TEST:", x_test.shape, y_test.shape)
 ```

@@ -25,12 +25,15 @@ scipy
 
 
 pandas_datareader
+yahooquery
+yfinance
 
 
 # predictive modeling:
 scikit-learn
 joblib
 ucimlrepo
+
 
 
 

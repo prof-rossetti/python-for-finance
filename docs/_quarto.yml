@@ -293,15 +293,33 @@ website:
                     href: notes/predictive-modeling/regression/ols.qmd
                     text: "Linear Regression w/ statsmodels"
                   - section:
-                    href: notes/predictive-modeling/regression/time-series-forecasting.qmd
-                    text: "Time Series Forecasting"
+                    href: notes/predictive-modeling/regression/multiple-features.qmd
+                    text: "Regression with Multiple Features"
+
+              - section:
+                href: notes/predictive-modeling/time-series-forecasting/index.qmd
+                text: "Regression for Time-series Forecasting"
+                contents:
                   - section:
-                    href: notes/predictive-modeling/regression/seasonality.qmd
+                    href: notes/predictive-modeling/time-series-forecasting/polynomial.qmd
+                    text: "Polynomial Features"
+                  - section:
+                    href: notes/predictive-modeling/time-series-forecasting/seasonality.qmd
                     text: "Seasonality Analysis"
 
               - section:
-                href: notes/predictive-modeling/regression/autoregressive-models.qmd
-                text: "Autoregressive Models"
+                href: notes/predictive-modeling/autoregressive-models/index.qmd
+                text: "Autoregressive Models for Time-series Forecasting"
+                contents:
+                  - section:
+                    href: notes/predictive-modeling/autoregressive-models/stationarity.qmd
+                    text: "Stationarity"
+                  - section:
+                    href: notes/predictive-modeling/autoregressive-models/autocorrelation.qmd
+                    text: "Autocorrelation"
+                  - section:
+                    href: notes/predictive-modeling/autoregressive-models/arima.qmd
+                    text: "Autoregressive Models w/ statsmodels"
 
               - section:
                 href: notes/predictive-modeling/classification/index.qmd
@@ -356,6 +374,12 @@ website:
       - section:
         text: "Financial Data Sources"
         contents:
+          - section:
+            href: notes/financial-data-sources/yfinance.qmd
+            text: "Y-Finance"
+          - section:
+            href: notes/financial-data-sources/yahooquery.qmd
+            text: "Yahoo Query"
           - section:
             href: notes/financial-data-sources/pandas-datareader.qmd
             text: "Pandas Datareader"

@@ -1,0 +1,20 @@
+# Regression with Polynomial Features for Time Series Forecasting
+
+
+
+## Linear Regression
+
+
+
+
+Results and Interpretation:
+
+Train R-squared: 0.85
+
+This indicates that the linear regression model explains about 85% of the variance in the GDP data during the training period. It suggests that the model fits the training data reasonably well.
+
+A negative R-squared score on the test set means that the model performs poorly on future data, doing worse than a simple horizontal line (mean prediction). This is a clear indication that the linear regression model is not capturing the temporal patterns in the GDP data and fails to generalize beyond the training period.
+
+
+
+## Polynomial

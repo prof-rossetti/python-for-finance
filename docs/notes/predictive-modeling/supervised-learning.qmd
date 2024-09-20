@@ -4,7 +4,7 @@
 
 ## Supervised Learning Tasks
 
-**Regression**: Used when the target variable is continuous (e.g., predicting house prices or stock market returns).
+**Regression**: Used when the target variable is continuous (e.g. predicting house prices or stock market returns).
 
 **Regression**: when the target variable we wish to predict is continuous - usually numeric.
 
@@ -16,7 +16,7 @@ Examples:
   + Distance to the Nearest Galaxy (in light years)
 
 
-**Classification**: Used when the target variable is categorical (e.g., determining whether a transaction is fraudulent or not).
+**Classification**: Used when the target variable is categorical (e.g. determining whether a transaction is fraudulent or not).
 
 **Classification**: when the target variable we wish to predict is discrete - usually binary or categorical.
 

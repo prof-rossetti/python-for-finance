@@ -1,6 +1,5 @@
 # Regression for Time Series Forecasting (with `sklearn`)
 
-
 Let's explore an example of how to use regression to perform trend analysis with time series data.
 
 ```{python}
@@ -104,7 +103,7 @@ Splitting into training vs testing datasets:
 #print("TEST:", x_test.shape, y_test.shape)
 ```
 
-Splitting data sequentially where earlier data is used in training and recent data is use for testing:
+Splitting data sequentially where earlier data is used in training and recent data is used for testing:
 
 ```{python}
 print(len(df))

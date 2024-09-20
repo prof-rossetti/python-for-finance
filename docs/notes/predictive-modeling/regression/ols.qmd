@@ -220,8 +220,8 @@ When we use the `summary_frame` method on prediction results, it returns a `Data
 
 What's the difference between confidence and prediction intervals?
 
-- **Confidence Interval** (`mean_ci_lower` and `mean_ci_upper`): Represents the range in which the true mean prediction is likely to lie. For predicting the *average* value (e.g., "the average apple weight is between 140 and 160 grams").
-- **Prediction Interval** (`obs_ci_lower` and `obs_ci_upper`): Represents the range in which an individual new observation is likely to lie. For predicting the range where *individual* values could fall (e.g., "an individual apple might weigh between 120 and 180 grams").
+- **Confidence Interval** (`mean_ci_lower` and `mean_ci_upper`): Represents the range in which the true mean prediction is likely to lie. For predicting the *average* value (e.g. "the average apple weight is between 140 and 160 grams").
+- **Prediction Interval** (`obs_ci_lower` and `obs_ci_upper`): Represents the range in which an individual new observation is likely to lie. For predicting the range where *individual* values could fall (e.g. "an individual apple might weigh between 120 and 180 grams").
 
 
 

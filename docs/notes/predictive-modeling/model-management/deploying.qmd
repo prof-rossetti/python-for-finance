@@ -55,7 +55,7 @@ In these situations where saving it locally may consume significant disk space, 
    - Cloud storage requires a stable internet connection. If connectivity is slow or unreliable, accessing or saving the model could be problematic.
 
 4. **Security Risks**:
-   - While cloud providers offer strong security features, there is always a risk of data breaches or misconfigurations (e.g., incorrect access permissions), potentially exposing sensitive models.
+   - While cloud providers offer strong security features, there is always a risk of data breaches or misconfigurations (e.g. incorrect access permissions), potentially exposing sensitive models.
 
 ### When to Use Cloud Storage
 

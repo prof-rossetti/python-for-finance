@@ -1,0 +1,27 @@
+# Autocorrelation and Auto-Regressive Models
+
+Learning Objectives:
+
+  + Compute autocorrelation in Python using the statsmodels package
+  + Use autocorrelation to identify how many periods to use when training an ARMA model
+  + Train ARMA model in Python using the statsmodels package, to predict future values given past values.
+  + Understand the ARMA model assumption of stationary data.
+  + Remember that when making predictions using a trained ARMA model, the dates to predict have to match the format of the training dates. so if the model is trained on monthly data starting at the beginning of the month, we have to predict for dates at the beginning of future months. if the data is trained on quarterly data at the end of the quarter, we have to predict for dates at the end of future quarters.
+
+## Stationary Data
+
+what it means for data to be stationary - the mean does not move over time.
+
+
+for example:
+
+stock prices would probably not be stationary, however stock returns could be.
+
+gdp might not be stationary, however gdp growth could be.
+
+
+## Autocorrelation
+
+
+
+## Auto-Regressive Moving Average (ARMA)
