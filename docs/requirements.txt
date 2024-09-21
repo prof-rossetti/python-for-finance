@@ -31,7 +31,7 @@ yfinance
 
 
 # predictive modeling:
-scikit-learn
+scikit-learn==1.3.2 # match colab environment
 joblib
 ucimlrepo
 

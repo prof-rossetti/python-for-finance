@@ -1,20 +1,199 @@
 # Regression with Polynomial Features for Time Series Forecasting
 
 
+```{python}
+#| echo: false
+
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
+#from pandas import set_option
+#set_option('display.max_rows', 6)
+```
+
+## Data Loading
+
+As an example time series dataset that follows a quadratic trend, let's consider this dataset of U.S. GDP over time, from the Federal Reserve Economic Data (FRED).
+
+Fetching the data, going back as far as possible:
+
+```{python}
+from pandas_datareader import get_data_fred
+
+df = get_data_fred("GDP", start="1900-01-01")
+df.index.name = "date"
+df.rename(columns={"GDP": "gdp"}, inplace=True)
+df.head()
+```
+
+:::{.callout-note title="Data Source"}
+Here is some more information about the ["GDP" dataset](https://fred.stlouisfed.org/series/GDP):
+
+"Gross domestic product (GDP), the featured measure of U.S. output, is the market value of the goods and services produced by labor and property located in the United States.
+
+The data is expressed in "Billions of Dollars", and is a "Seasonally Adjusted Annual Rate".
+
+The dataset frequency is "Quarterly".
+:::
+
+## Data Exploration
+
+Plotting the data over time with a linear trendline to examine a possible linear relationship:
+
+```{python}
+import plotly.express as px
+
+px.scatter(df, y="gdp", title="US GDP (Quarterly) vs Linear Trend", height=450,
+           labels={"gdp": "GDP (in billions of USD)"},
+            trendline="ols", trendline_color_override="red"
+)
+```
+
+Linear trend might not be the best fit.
+
+Plotting the data over time with a Lowess trendline to examine a possible non-linear relationship:
+
+```{python}
+import plotly.express as px
+
+px.scatter(df, y="gdp", title="US GDP (Quarterly) vs Lowess Trend", height=450,
+           labels={"gdp": "GDP (in billions of USD)"},
+            trendline="lowess", trendline_color_override="red"
+)
+```
+
+In this case, a non-linear trend seems to fit better.
+
+Let's perform a linear regression and an exponential features regression more formally, and compare the results.
 
 ## Linear Regression
 
 
+Sorting time series data:
+
+```{python}
+from pandas import to_datetime
+
+df.sort_values(by="date", ascending=True, inplace=True)
+df["time_step"] = range(1, len(df)+1)
+df.head()
+```
+
+Identifying labels and features (x/y split):
+
+```{python}
+x = df[['time_step']]
+y = df['gdp']
+print(x.shape)
+print(y.shape)
+```
+
+Test/train split for time-series data:
+
+```{python}
+training_size = round(len(df) * .8)
+
+x_train = x.iloc[:training_size] # all before cutoff
+y_train = y.iloc[:training_size] # all before cutoff
+
+x_test = x.iloc[training_size:] # all after cutoff
+y_test = y.iloc[training_size:] # all after cutoff
+
+print("TRAIN:", x_train.shape, y_train.shape)
+print("TEST:", x_test.shape, y_test.shape)
+```
+
+### Model Training
+
+Training a linear regression model:
+
+```{python}
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+model.fit(x_train, y_train)
+```
+
+Examining the coefficients and line of best fit:
+
+```{python}
+print("COEF:", model.coef_)
+print("INTERCEPT:", model.intercept_)
+```
+
+Examining the training results:
+
+```{python}
+from sklearn.metrics import mean_squared_error, r2_score
+
+y_pred_train = model.predict(x_train)
+
+r2_train = r2_score(y_train, y_pred_train)
+print("R^2 (TRAINING):", r2_train)
+
+mse_train = mean_squared_error(y_train, y_pred_train)
+print("MSE (TRAINING):", mse_train)
+```
+
+A strong positive that the linear regression model explains about 85% of the variance in the GDP data during the training period. It suggests that the model fits the training data reasonably well.
+
+These results are promising, however what we really care about is how the model generalizes to the test set.
+
+### Prediction and Evaluation
 
 
-Results and Interpretation:
+Examining the test results:
 
-Train R-squared: 0.85
 
-This indicates that the linear regression model explains about 85% of the variance in the GDP data during the training period. It suggests that the model fits the training data reasonably well.
+```{python}
+y_pred = model.predict(x_test)
 
-A negative R-squared score on the test set means that the model performs poorly on future data, doing worse than a simple horizontal line (mean prediction). This is a clear indication that the linear regression model is not capturing the temporal patterns in the GDP data and fails to generalize beyond the training period.
+r2 = r2_score(y_test, y_pred)
+print("R^2 (TEST):", r2.round(3))
 
+mse = mean_squared_error(y_test, y_pred)
+print("MSE (TEST):", mse.round(3))
+```
+
+Storing the predictions back in the original data:
+
+```{python}
+df.loc[x_train.index, "y_pred_train"] = y_pred_train
+
+# Add predictions for the test set
+df.loc[x_test.index, "y_pred_test"] = y_pred
+```
+
+Charting the predictions:
+
+
+```{python}
+import plotly.express as px
+
+fig = px.line(df, y=['gdp', 'y_pred_train', 'y_pred_test'],
+              title='Linear Regression on GDP Ta andime Series Data',
+              labels={'value': 'GDP', 'date': 'Date'},
+)
+# update legend:
+fig.update_traces(line=dict(color='blue'), name="Actual GDP", selector=dict(name='gdp'))
+fig.update_traces(line=dict(color='green'), name="Predicted GDP (Train)", selector=dict(name='y_pred_train'))
+fig.update_traces(line=dict(color='red'), name="Predicted GDP (Test)", selector=dict(name='y_pred_test'))
+
+fig.show()
+```
+
+
+
+
+It seems although the model performs well on the training set, it performs poorly on future data it hasn't seen yet, and doesn't generalize beyond the training period.
 
 
 ## Polynomial
+
+After observing the linear regression model, which relied on the original features, struggled to capture the complexity of the GDP data on future or unseen data, we can alternatively try training a linear regression model on polynomial features instead.
+
+By transforming the original features into higher-order terms, **polynomial features** allow the model to capture non-linear relationships, offering greater flexibility and improving the model's ability to generalize to more complex patterns in the data."
+
+$$y = mx + b$$
+
+$$y = ax^2 + bx + c$$

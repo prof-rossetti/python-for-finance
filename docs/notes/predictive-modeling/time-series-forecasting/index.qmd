@@ -20,10 +20,9 @@ Fetching the data, going back as far as possible:
 
 ```{python}
 from pandas_datareader import get_data_fred
-from datetime import datetime
 
 DATASET_NAME = "POPTHM"
-df = get_data_fred(DATASET_NAME, start=datetime(1900,1,1))
+df = get_data_fred(DATASET_NAME, start="1900-01-01")
 print(len(df))
 df
 ```
@@ -31,7 +30,9 @@ df
 :::{.callout-tip title="Data Source"}
 Here is some more information about the ["POPTHM" dataset](https://fred.stlouisfed.org/series/POPTHM):
 
->"Population includes resident population plus armed forces overseas. The monthly estimate is the average of estimates for the first of the month and the first of the following month." The data is expressed in "Thousands", and is "Not Seasonally Adjusted".
+"Population includes resident population plus armed forces overseas. The monthly estimate is the average of estimates for the first of the month and the first of the following month."
+
+The data is expressed in "Thousands", and is "Not Seasonally Adjusted".
 :::
 
 
