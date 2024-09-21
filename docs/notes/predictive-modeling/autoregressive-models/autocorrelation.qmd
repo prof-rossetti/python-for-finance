@@ -50,7 +50,11 @@ When we obtain results from the autocorrelation function, we get one plus the nu
 
 ## Examples of Autocorrelation
 
-Let's conduct autocorrelation analysis on two example datasets, to illustrate the concepts and techniques. We will use a randomly generated dataset of numbers, which exhibits weak or non-existant autocorrelation. We will then use a dataset of baseball team performance, to see which teams
+Let's conduct autocorrelation analysis on two example datasets, to illustrate the concepts and techniques.
+
+:::{.callout-note title="Data Source"}
+These datasets and examples of autocorrelation are based on material by Prof. Ram Yamarthy.
+:::
 
 ### Example 1: Autocorrelation of Random Data
 
@@ -66,6 +70,7 @@ import numpy as np
 y_rand = np.random.normal(loc=0, scale=1, size=1000) # mean, std, n_samples
 print(type(y_rand))
 print(y_rand.shape)
+print(y_rand[0:25].round(3))
 ```
 
 #### Data Exploration
@@ -73,12 +78,14 @@ print(y_rand.shape)
 We plot the data to show although it is normally distributed, in terms of the sequence from one datapoint to another, it represents some random noise:
 
 ```{python}
-import plotly.express as px
-
-px.histogram(y_rand, height=350, title="Random Numbers (Normal Distribution)")
+#import plotly.express as px
+#
+#px.histogram(y_rand, height=350, title="Random Numbers (Normal Distribution)")
 ```
 
 ```{python}
+import plotly.express as px
+
 px.scatter(y_rand, height=350, title="Random Numbers (Normal Distribution)")
 ```
 
@@ -110,7 +117,17 @@ We see, for this randomly generated dataset, although the the current value is p
 
 ### Example 2: Autocorrelation of Baseball Team Performance
 
-Alright, so we have seen an example where there is weak autocorrelation. But let's examine another example where there is some moderately strong autocorrelation between current and past values. We will use a dataset of baseball team performance, where there may be some correlation between a team's current performance and its recent past performance.
+Alright, so we have seen an example where there is weak autocorrelation. But let's take a look at another example where there is some moderately strong autocorrelation between current and past values. We will use a dataset of baseball team performance, where there may be some correlation between a team's current performance and its recent past performance.
+
+```{python}
+#| echo: false
+
+#import warnings
+#warnings.simplefilter(action='ignore', category=FutureWarning)
+
+from pandas import set_option
+set_option('display.max_rows', 6)
+```
 
 #### Data Loading
 
@@ -129,18 +146,24 @@ teams = [
     {"abbrev": "TOR", "sheet_name": "tor_blujays" , "color": "#17becf"},
 ]
 for team in teams:
+
+    # read dataset from file:
     team_df = read_excel(file_url, sheet_name=team["sheet_name"])
     team_df.index = team_df["Year"]
 
     print("----------------")
-    print(team["abbrev"], len(team_df), team_df.index.min(), team_df.index.max())
+    print(team["abbrev"])
+    print(len(team_df), "years from", team_df.index.min(),
+                                "to", team_df.index.max())
     print(team_df.columns.tolist())
 
-    team["df"] = team_df # storing for later
+    # store in teams dictionary for later:
+    team["df"] = team_df
 
 ```
 
-We see there are a different number of rows for each of the teams, depending on what year they were established.
+For each team, we have with a dataset of their annual statistics. We see there are a different number of rows for each of the teams, depending on what year they were established.
+
 
 Merging the dataset will make it easier for us to chart this data, especially when we only care about analyzing annual performance (win-loss percentage):
 
@@ -149,58 +172,42 @@ from pandas import DataFrame
 
 df = DataFrame()
 for team in teams:
+    # store that team's win-loss pct in a new column:
     df[team["abbrev"]] = team["df"]["W-L%"]
+
 df
 ```
 
+Here we are creating a single dataset representing the annual performance (win-loss percentage) for each team.
+
 #### Data Exploration
 
-Performing exploratory analysis:
-
+We can continue exploring the data by plotting the performance of each team over time:
 
 ```{python}
+team_colors_map = {team['abbrev']: team['color'] for team in teams}
+
 px.line(df, y=["NYY", "BOS", "BAL", "TOR"], height=450,
     title="Baseball Team Annual Win Percentages",
-    labels={"value": "Win Percentage", "variable": "Team"}
+    labels={"value": "Win Percentage", "variable": "Team"},
+    color_discrete_map=team_colors_map
 )
 ```
-
-Whoah there's a lot going on here.
 
 :::{.callout-tip title="Interactive dataviz"}
 Click a team name in the legend to toggle that series on or off.
 :::
 
-We can use aggregations to get a better sense of which teams might do better on average.
-
-```{python}
-#df.describe().round(3)
-```
-
-```{python}
-means = df.mean(axis=0).round(3) # get the mean for each column
-means.name = "Average Performance"
-means.sort_values(ascending=True, inplace=True)
-
-team_colors_map = {team['abbrev']: team['color'] for team in teams}
-
-px.bar(y=means.index, x=means.values, orientation="h", height=350,
-       title=f"Average Win Percentage ({df.index.min()} to {df.index.max()})",
-        labels={"x": "Win Percentage", "y": "Team"},
-        color=means.index, color_discrete_map=team_colors_map
-    )
-```
-
-
-We can also calculate and visualize moving averages to get a smoother trend of each team's performance over time:
+Calculating moving averages helps us arrive at a smoother trend of each team's performance over time:
 
 ```{python}
 window = 20
 
 ma_df = DataFrame()
 for team_name in df.columns:
+    # calculate moving average:
     moving_avg = df[team_name].rolling(window=window).mean()
-    #ma_df[f"{team_name}_ma_{window}"] = moving_avg
+    # store results in new column:
     ma_df[team_name] = moving_avg
 
 ```
@@ -210,30 +217,55 @@ px.line(ma_df, y=ma_df.columns.tolist(), height=450,
         title=f"Baseball Team Win Percentages ({window} Year Moving Avg)",
         labels={"value": "Win Percentage", "variable": "Team"},
         color_discrete_map=team_colors_map
-
 )
 ```
 
+Aggregating the data gives us a measure of which teams do better on average:
+
+```{python}
+means = df.mean(axis=0).round(3) # get the mean value for each column
+means.name = "Average Performance"
+means.sort_values(ascending=True, inplace=True)
+
+px.bar(y=means.index, x=means.values, orientation="h", height=350,
+        title=f"Average Win Percentage ({df.index.min()} to {df.index.max()})",
+        labels={"x": "Win Percentage", "y": "Team"},
+        color=means.index, color_discrete_map=team_colors_map
+)
+```
+
+Here we see New York has the best performance, while Baltimore has the worst performance, on average.
+
+
+
 #### Calculating Autocorrelation
 
-OK, sure we can analyze which teams do better on average, and how well each team performs over time, but with autocorrelation we care about how consistent each team's results are with its past performance (or put another way, how consistent each team's future results will be with its current performance).
+OK, sure we can analyze which teams do better on average, and how well each team performs over time, but with autocorrelation analysis, we are interested in how consistent current results are with past results.
 
-Calculating autocorrelation of performance for each team (using the same number of lagging periods for each team):
+Calculating autocorrelation of each team's performance, using ten lagging periods for each team:
 
 ```{python}
 from statsmodels.tsa.stattools import acf
 
-n_lags=10
+n_lags = 10
 
 acf_df = DataFrame()
 for team_name in df.columns:
+    # calculate autocorrelation:
     acf_results = acf(df[team_name], nlags=n_lags, fft=True, missing="drop")
+    # store results in new column:
     acf_df[team_name] = acf_results
 
+acf_df.T.round(3)
 ```
 
+The autocorrelation results help us understand the consistency in performance of each team from year to year.
 
-Plotting the autocorrelation results on a graph helps us compare the results for each team:
+:::{.callout-tip title="FYI"}
+When computing autocorrelation using the `acf` function, the calculation considers all values in the dataset, not just the last 10 values. The 10 lagging periods mean that the autocorrelation is computed for each observation in the dataset, looking back 10 periods for each observation.
+:::
+
+Plotting the autocorrelation results helps us compare the results for each team:
 
 ```{python}
 px.line(acf_df, y=["NYY", "BOS", "BAL", "TOR"], markers="O", height=450,
@@ -242,12 +274,12 @@ px.line(acf_df, y=["NYY", "BOS", "BAL", "TOR"], markers="O", height=450,
                 "index": "Number of lags"
         },
         color_discrete_map=team_colors_map
-
 )
 ```
 
-The autocorrelation results help us understand the consistency in performance of each team from year to year.
 
-For each team, how correlated is its performance from one year to the next year? How about two years out? How about three years out?
+For each team, to what degree is that team's performance in a given year correlated with its performance from the year before?
 
-Which team is most consistent in their performance from year to year, over the entire 10-year period?
+How about two, or three, or four years before?
+
+Which team is the most consistent in their performance over a ten year period?
