@@ -16,19 +16,19 @@ This shift enables machine learning to handle far more complex and nuanced tasks
 
 ## Models and Training
 
-A machine learning **model** is a mathematical representation that captures patterns or relationships in the data.
 
-A model arrives at the patterns through a process called **training**, which in some cases involves a closed-form calculation, and in other cases involves an iterative optimization process.
+A machine learning **model** is a mathematical representation that captures patterns or relationships in the data. The model's internal variables, known as **parameters** (or "coefficients" or "weights") define the specific patterns or relationships the model has identified in the data.
 
+A machine learning model identifies these patterns through a process called **training**, where it adjusts its parameters to fit the data. For simpler models, this can involve a closed-form solution, where the optimal parameters are calculated directly. However, more complex models often rely on an iterative optimization process, where the model refines its parameters over multiple rounds to minimize error.  While closed-form solutions are faster, they are limited to simpler problems. Iterative methods, such as gradient descent, are more computationally intensive, but allow for modeling more complex, non-linear relationships.
 
 The model is trained on input data known as **features**, which are the variables or attributes the model uses to make predictions. These features could be anything from numerical values, like a company's annual revenue, to more abstract representations, such as text embeddings or image pixels.
 
-When available, the corresponding output or target variable, called the **label**, serves as the outcome the model is trying to predict.
+When available, the corresponding output variable, called the **label** (or "target"), serves as the outcome the model is trying to predict.
 
 
 ![Features and labels. Source: [Google ML](https://developers.google.com/machine-learning/intro-to-ml/supervised).](../../../images/features-labels.png)
 
-
+In this example, we see weather-related features such as temperature and humidity levels are being used to predict a target of rainfall.
 
 
 
@@ -53,28 +53,28 @@ In contrast, **unsupervised learning** deals with data that lacks labeled outcom
 
 Example unsupervised learning tasks include:
 
-  + **Clustering**, where the model tries to arrange similar datapoints into groups ; and
+  + **Clustering**, where the model tries to arrange similar datapoints into groups; and
   + **Dimensionality Reduction**, where the model reduces the number of features in a dataset while retaining important information.
 
 
 ### Reinforcement Learning
 
-**Reinforcement learning** is a different type of machine learning approach, where an agent learns to make decisions by interacting with an environment. The agent takes actions and receives feedback in the form of rewards or penalties, adjusting its strategy to maximize the cumulative reward over time.
+**Reinforcement learning** is a different type of machine learning approach, where an "agent" learns to make decisions by interacting with an environment. The agent takes actions and receives feedback in the form of rewards or penalties, adjusting its strategy to maximize the cumulative reward over time.
 
 
 ## Machine Learning Problem Formulation
 
 Machine learning problem formulation refers to the process of clearly defining the task that a machine learning model is meant to solve. This step is crucial in guiding the development of the model and ensuring that the right data, techniques, and metrics are applied to achieve the desired outcome. Problem formulation involves several key components:
 
-  + Defining the Objective: Identifying the specific problem to solve, such as predicting future stock prices, classifying emails as spam or not, or detecting fraudulent transactions. This is the first step in understanding what the model should accomplish.
+  + **Defining the Objective**: Identifying the specific problem to solve, such as predicting future stock prices, classifying emails as spam or not, or detecting fraudulent transactions. This is the first step in understanding what the model should accomplish.
 
-  + Choosing the Type of Problem: Determining whether what type of approach to use (regression, classification, etc.), usually based on the nature of the target variable and the presence or absence of data labels.
+  + **Choosing the Type of Problem**: Determining whether what type of approach to use (regression, classification, etc.), based on the nature of the target variable and the presence or absence of data labels.
 
-  + Identifying Features and Labels: Specifying the input variables (features) that the model will use to make predictions and, in the case of supervised learning, the corresponding output or target variable (label) that the model should predict.
+  + **Identifying Features and Labels**: Specifying the input variables (features) that the model will use to make predictions and, in the case of supervised learning, the corresponding output or target variable (label) that the model should predict.
 
-  + Data Availability and Quality: Assessing what data is available, its format, and whether it's sufficient for training a model. Good data is key, as noisy or incomplete data can lead to poor model performance.
+  + **Data Availability and Quality**: Assessing what data is available, its format, and whether it's sufficient for training a model. Good data is key, as noisy or incomplete data can lead to poor model performance.
 
-  + Evaluation Metrics: Establishing how the model's success will be measured. This could involve metrics like accuracy, precision, recall for classification problems, or r-squared or mean squared error for regression problems.
+  + **Evaluation Metrics**: Establishing how the model's success will be measured. This could involve metrics like accuracy, precision, recall for classification problems, or r-squared or mean squared error for regression problems.
 
 Proper problem formulation ensures that the right machine learning approach is chosen and that the model development process is aligned with the business or research objectives.
 
@@ -84,12 +84,12 @@ Proper problem formulation ensures that the right machine learning approach is c
 
 In practice, the process of predictive modeling can generally be broken down into several steps:
 
-  1. **Data Collection and Preparation**: Gather historical data and prepare it for analysis. This involves cleaning the data, handling missing values, and transforming features for better interpretability and accuracy.
+  1. **Data Collection and Preparation**: Gather historical data and prepare it for analysis. This involves cleaning the data, handling missing values, and transforming and engineering features for better interpretability and accuracy.
 
-  2. **Model Selection**: Choose the right algorithm for the problem, whether it's a regression model, a classification algorithm, or a time-series forecasting model.
+  2. **Model Selection**: Choose the right algorithm for the problem, whether it's a regression model, a classification model, a time-series forecasting model, etc.
 
   3. **Model Training**: Fit the model to the data by using training datasets to find patterns and relationships.
 
-  4. **Model Evaluation**: Validate the model to ensure that it generalizes well to new data. This typically involves splitting the data into training and testing sets or using cross-validation techniques.
+  4. **Model Evaluation**: Validate the model to ensure it generalizes well to new, unseen data. This typically involves leveraging testing sets or using cross-validation techniques.
 
-  5. **Prediction and Forecasting**: Once validated, the model can be used to predict outcomes on new or unseen data, providing valuable foresight for decision-making.
+  5. **Prediction and Forecasting**: Once validated, the model can be used to predict outcomes on new, unseen data, providing valuable insights for decision-making.
