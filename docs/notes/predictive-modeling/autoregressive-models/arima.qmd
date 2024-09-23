@@ -1,27 +1,185 @@
 # Autocorrelation and Auto-Regressive Models
 
-Learning Objectives:
+```{python}
+#| echo: false
 
-  + Compute autocorrelation in Python using the statsmodels package
-  + Use autocorrelation to identify how many periods to use when training an ARMA model
-  + Train ARMA model in Python using the statsmodels package, to predict future values given past values.
-  + Understand the ARMA model assumption of stationary data.
-  + Remember that when making predictions using a trained ARMA model, the dates to predict have to match the format of the training dates. so if the model is trained on monthly data starting at the beginning of the month, we have to predict for dates at the beginning of future months. if the data is trained on quarterly data at the end of the quarter, we have to predict for dates at the end of future quarters.
+#import warnings
+#warnings.simplefilter(action='ignore', category=FutureWarning)
 
-## Stationary Data
+from pandas import set_option
+set_option('display.max_rows', 6)
+```
 
-what it means for data to be stationary - the mean does not move over time.
+**Auto-Regressive Integrated Moving Average (ARIMA)** is a type of statistical model used for time-series forecasting. It is designed to model data that is sequentially ordered over time (e.g. stock prices, sales figures, economic indicators) by capturing the dynamics of both past values and the noise (or errors) in the time series.
+
+An ARIMA model has three key components:
+
+  + **AutoRegressive (AR)** part: This involves regressing the current value of the series against its past values (lags). The idea is that past observations have an influence on the current value.
+
+  + **Integrated (I)** part: This refers to the differencing of observations to make the time series stationary (i.e., to remove trends or seasonality). A stationary time series has constant mean and variance over time.
+
+  + **Moving Average (MA)** part: This involves modeling the relationship between the current value of the series and past forecast errors (residuals). The model adjusts the forecast based on the error terms from previous periods.
+
+## Assumption of Stationarity
+
+:::{.callout-warning title="Assumption of stationarity"}
+Remember, ARMA models require data to be [stationary](./stationarity.qmd). The mean and variance and autocorrelation should remain fairly constant over time.
+
+For instance, while stock *prices* are generally non-stationary, ARIMA models can still be used by transforming the data to achieve stationarity. This is done through differencing, which is the "Integrated" (I) component of ARIMA. Stock *returns* (or the percentage change from the previous period) are typically more stationary and suitable for modeling.
+:::
 
 
-for example:
+## Examples of ARMA Models
 
-stock prices would probably not be stationary, however stock returns could be.
+:::{.callout-note title="Data Source"}
+These examples of autoregressive models are based on material by Prof. Ram Yamarthy.
+:::
 
-gdp might not be stationary, however gdp growth could be.
 
+### Example 1 - Baseball Teams
+
+#### Data Loading
+
+Let's consider this previous dataset of baseball team performance, which we learned exemplified some positive [autocorrelation](./autocorrelation.qmd#example-2-autocorrelation-of-baseball-team-performance) after two lagging periods:
+
+
+```{python}
+#| code-fold: true
+
+from pandas import read_excel, DataFrame, to_datetime
+
+repo_url = f"https://github.com/prof-rossetti/python-for-finance"
+file_url = f"{repo_url}/raw/refs/heads/main/docs/data/baseball_data.xlsx"
+
+df = read_excel(file_url, sheet_name="ny_yankees")
+
+df.index = to_datetime(df["Year"], format="%Y")
+df.drop(columns=["Year"], inplace=True)
+df
+```
+
+
+## Data Exploration
+
+```{python}
+import plotly.express as px
+
+px.line(df, y="W-L%", height=450,
+    title="Baseball Team (NYY) Annual Win Percentages",
+    labels={"value": "Win Percentage", "variable": "Team"},
+)
+```
+
+Check for stationarity:
+
+```{python}
+```
 
 ## Autocorrelation
 
+Sorting data:
 
+```{python}
+df.sort_values(by="Year", ascending=True, inplace=True)
+y = df["W-L%"]
+print(y.shape)
+```
+
+Examining autocorrelation over ten lagging periods:
+
+```{python}
+from statsmodels.tsa.stattools import acf
+
+n_lags = 10
+acf_results = acf(y, nlags=n_lags, fft=True, missing="drop")
+print(acf_results)
+```
+
+```{python}
+import plotly.express as px
+
+#periods = range(0, n_lags + 1)
+#print(periods)
+
+fig = px.line(y=acf_results, markers=["o"], height=400,
+        title=f"Auto-correlation of Annual Baseball Performance (NYY)",
+        labels={"x": "Number of Lags", "y":"Auto-correlation"},
+)
+fig.show()
+```
+
+We see moderately high autocorrelation after two to four lagging periods.
+
+## Train/Test Split
+
+```{python}
+#test_size = 0.2
+#cutoff = round(len(y) * (1 - test_size))
+#y_train = y.iloc[:cutoff] # all before cutoff
+#y_test = y.iloc[cutoff:] # all after cutoff
+#
+#print("Y TRAIN:", y_train.shape)
+#print("Y TEST:", y_test.shape)
+```
 
 ## Auto-Regressive Moving Average (ARMA)
+
+To implement autoregressive moving average model in Python, we can use the [`ARIMA` class](https://www.statsmodels.org/dev/generated/statsmodels.tsa.arima.model.ARIMA.html) from `statsmodels`.
+
+```{python}
+from statsmodels.tsa.arima.model import ARIMA
+
+# using 2 lags based on earlier autocorrelation analysis
+n_periods = 2
+model = ARIMA(y, order=(n_periods, 0, 0))
+print(type(model))
+
+arma_results = model.fit()
+print(type(arma_results))
+
+print(arma_results.summary())
+```
+
+[Predictions](https://www.statsmodels.org/dev/generated/statsmodels.tsa.arima.model.ARIMAResults.predict.html):
+
+```{python}
+from pandas import date_range
+
+recent_periods = 20
+future_periods = 20
+recent = y.index[-recent_periods]
+dates = date_range(start=recent, periods=future_periods, freq="YS")
+
+start = dates[0]
+end = dates[-1]
+print(start, end)
+
+y_pred = arma_results.predict(start=start, end=end)
+print(y_pred)
+```
+
+
+```{python}
+
+```
+
+:::{.callout-note "Datetime index"}
+Note, when choosing start and end dates for prediction, they must match the nature of actual date values in the index values
+
+Otherwise we might see a "KeyError: 'The start argument could not be matched to a location related to the index of the data.'"
+:::
+
+
+```{python}
+df["Predicted"] = y_pred
+```
+
+```{python}
+
+px.line(df.iloc[-50:], y=["W-L%", "Predicted"], height=350,
+    title="Baseball Team (NYY) Performance vs ARMA Predictions",
+    labels={"value":""}
+)
+```
+
+### Example 2 - GDP Growth
