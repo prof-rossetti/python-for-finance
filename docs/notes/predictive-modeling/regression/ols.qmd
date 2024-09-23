@@ -1,32 +1,29 @@
 
 # Linear Regression with `statsmodels`
 
+Let's explore linear regression using a familiar example dataset of student grades. Our goal will be to train a model to predict a student's grade given the number of hours they have studied.
+
+In this implementation, we will use the `statsmodels` package to achieve this.
+
 ## Data Loading
 
 Loading the data:
 
 ```{python}
 #| code-overflow: scroll
+#| code-fold: true
 
 from pandas import read_csv
 
-request_url = "https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/grades.csv"
+repo_url = "https://raw.githubusercontent.com/prof-rossetti/python-for-finance"
+request_url = f"{repo_url}/main/docs/data/grades.csv"
+
 df = read_csv(request_url)
 df.head()
 ```
 
 ## Data Exploration
 
-Checking for null values:
-
-```{python}
-df["StudyHours"].isna().sum()
-```
-
-
-```{python}
-df.tail()
-```
 
 Dropping null values:
 
@@ -47,19 +44,6 @@ px.scatter(df, x="StudyHours", y="Grade", height=350,
 )
 ```
 
-Checking for normality and outliers:
-
-```{python}
-px.violin(df, x="StudyHours", box=True, points="all", height=350,
-    title="Distribution of Study Hours",
-)
-```
-
-```{python}
-px.violin(df, x="Grade", box=True, points="all", height=350,
-            title="Distribution of Grade"
-)
-```
 
 ## Data Splitting
 
@@ -125,25 +109,32 @@ It is possible to access the training results, including some summary statistics
 print(results.summary())
 ```
 
-:::{.callout-warning title="Training vs Testing Metrics"}
-The training results contain an r-squared score, however this represents the error for the training data. To get the real results of how the model generalizes to the test data, we will calculate the r-squared score and other metrics on the test results later.
-:::
-
 :::{.callout-note title="Interpreting P-values"}
-In the OLS training results summary, the column labeled P>|t| represents the p-value for the corresponding t-statistic of each coefficient.
 
-The t-statistic is used to test whether a particular coefficient is significantly different from zero. The p-value (P>|t|) tells you the probability of observing a t-statistic at least as extreme as the one calculated, assuming the null hypothesis is true (where the null hypothesis typically posits that the coefficient is zero, meaning the feature has no significant effect on the dependent variable).
+In a regression analysis, each coefficient (the number associated with a feature in the model) has a corresponding t-statistic that tests whether the coefficient is meaningfully different from zero.
+
+Interpreting the results:
+
+  + **T-statistic**: Measures how many standard deviations the coefficient is away from zero. A larger t-statistic suggests that the coefficient is far from zero and potentially significant.
+
+  + **P-value** (P>|t|): This tells you the probability that the observed t-statistic would occur if the coefficient were actually zero (the null hypothesis). If this probability is very small (typically < 0.05), it means it’s unlikely that the coefficient is zero, suggesting it is statistically significant.
+
+Interpreting p-values:
 
   + A low p-value (typically less than 0.05) suggests that you can reject the null hypothesis, meaning the coefficient is statistically significant and likely has an impact on the dependent variable.
   + A high p-value (greater than 0.05) indicates that the coefficient is not statistically significant, implying that the feature may not contribute meaningfully to the model.
 :::
+
+The training results contain an r-squared score, however this represents the error for the training data. To get the real results of how the model generalizes to the test data, we will calculate the r-squared score and other metrics on the test results later.
 
 The part of the training results we care about are the the learned weights (i.e. coefficients), which we use to arrive at the line of best fit:
 
 ```{python}
 print(results.params)
 print("-----------")
-print(f"y = {results.params['StudyHours'].round(3)}x + {results.params['const'].round(3)}")
+print(f"y =", f"{results.params['StudyHours'].round(3)}x ",
+            f"+ {results.params['const'].round(3)}"
+)
 ```
 
 The training results also contain the `fittedvalues` (predictions), as well as the `resid` (residuals or errors). We can compare each of the predicted values against the actual known values, to verify the residuals for illustration purposes:
@@ -160,8 +151,8 @@ training_preds = DataFrame({
     "Residuals": results.resid
 })
 # merge the training set with the results:
-training_set = training_set.merge(training_preds,
-    how="inner", left_index=True, right_index=True
+training_set = training_set.merge(training_preds, how="inner",
+                                  left_index=True, right_index=True
 )
 
 # calculate error for each datapoint:
@@ -209,17 +200,6 @@ When we use the `summary_frame` method on prediction results, it returns a `Data
 
   + `mean_se`: This stands for the standard error of the predicted mean. It measures the uncertainty associated with the predicted value due to sampling variability. A smaller mean_se indicates higher confidence in the predicted mean.
 
-  + `mean_ci_lower`: The lower bound of the confidence interval for the predicted mean. The confidence interval quantifies the uncertainty of the predicted mean.
-
-  + `mean_ci_upper`: The upper bound of the confidence interval for the predicted mean. Together with the lower bound, it forms the confidence interval for the predicted mean.
-
-  + `obs_ci_lower`: The lower bound of the prediction interval for the observed response. A prediction interval covers the uncertainty in an individual prediction, not just the mean.
-
-  + `obs_ci_upper`: The upper bound of the prediction interval for the observed response. It is wider than the confidence interval because it includes both the uncertainty in the mean prediction and the variability of the actual observations around the mean.
-
-
-What's the difference between confidence and prediction intervals?
-
 - **Confidence Interval** (`mean_ci_lower` and `mean_ci_upper`): Represents the range in which the true mean prediction is likely to lie. For predicting the *average* value (e.g. "the average apple weight is between 140 and 160 grams").
 - **Prediction Interval** (`obs_ci_lower` and `obs_ci_upper`): Represents the range in which an individual new observation is likely to lie. For predicting the range where *individual* values could fall (e.g. "an individual apple might weigh between 120 and 180 grams").
 
@@ -228,15 +208,18 @@ What's the difference between confidence and prediction intervals?
 Merging the actual values in, so we can compare predicted values vs actual values:
 
 ```{python}
-# get all rows from the original dataset that wound up in the test set:
+# reconstruct test set:
 test_set = df.loc[x_test.index].copy()
-# merge in the prediction results:
-test_set = test_set.merge(preds_df, how="inner", left_index=True, right_index=True)
+
+# merge in prediction results:
+test_set = test_set.merge(preds_df, how="inner",
+                         left_index=True, right_index=True
+)
 test_set.rename(columns={"mean":"Prediction", "mean_se": "Standard Error",
                         "mean_ci_upper": "CI Upper", "mean_ci_lower": "CI Lower",
                         "obs_ci_upper": "PI Upper", "obs_ci_lower": "PI Lower",
-
-}, inplace=True)
+                        }, inplace=True
+)
 test_set["My Error"] = test_set["Grade"] - test_set["Prediction"]
 test_set
 ```
@@ -267,7 +250,7 @@ fig.add_scatter(x=chart_df["StudyHours"], y=chart_df['Prediction'],
 fig.add_scatter(x=chart_df["StudyHours"], y=chart_df['Prediction'],
                 mode='lines+markers',
                 name='Prediction (with CI)',
-                marker=dict(color='red', size=10, #symbol="x"
+                marker=dict(color='red',# size=10, #symbol="x"
                 ),
                 error_y=dict(type='data', symmetric=False,
                              array=chart_df['CI Upper'],

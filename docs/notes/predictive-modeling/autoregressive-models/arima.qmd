@@ -14,9 +14,9 @@ set_option('display.max_rows', 6)
 
 An ARIMA model has three key components:
 
-  + **AutoRegressive (AR)** part: This involves regressing the current value of the series against its past values (lags). The idea is that past observations have an influence on the current value.
+  + **Auto-Regressive (AR)** part: This involves regressing the current value of the series against its past values (lags). The idea is that past observations have an influence on the current value.
 
-  + **Integrated (I)** part: This refers to the differencing of observations to make the time series stationary (i.e., to remove trends or seasonality). A stationary time series has constant mean and variance over time.
+  + **Integrated (I)** part: This refers to the differencing of observations to make the time series stationary (i.e. to remove trends or seasonality). A stationary time series has constant mean and variance over time.
 
   + **Moving Average (MA)** part: This involves modeling the relationship between the current value of the series and past forecast errors (residuals). The model adjusts the forecast based on the error terms from previous periods.
 
@@ -146,13 +146,14 @@ print(arma_results.summary())
 from pandas import date_range
 
 recent_periods = 20
-future_periods = 20
+future_periods = 10
+n_periods = recent_periods + future_periods
 recent = y.index[-recent_periods]
-dates = date_range(start=recent, periods=future_periods, freq="YS")
+dates = date_range(start=recent, periods=n_periods, freq="YS")
 
 start = dates[0]
 end = dates[-1]
-print(start, end)
+#print(start, end)
 
 y_pred = arma_results.predict(start=start, end=end)
 print(y_pred)
@@ -163,7 +164,7 @@ print(y_pred)
 
 ```
 
-:::{.callout-note "Datetime index"}
+:::{.callout-note title="Datetime index"}
 Note, when choosing start and end dates for prediction, they must match the nature of actual date values in the index values
 
 Otherwise we might see a "KeyError: 'The start argument could not be matched to a location related to the index of the data.'"

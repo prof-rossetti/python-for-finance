@@ -1,5 +1,7 @@
 # Linear Regression with `sklearn`
 
+Let's explore linear regression using an example dataset of student grades. Our goal will be to train a model to predict a student's grade given the number of hours they have studied.
+
 ## Data Loading
 
 Loading the data:
@@ -9,8 +11,11 @@ Loading the data:
 
 from pandas import read_csv
 
-request_url = "https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/grades.csv"
+repo_url = "https://raw.githubusercontent.com/prof-rossetti/python-for-finance"
+request_url = f"{repo_url}/main/docs/data/grades.csv"
+
 df = read_csv(request_url)
+print(len(df))
 df.head()
 ```
 
@@ -25,6 +30,10 @@ df["StudyHours"].isna().sum()
 ```{python}
 df.tail()
 ```
+
+For "Ali", we don't have a grade or number of study hours, so we should drop that row.
+
+For "Juan", since there is no label, we can't use this record to train the model, but we could use the trained model to predict their grade later (given 8 study hours).
 
 Dropping nulls:
 
@@ -102,11 +111,11 @@ model = LinearRegression()
 model.fit(x_train, y_train)
 ```
 
-After the model is trained, we have access to the ideal weights (i.e. "coefficients"). There is one coefficient for each feature (in this case only one).
+After the model is trained, we have access to the ideal weights (i.e. "coefficients"). There is one coefficient for each feature (in this case only one: number of hours studied).
 
 ```{python}
-print("COEFS:", model.coef_) # one for each feature
-print("Y INTERCEPT:", model.intercept_)
+print("COEFS:", model.coef_.round(3)) # one for each feature
+print("Y INTERCEPT:", model.intercept_.round(3))
 ```
 
 :::{.callout-note title="Note"}
@@ -170,7 +179,7 @@ px.scatter(test_set, x="StudyHours", y=["Grade", "PredictedGrade"],
 To get a measure for how well the model did across the entire test dataset, we can use any number of desired regression metrics (r-squared score, mean squared error, mean absolute error, root mean sqared error), to see how well the model does.
 
 
-It is possible for us to roll our own metrics:
+It is possible for us to compute our own metrics:
 
 ```{python}
 my_mae = test_set["Error"].abs().mean()
@@ -182,7 +191,7 @@ my_mse = (test_set["Error"] ** 2).mean()
 print("MY MSE:", my_mse.round(1))
 ```
 
-However more commonly we will use metric functions from `sklearn.metrics` submodule:
+However more commonly we will use metric functions from the [`sklearn.metrics` submodule](https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics):
 
 
 ```{python}
@@ -215,4 +224,4 @@ x_new = DataFrame({"StudyHours": [0, 4, 8, 12, 16, 20]})
 model.predict(x_new)
 ```
 
-Alright, we have trained a model and used it to make predictions!
+Alright, we have trained a model and used it to make predictions.
