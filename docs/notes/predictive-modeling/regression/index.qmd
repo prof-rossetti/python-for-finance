@@ -2,7 +2,9 @@
 
 ## Regression Objectives
 
+A regression problem is a supervised learning task, where we have the labels.
 
+In a **regression**, the variable we are trying to predict is continuous (e.g. housing prices).
 
 ## Regression Models
 
@@ -13,9 +15,7 @@ Regression Models:
   + Lasso Regression
   + etc.
 
-
 ## Regression Metrics
-
 
 Regression Metrics:
 
@@ -24,3 +24,5 @@ Regression Metrics:
   + Mean Absolute Error
   + Root Mean Square Error
   + etc.
+
+![Illustration of Mean Squared Error (MSE).](../../../images/mse-eq.png)

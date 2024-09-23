@@ -47,6 +47,7 @@ Example supervised learning tasks include:
   + **Classification**, where the variable we are trying to predict is categorical or discrete (e.g. whether or not an applicant will default on a loan).
 
 
+
 ### Unsupervised Learning
 
 In contrast, **unsupervised learning** deals with data that lacks labeled outcomes. The model is tasked with finding patterns or groupings in the data without any explicit guidance. While supervised learning focuses on predicting specific outcomes, unsupervised learning seeks to uncover hidden structures or relationships within the data.
@@ -75,6 +76,8 @@ Machine learning problem formulation refers to the process of clearly defining t
   + **Data Availability and Quality**: Assessing what data is available, its format, and whether it's sufficient for training a model. Good data is key, as noisy or incomplete data can lead to poor model performance.
 
   + **Evaluation Metrics**: Establishing how the model's success will be measured. This could involve metrics like accuracy, precision, recall for classification problems, or r-squared or mean squared error for regression problems.
+
+![Illustration of Mean Squared Error (MSE), a regression metric.](../../../images/mse-eq.png)
 
 Proper problem formulation ensures that the right machine learning approach is chosen and that the model development process is aligned with the business or research objectives.
 

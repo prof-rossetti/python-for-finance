@@ -3,6 +3,9 @@
 ## Classification Objectives
 
 
+A classification problem is a supervised learning task, where we have the labels.
+
+In **classification**, the variable we are trying to predict is categorical or discrete (e.g. whether or not an applicant will default on a loan).
 
 ## Classification Models
 
@@ -14,7 +17,6 @@ Classification Models:
   + etc.
 
 ## Classification Metrics
-
 
 Classification Metrics:
 
