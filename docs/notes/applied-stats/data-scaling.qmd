@@ -11,7 +11,7 @@ execute:
 
 # Data Scaling
 
-**Data scaling** is a process that adjusts a data set to improve its informational content and conform to specific requirements. It's also known as feature scaling or data normalization.
+**Data scaling** is a data processing technique used to adjust the range of features (input variables) in a dataset to a common scale, without distorting differences in the relative ranges of values.
 
 To illustrate the motivations behind data scaling, let's revisit our familiar dataset of economic indicators:
 
@@ -48,7 +48,9 @@ Let's fix this by scaling the data.
 
 Scaling the data will make it easier to plot all these different series on a graph, so we can start to get a sense of how their movements might correlate (in an unofficial way).
 
-## Min-Max Scaling
+## Data Scaling Techniques
+
+### Min-Max Scaling
 
 One scaling approach called **min-max scaling** calls for dividing each value over the maximum value in that column, essentially expressing each value as a percentage of the greatest value.
 
@@ -68,7 +70,7 @@ px.line(scaled_df, y=["cpi", "fed", "spy", "gld"],
 
 When we use min-max scaling, resulting values will be expressed on a scale between zero and one.
 
-## Standard Scaling
+### Standard Scaling
 
 An alternative, more rigorous, scaling approach, called **standard scaling** or z-score normalization, mean-centers the data and normalizes by the standard deviation:
 
@@ -93,6 +95,11 @@ Now that we have scaled the data, we can more easily compare the movements of al
 
 ## Importance for Machine Learning
 
-Data scaling is relevant in machine learning when using multiple input features that have different scales. Many algorithms are sensitive to the range of the input data, and perform better when all features are on a similar scale. If features are not scaled, those features with larger ranges may disproportionately influence the model, leading to biased predictions or slower convergence during training.
+
+Data scaling is relevant in machine learning when using multiple input features that have different scales. In these situations, scaling ensures different features contribute proportionally to the model during training. If features are not scaled, those features with larger ranges may disproportionately influence the model, leading to biased predictions or slower convergence during training.
+
+Some models, such as ordinary least squares linear regression, are less sensitive to the range of input data, and with these models, scaling the data may not make a noticeable difference in performance.
+
+However other algorithms, especially those which utilize distance-based calculations (e.g. Support Vector Machines, or K-Nearest Neighbors) or regularization methods (e.g. Ridge or Lasso regression), are particularly sensitive to the range of the input data and perform better when all features are on a similar scale.
 
 By scaling data, using techniques like min-max scaling or standard scaling, we ensure that each feature contributes equally, improving model performance, training efficiency, and the accuracy of predictions.
