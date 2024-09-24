@@ -73,7 +73,12 @@ px.scatter(df, y="gdp", title="US GDP (Quarterly) vs Lowess Trend", height=450,
 
 In this case, a non-linear trend seems to fit better.
 
-Let's perform a linear regression and an exponential features regression more formally, and compare the results.
+
+
+To compare the results of a linear vs non-linear trend, let’s train two different regression models, and compare the results.
+
+
+
 
 ## Linear Regression
 
@@ -131,9 +136,6 @@ Examining the coefficients and line of best fit:
 print("COEF:", model.coef_.tolist())
 print("INTERCEPT:", model.intercept_)
 print("--------------")
-print(f"EQUATION FOR LINE OF BEST FIT:")
-print(f"y = ({round(model.coef_[0], 3)} billion * years) + {round(model.intercept_, 3)}")
-
 print(f"EQUATION FOR LINE OF BEST FIT:")
 print("y =", f"{model.coef_[0].round(3)}(x)",
         "+", model.intercept_.round(3),

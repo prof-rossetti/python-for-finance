@@ -89,7 +89,7 @@ When using `sklearn`, we must construct the features as a two-dimensional array 
 
 ### Train Test Split
 
-Splitting the data randomly into test and training sets. We will train the model on the training set, and evaluate the model using the training set. This helps for generalizability, and to prevent overfitting.
+Splitting the data randomly into test and training sets. We will train the model on the training set, and evaluate the model using the test set. This helps for generalizability, and to prevent overfitting.
 
 ```{python}
 from sklearn.model_selection import train_test_split

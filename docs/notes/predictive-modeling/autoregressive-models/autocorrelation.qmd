@@ -15,7 +15,7 @@ Similar to correlation, autocorrelation will range in values from -1 to 1. A pos
 
   + **Strong Negative Autocorrelation**: A strong negative autocorrelation (close to -1) suggests an oscillatory pattern, where high values tend to be followed by low values and vice versa.
 
-  + **Weak Autocorrelation**: If the ACF value is close to zero for a particular lag, it suggests that the time series does not exhibit a strong linear relationship with its past values at that lag. This can indicate that the observations at that lag are not predictive of future values.
+  + **Weak Autocorrelation**: If the ACF value is close to zero for a particular lag, it suggests that the time series does not exhibit a strong relationship with its past values at that lag. This can indicate that the observations at that lag are not predictive of future values.
 
 
 In addition to interpreting the autocorrelation values themselves, we can examine the autocorrelation plot to identify patterns:
@@ -278,8 +278,8 @@ px.line(acf_df, y=["NYY", "BOS", "BAL", "TOR"], markers="O", height=450,
 ```
 
 
-For each team, to what degree is that team's performance in a given year correlated with its performance from the year before?
+We see at lagging period zero, each team's current performance is perfectly correlated with itself. But at lagging period one, the autocorrelation for each team starts to drop off to around 60%. This means for each team, their performance in a given year will be around 60% correlated with the previous year.
 
-How about two, or three, or four years before?
+The autocorrelation for each team continues to drop off at different rates over additional lagging periods. Examining the final autocorrelation value helps us understand, given a team's current performance, how consistent it was over the previous ten years.
 
 Which team is the most consistent in their performance over a ten year period?

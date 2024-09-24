@@ -1,5 +1,7 @@
 # Regression for Seasonality Analysis
 
+We've explored using a regression for time series forecasting, but what if there are seasonal or cyclical patterns in the data?
+
 Let's explore an example of how to use regression to identify cyclical patterns and perform seasonality analysis with time series data.
 
 
@@ -17,7 +19,7 @@ set_option('display.max_rows', 6)
 ## Data Loading
 
 
-As an example time series dataset, let's consider this dataset of U.S. unemployment rates over time, from the Federal Reserve Economic Data (FRED).
+For a time series dataset that exemplifies cyclical patterns, let's consider this dataset of U.S. employment over time, from the Federal Reserve Economic Data (FRED).
 
 Fetching the data, going back as far as possible:
 
@@ -200,7 +202,6 @@ Training a linear regression model on the training data:
 ```{python}
 import statsmodels.api as sm
 
-#model = sm.OLS(y_train, x_train, missing="drop")
 model = sm.OLS(y, x, missing="drop")
 print(type(model))
 
@@ -287,6 +288,8 @@ df["quarter"] = df.index.quarter
 df["month"] = df.index.month
 ```
 
+Here we are grouping the data by quarter and calculating the average residual. This shows us for each quarter, on average, whether predictions are above or below trend:
+
 ```{python}
 df.groupby("quarter")["residual"].mean()
 ```
@@ -307,6 +310,7 @@ set_option('display.max_rows', 6)
 
 #### Seasonality via Regression on Periodic Residuals
 
+Let's perform a regression using months as the features and the trend residuals as the target. This can help us understand the degree to which employment will be over or under trend for a given month.
 
 ```{python}
 # https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html
@@ -322,7 +326,6 @@ x_monthly
 ```
 
 
-Can we predict the residual (i.e. degree to which employment will be over or under trend), based on which month it is?
 
 ```{python}
 y_monthly = df["residual"]
@@ -338,7 +341,7 @@ print(results_monthly.summary())
 
 The coefficients tell us how each month contributes towards the regression residuals, in other words, for each month, to what degree does the model predict we will be above or below trend?
 
-***Monthly Predictions of Residuals**
+**Monthly Predictions of Residuals**
 
 ```{python}
 df["prediction_monthly"] = results_monthly.fittedvalues
