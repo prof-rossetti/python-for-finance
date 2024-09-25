@@ -1,1 +1,25 @@
 # Regression with Multiple Features
+
+So far we have covered an example of regression using a single feature variable to predict the target variable.
+
+However in practice, it is common to use multiple features, each of which may contribute to improving the model's performance.
+
+## Considerations
+
+When working with multiple features, there is a trade-off between **model performance** and **model complexity**. A model with billions of features, and consequently billions of parameters, can be slower to train and may lead to increased storage and computational costs when deployed. In many cases, a simpler model with fewer features that performs nearly as well as a more complex model can be preferable, especially if it offers faster training, lower deployment costs, and improved interpretability. This trade-off between model complexity and performance should be evaluated based on the specific requirements of the use case, such as the need for speed, scalability, or accuracy.
+
+As previously discussed, one consideration when using multiple features is the potential need to perform [data scaling](../../applied-stats/data-scaling.qmd), to standardize the scale of all the features, and ensure features with large values aren't dominating the model. Although, for linear regression specifically, data scaling is not as important.
+
+Another important factor to keep in mind when using multiple features is the concept of **collinearity**, which occurs when two or more predictor variables are highly correlated with each other. This can lead to redundancy, where the correlated predictors provide overlapping information about the target variable. Collinearity can cause problems in regression models, such as unstable coefficients, difficulty in interpreting results, and increased sensitivity to small changes in the data. So we should examine the relationships between features before choosing which features to include in the final model.
+
+
+
+
+
+
+
+## Data Loading
+
+## Data Exploration
+
+## Model Training

@@ -1,0 +1,20 @@
+# Regression with Categorical Features
+
+So far we have covered an example of regression using numeric features.
+
+However in practice, it is common for some features to be categorical. In these cases, [data encoding](../ml-foundations/data-encoding.qmd) strategies are required to convert the categories into numeric inputs the model can use.
+
+
+## Data Loading
+
+As an example dataset with categorical features suitable for a regression, let's consider this dataset of automobile fuel efficiency, where we will try to predict an automobile's fuel efficiency, based on other features such as the vehicle's weight, ___, and ____.
+
+
+
+
+## Data Encoding
+
+
+## Data Scaling
+
+## Model Training

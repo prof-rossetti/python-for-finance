@@ -1,11 +1,21 @@
 # Classification
 
+**Classification** is a supervised learning task where the variable we are trying to predict is discrete, whether that is binary or categorical.
+
+Some examples of discrete data include:
+
+  + Whether an email is spam or not (binary)
+  + Whether an outcome is successful or not (binary)
+  + Which of nine numeric digits is represented by some handwriting (categorical)
+  + Which of three families a given penguin is likely to be a member of (categorical)
+
+In this chapter, we will explore different classification models, and introduce key performance metrics used to evaluate the effectiveness of classification models.
+
+
+
 ## Classification Objectives
 
 
-A classification problem is a supervised learning task, where we have the labels.
-
-In **classification**, the variable we are trying to predict is categorical or discrete (e.g. whether or not an applicant will default on a loan).
 
 ## Classification Models
 
