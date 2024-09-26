@@ -213,7 +213,7 @@ However, for convenience, we will generally prefer to use corresponding regressi
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
 r2 = r2_score(y_true, y_pred)
-print("R2:", r2, 3)
+print("R2:", r2)
 
 mae = mean_absolute_error(y_true, y_pred)
 print("MAE:", mae)
