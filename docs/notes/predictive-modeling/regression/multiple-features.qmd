@@ -16,7 +16,7 @@ However in practice, it is common to use multiple features, each of which may co
 
 ## Considerations
 
-When working with multiple features, there is a trade-off between **model performance** and **model complexity**. A model with billions of features, and consequently billions of parameters, can be slower to train and may lead to increased storage and computational costs when deployed. In many cases, a simpler model with fewer features that performs nearly as well as a more complex model can be preferable, especially if it offers faster training, lower deployment costs, and improved interpretability. This trade-off between model complexity and performance should be evaluated based on the specific requirements of the use case, such as the need for speed, scalability, or accuracy.
+When working with multiple features, there is a trade-off between **model performance** and **model complexity**. A model with billions of features, and consequently billions of parameters, can be slower to train and may lead to increased storage and computational costs when deployed. In many cases, a simpler model with fewer features that performs nearly as well can be preferable, especially if it offers faster training, lower deployment costs, and improved interpretability. This trade-off between model complexity and performance should be evaluated based on the specific requirements of the use case, such as the need for speed, scalability, or accuracy.
 
 As previously discussed, one consideration when using multiple features is the potential need to perform [data scaling](../../applied-stats/data-scaling.qmd), to standardize the scale of all the features, and ensure features with large values aren't dominating the model. Although, for linear regression specifically, data scaling is not as important.
 
@@ -49,7 +49,7 @@ print(dataset.DESCR)
 - [source](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)
 :::
 
-After reading the dataset description, we see features like `latitude`, `longitude`, `population`, and `income` are describe the census block. Whereas `age`, `rooms`, `bedrooms`, `occupants`, and `value` describe the homes in that census block.
+After reading the dataset description, we see features like `latitude`, `longitude`, `population`, and `income` describe the census block. Whereas `age`, `rooms`, `bedrooms`, `occupants`, and `value` describe the homes in that census block.
 
 Our goal is to use the features to predict a target of home value.
 
