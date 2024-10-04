@@ -1,4 +1,4 @@
-# Autocorrelation and Auto-Regressive Models
+# Auto-Regressive Models
 
 ```{python}
 #| echo: false
@@ -15,8 +15,6 @@ set_option('display.max_rows', 6)
 
 **Auto-Regressive Integrated Moving Average (ARIMA)** is a "method for forecasting or predicting future outcomes based on a historical time series. It is based on the statistical concept of serial correlation, where past data points influence future data points." - [Source: Investopedia](https://www.investopedia.com/terms/a/autoregressive-integrated-moving-average-arima.asp)
 
-In practice, ARIMA models may be better at short term forecasting, and may not perform as well in forecasting over the long term.
-
 An ARIMA model has three key components:
 
   + **Auto-Regressive (AR)** part: involves regressing the current value of the series against its past values (lags). The idea is that past observations have an influence on the current value.
@@ -25,6 +23,8 @@ An ARIMA model has three key components:
 
   + **Moving Average (MA)** part: involves modeling the relationship between the current value of the series and past forecast errors (residuals). The model adjusts the forecast based on the error terms from previous periods.
 
+
+In practice, ARIMA models may be better at short term forecasting, and may not perform as well in forecasting over the long term.
 
 ## Assumption of Stationarity
 
@@ -35,7 +35,7 @@ For instance, while stock *prices* are generally non-stationary, ARIMA models ca
 :::
 
 
-## Examples of ARMA Models
+## Examples
 
 :::{.callout-note title="Data Source"}
 These examples of autoregressive models are based on material by Prof. Ram Yamarthy.
@@ -65,7 +65,7 @@ df
 ```
 
 
-## Data Exploration
+#### Data Exploration
 
 Sorting data:
 
@@ -100,7 +100,7 @@ px.line(x=y.index, y=y, height=450,
 
 
 
-### Stationarity
+##### Stationarity
 
 Check for stationarity:
 
@@ -115,7 +115,7 @@ print(f'P-value: {result[1]}')
 # If p-value > 0.05, the series is not stationary, and differencing is required
 ```
 
-### Autocorrelation
+##### Autocorrelation
 
 
 Examining autocorrelation over ten lagging periods:
@@ -142,7 +142,7 @@ fig.show()
 
 We see moderately high autocorrelation persists until two to four lagging periods.
 
-## Train/Test Split
+#### Train/Test Split
 
 ```{python}
 #test_size = 0.2
@@ -169,7 +169,7 @@ print("Y TEST:", y_test.shape)
 ```
 
 
-## Model Training
+#### Model Training
 
 To implement autoregressive moving average model in Python, we can use the [`ARIMA` class](https://www.statsmodels.org/dev/generated/statsmodels.tsa.arima.model.ARIMA.html) from `statsmodels`.
 
@@ -214,7 +214,7 @@ px.line(train_set, y=["W-L%", "Predicted"], height=350,
 ```
 
 
-## Evaluation
+#### Evaluation
 
 Reconstructing test set with predictions for the test period:
 
@@ -276,3 +276,5 @@ Experimenting with different `order` parameter values may yield different result
 
 
 ### Example 2 - GDP Growth
+
+TBA

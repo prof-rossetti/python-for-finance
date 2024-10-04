@@ -261,7 +261,7 @@ px.line(df, y=["employment", "prediction"], height=350,
 
 **Regression Residuals**
 
-Plotting residuals:
+Removing the trend, plotting just the residuals:
 
 
 ```{python}
@@ -269,6 +269,8 @@ px.line(df, y="residual",
     title="US Employment (monthly) vs linear trend residuals", height=350
 )
 ```
+
+There seem to be some periodic movements in the residuals.
 
 #### Seasonality via Means of Periodic Residuals
 
@@ -282,7 +284,6 @@ set_option('display.max_rows', 15)
 ```
 
 ```{python}
-df = df.copy()
 df["year"] = df.index.year
 df["quarter"] = df.index.quarter
 df["month"] = df.index.month
@@ -348,18 +349,17 @@ df["prediction_monthly"] = results_monthly.fittedvalues
 df["residual_monthly"] = results_monthly.resid
 ```
 
-```{python}
-#height = 450
+Decomposition of the original data into trend, seasonal component, and residuals:
 
-#px.line(df, y=["employment", "prediction"], title="Employment vs trend", height=height)
+```{python}
+px.line(df, y=["employment", "prediction"], title="Employment vs trend", height=350)
 ```
 
 
 ```{python}
-#px.line(df, y="prediction_monthly", title="Employment vs seasonal trend", height=height)
+px.line(df, y="prediction_monthly", title="Employment seasonal component", height=350)
 ```
 
-
 ```{python}
-px.line(df, y="residual_monthly", title="Employment seasonal trend residual", height=450)
+px.line(df, y="residual_monthly", title="Employment de-trended residual", height=350)
 ```

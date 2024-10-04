@@ -63,6 +63,9 @@ Example unsupervised learning tasks include:
 **Reinforcement learning** is a different type of machine learning approach, where an "agent" learns to make decisions by interacting with an environment. The agent takes actions and receives feedback in the form of rewards or penalties, adjusting its strategy to maximize the cumulative reward over time.
 
 
+{{< video https://www.youtube.com/watch?v=kopoLzvh5jY >}}
+
+
 ## Machine Learning Problem Formulation
 
 Machine learning problem formulation refers to the process of clearly defining the task that a machine learning model is meant to solve. This step is crucial in guiding the development of the model and ensuring that the right data, techniques, and metrics are applied to achieve the desired outcome. Problem formulation involves several key components:
