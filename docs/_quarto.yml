@@ -16,6 +16,7 @@ website:
   site-url: https://prof-rossetti.github.io/python-for-finance/
   repo-url: https://github.com/prof-rossetti/python-for-finance
   repo-branch: main
+  repo-subdir: docs
   repo-actions: [edit, issue, source]
   repo-subdir: docs
   #downloads: ["pdf", "epub", "docx"]
@@ -171,6 +172,17 @@ website:
               - section:
                 href: notes/dataviz/candlestick-charts.qmd
                 text: "Candlestick Charts"
+              - section:
+                href: notes/dataviz/troubleshooting.ipynb
+                text: "Testing 123"
+              - section:
+                href: notes/dataviz/troubleshooting-2.ipynb
+                text: "Testing 123 v2"
+              - section:
+                href: notes/dataviz/troubleshooting-3.ipynb
+                text: "Testing 123 v3"
+                title: "Troubleshooting Plotly"
+
           #
           # FETCHING DATA FROM THE INTERNET
           #
