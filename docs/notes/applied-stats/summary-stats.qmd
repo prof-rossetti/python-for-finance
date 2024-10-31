@@ -16,7 +16,10 @@ Let's consider this example dataset of monthly financial and economic indicators
 ```{python}
 from pandas import read_csv
 
-df = read_csv("https://raw.githubusercontent.com/prof-rossetti/python-for-finance/main/docs/data/monthly-indicators.csv")
+repo_url = "https://raw.githubusercontent.com/prof-rossetti/python-for-finance"
+request_url = f"{repo_url}/main/docs/data/monthly-indicators.csv"
+
+df = read_csv(request_url)
 df.head()
 ```
 
