@@ -25,7 +25,65 @@ In addition to interpreting the autocorrelation values themselves, we can examin
   + Slow decay or oscillation often suggests non-stationarity, which may require differencing to stabilize the series.
 
 
+```{python}
+#| code-fold: true
 
+import numpy as np
+import matplotlib.pyplot as plt
+from statsmodels.tsa.arima_process import ArmaProcess
+import statsmodels.api as sm
+
+# Setting random seed for reproducibility
+np.random.seed(42)
+
+# Generating AR(1) process (exponential decay in ACF)
+ar1 = np.array([1, -0.8])  # AR coefficient
+ma1 = np.array([1])        # MA coefficient
+ar1_process = ArmaProcess(ar1, ma1).generate_sample(nsample=100)
+ar1_acf = sm.tsa.acf(ar1_process, nlags=20)
+
+# Generating MA(1) process (significant spike followed by rapid decay)
+ar2 = np.array([1])        # AR coefficient
+ma2 = np.array([1, 0.8])   # MA coefficient
+ma1_process = ArmaProcess(ar2, ma2).generate_sample(nsample=100)
+ma1_acf = sm.tsa.acf(ma1_process, nlags=20)
+
+# Generating non-stationary series with slow decay in ACF
+non_stat_process = np.cumsum(np.random.randn(100))  # Random walk process
+non_stat_acf = sm.tsa.acf(non_stat_process, nlags=20)
+```
+
+```{python}
+#| code-fold: true
+
+import plotly.graph_objects as go
+
+# Creating the ACF plots using Plotly
+
+# Plot for AR(1) process
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=list(range(21)), y=ar1_acf, mode='markers+lines', name='AR(1)'))
+fig.update_layout(title='ACF of AR(1) Process (Exponential Decay)',
+                  xaxis_title='Lag',
+                  yaxis_title='ACF')
+
+# Plot for MA(1) process
+fig.add_trace(go.Scatter(x=list(range(21)), y=ma1_acf, mode='markers+lines', name='MA(1)'))
+fig.update_layout(title='ACF of MA(1) Process (Significant Spike then Rapid Decay)',
+                  xaxis_title='Lag',
+                  yaxis_title='ACF')
+
+# Plot for non-stationary process
+fig.add_trace(go.Scatter(x=list(range(21)), y=non_stat_acf, mode='markers+lines', name='Non-Stationary'))
+fig.update_layout(title='ACF Comparison for AR(1), MA(1), and Non-Stationary Processes',
+                  xaxis_title='Lag',
+                  yaxis_title='ACF',
+                  height=400, # You can set this to any number of pixels you prefer
+                  legend_title='Process Type',
+                  template='plotly_white')
+
+fig.show()
+```
 
 
 
