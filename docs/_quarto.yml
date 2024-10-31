@@ -35,161 +35,162 @@ website:
   # https://quarto.org/docs/reference/projects/websites.html#sidebar
   # NOTE: all sections need href, or else their links don't appear properly in the left sidebar!  https://github.com/quarto-dev/quarto-cli/issues/10102
   sidebar:
+    #collapse-level: 3
     contents:
       - section:
         href: index.qmd
       - section:
         href: why-python.qmd
 
-      - "---------"
-      - section:
-        href: notes/dev-tools/index.qmd
-        text: "Python Development Tools"
-        contents:
-          - section:
-            href: notes/dev-tools/google-colab/overview.qmd
-            contents:
-              - section:
-                href: notes/dev-tools/google-colab/table-of-contents.qmd
-                text: "Table of Contents"
-              - section:
-                href: notes/dev-tools/google-colab/filesystem.ipynb
-                text: "Accessing the Filesystem"
-              - section:
-                href: notes/dev-tools/google-colab/form-inputs.ipynb
-                text: "Forms and Inputs"
-              - section:
-                href: notes/dev-tools/google-colab/notebook-secrets.qmd
-                text: "Notebook Secrets"
-              - section:
-                href: notes/dev-tools/google-colab/advanced-integrations.ipynb
-                text: "Advanced Integrations"
-          - section:
-            href: notes/dev-tools/pip.ipynb
-            text: "Installing Packages with Pip"
+      #- "---------"
+      #- section:
+      #  href: notes/dev-tools/index.qmd
+      #  text: "Python Development Tools"
+      #  contents:
+      #    - section:
+      #      href: notes/dev-tools/google-colab/overview.qmd
+      #      contents:
+      #        - section:
+      #          href: notes/dev-tools/google-colab/table-of-contents.qmd
+      #          text: "Table of Contents"
+      #        - section:
+      #          href: notes/dev-tools/google-colab/filesystem.ipynb
+      #          text: "Accessing the Filesystem"
+      #        - section:
+      #          href: notes/dev-tools/google-colab/form-inputs.ipynb
+      #          text: "Forms and Inputs"
+      #        - section:
+      #          href: notes/dev-tools/google-colab/notebook-secrets.qmd
+      #          text: "Notebook Secrets"
+      #        - section:
+      #          href: notes/dev-tools/google-colab/advanced-integrations.ipynb
+      #          text: "Advanced Integrations"
+      #    - section:
+      #      href: notes/dev-tools/pip.ipynb
+      #      text: "Installing Packages with Pip"
 
       - "---------"
       - section:
         href: courses/fin-apps.qmd
         text: "I. Financial Applications" # "I. Financial Applications" # "I. Intro to Financial Applications"
-        contents:
-          #
-          # PYTHON LANGUAGE OVERVIEW
-          #
-          - section:
-            href: notes/python-lang/overview.ipynb
-            text: "Python Language Overview"
-            contents:
-
-              - section:
-                href: notes/python-lang/basic-datatypes/index.qmd
-                text: "Basic Datatypes"
-                contents:
-                  # basic datatypes here:
-                  - section:
-                    href: notes/python-lang/basic-datatypes/booleans.qmd
-                  - section:
-                    href: notes/python-lang/basic-datatypes/numbers.qmd
-                  - section:
-                    href: notes/python-lang/basic-datatypes/strings.qmd
-
-              - section:
-                href: notes/python-lang/python-operators.qmd
-
-              - section:
-                href: notes/python-lang/control-flow/index.qmd
-                contents:
-                  - section:
-                    href: notes/python-lang/control-flow/conditional-logic.qmd
-                  - section:
-                    href: notes/python-lang/control-flow/custom-functions.qmd
-                    #contents:
-                    #- section:
-                    #  href: notes/python-lang/control-flow/function-docs.qmd
-                    #- section:
-                    #  href: notes/python-lang/control-flow/unit-testing.qmd
-                  #- section:
-                  #  href: notes/python-lang/control-flow/errors.qmd
-                  - section:
-                    href: notes/python-lang/control-flow/while-loops.qmd
-
-              - section:
-                href: notes/python-lang/container-datatypes/index.qmd
-                text: "Container Datatypes"
-                contents:
-                  - section:
-                    href: notes/python-lang/container-datatypes/lists.qmd
-                  - section:
-                    href: notes/python-lang/container-datatypes/dictionaries.qmd
-
-              - section:
-                href: notes/python-modules/index.qmd
-                text: "Python Modules"
-                contents:
-                  - section:
-                    href: notes/python-modules/math.qmd
-                  - section:
-                    href: notes/python-modules/random.qmd
-                  - section:
-                    href: notes/python-modules/statistics.qmd
-                  - section:
-                    href: notes/python-modules/datetime.qmd
-
-          #
-          # DATA PROCESSING
-          #
-          - section:
-            href: notes/data-processing/index.qmd
-            text: "Data Processing"
-            contents:
-              - section:
-                href: notes/data-processing/for-loops.qmd
-                text: "List Iteration and Looping"
-              - section:
-                href: notes/data-processing/sorting.qmd
-                text: "Sorting Lists"
-              - section:
-                href: notes/data-processing/mapping.qmd
-                text: "Mapping Lists"
-              - section:
-                href: notes/data-processing/filtering.qmd
-                text: "Filtering Lists"
-              - section:
-                href: notes/data-processing/list-comprehensions.qmd
-                text: "List Comprehensions"
-
-          #
-          # DATAVIZ
-          #
-          - section:
-            href: notes/dataviz/overview.qmd
-            text: "Data Visualization"
-            contents:
-              - section:
-                href: notes/dataviz/trendlines.qmd
-                text: "Charts with Trendlines"
-              - section:
-                href: notes/dataviz/candlestick-charts.qmd
-                text: "Candlestick Charts"
-          #
-          # FETCHING DATA FROM THE INTERNET
-          #
-          - section:
-            href: notes/fetching-data/overview.qmd
-            text: "Fetching Data from the Internet"
-            contents:
-              - section:
-                href: notes/fetching-data/json-data.qmd
-              - section:
-                href: notes/fetching-data/csv-data.qmd
-              - section:
-                href: notes/fetching-data/xml.qmd
-              - section:
-                href: notes/fetching-data/html-web-scraping.qmd
-                #text: "HTML Data (Web Scraping)"
-              #- section:
-              #  href: notes/fetching-data/apis.qmd
-              #  text: "APIs"
+        ###contents:
+        ###  #
+        ###  # PYTHON LANGUAGE OVERVIEW
+        ###  #
+        ###  - section:
+        ###    href: notes/python-lang/overview.ipynb
+        ###    text: "Python Language Overview"
+        ###    contents:
+        ###
+        ###      - section:
+        ###        href: notes/python-lang/basic-datatypes/index.qmd
+        ###        text: "Basic Datatypes"
+        ###        contents:
+        ###          # basic datatypes here:
+        ###          - section:
+        ###            href: notes/python-lang/basic-datatypes/booleans.qmd
+        ###          - section:
+        ###            href: notes/python-lang/basic-datatypes/numbers.qmd
+        ###          - section:
+        ###            href: notes/python-lang/basic-datatypes/strings.qmd
+        ###
+        ###      - section:
+        ###        href: notes/python-lang/python-operators.qmd
+        ###
+        ###      - section:
+        ###        href: notes/python-lang/control-flow/index.qmd
+        ###        contents:
+        ###          - section:
+        ###            href: notes/python-lang/control-flow/conditional-logic.qmd
+        ###          - section:
+        ###            href: notes/python-lang/control-flow/custom-functions.qmd
+        ###            #contents:
+        ###            #- section:
+        ###            #  href: notes/python-lang/control-flow/function-docs.qmd
+        ###            #- section:
+        ###            #  href: notes/python-lang/control-flow/unit-testing.qmd
+        ###          #- section:
+        ###          #  href: notes/python-lang/control-flow/errors.qmd
+        ###          - section:
+        ###            href: notes/python-lang/control-flow/while-loops.qmd
+        ###
+        ###      - section:
+        ###        href: notes/python-lang/container-datatypes/index.qmd
+        ###        text: "Container Datatypes"
+        ###        contents:
+        ###          - section:
+        ###            href: notes/python-lang/container-datatypes/lists.qmd
+        ###          - section:
+        ###            href: notes/python-lang/container-datatypes/dictionaries.qmd
+        ###
+        ###      - section:
+        ###        href: notes/python-modules/index.qmd
+        ###        text: "Python Modules"
+        ###        contents:
+        ###          - section:
+        ###            href: notes/python-modules/math.qmd
+        ###          - section:
+        ###            href: notes/python-modules/random.qmd
+        ###          - section:
+        ###            href: notes/python-modules/statistics.qmd
+        ###          - section:
+        ###            href: notes/python-modules/datetime.qmd
+        ###
+        ###  #
+        ###  # DATA PROCESSING
+        ###  #
+        ###  - section:
+        ###    href: notes/data-processing/index.qmd
+        ###    text: "Data Processing"
+        ###    contents:
+        ###      - section:
+        ###        href: notes/data-processing/for-loops.qmd
+        ###        text: "List Iteration and Looping"
+        ###      - section:
+        ###        href: notes/data-processing/sorting.qmd
+        ###        text: "Sorting Lists"
+        ###      - section:
+        ###        href: notes/data-processing/mapping.qmd
+        ###        text: "Mapping Lists"
+        ###      - section:
+        ###        href: notes/data-processing/filtering.qmd
+        ###        text: "Filtering Lists"
+        ###      - section:
+        ###        href: notes/data-processing/list-comprehensions.qmd
+        ###        text: "List Comprehensions"
+        ###
+        ###  #
+        ###  # DATAVIZ
+        ###  #
+        ###  - section:
+        ###    href: notes/dataviz/overview.qmd
+        ###    text: "Data Visualization"
+        ###    contents:
+        ###      - section:
+        ###        href: notes/dataviz/trendlines.qmd
+        ###        text: "Charts with Trendlines"
+        ###      - section:
+        ###        href: notes/dataviz/candlestick-charts.qmd
+        ###        text: "Candlestick Charts"
+        ###  #
+        ###  # FETCHING DATA FROM THE INTERNET
+        ###  #
+        ###  - section:
+        ###    href: notes/fetching-data/overview.qmd
+        ###    text: "Fetching Data from the Internet"
+        ###    contents:
+        ###      - section:
+        ###        href: notes/fetching-data/json-data.qmd
+        ###      - section:
+        ###        href: notes/fetching-data/csv-data.qmd
+        ###      - section:
+        ###        href: notes/fetching-data/xml.qmd
+        ###      - section:
+        ###        href: notes/fetching-data/html-web-scraping.qmd
+        ###        #text: "HTML Data (Web Scraping)"
+        ###      #- section:
+        ###      #  href: notes/fetching-data/apis.qmd
+        ###      #  text: "APIs"
 
 
 
@@ -233,15 +234,13 @@ website:
             href: notes/applied-stats/overview.qmd
             text: "Applied Statistics"
             contents:
-              #- section:
-              #  href: notes/applied-stats/basic-tests.ipynb
-              #  text: "Statistical Tests"
               - section:
                 href: notes/applied-stats/summary-stats.qmd
                 text: "Summary Statistics"
               - section:
                 href: notes/applied-stats/basic-tests.qmd
                 text: "Statistical Tests"
+
               #- section:
               #  href: notes/applied-stats/data-scaling.qmd
               #  text: "Data Scaling"
@@ -276,7 +275,7 @@ website:
                 href: notes/applied-stats/data-scaling.qmd
                 text: "Data Scaling"
 
-          - "--------------"
+          #- "--------------"
           - section:
             href: notes/predictive-modeling/supervised-learning.qmd
             text: "Supervised Learning"
@@ -332,7 +331,22 @@ website:
                     href: notes/predictive-modeling/classification/multiclass.qmd
                     text: "Multi-class Classification"
 
-          - "--------------"
+          #- "--------------"
+          - section:
+            href: notes/predictive-modeling/unsupervised-learning.qmd
+            text: "Unsupervised Learning"
+            contents:
+
+              - section:
+                href: notes/predictive-modeling/dimensionality-reduction/pca.qmd
+                text: "Dimensionality Reduction"
+
+              - section:
+                href: notes/predictive-modeling/clustering/index.qmd
+                text: "Clustering"
+
+
+          #- "--------------"
           - section:
             href: notes/predictive-modeling/model-management/index.qmd
             text: "Model Management"
@@ -347,19 +361,6 @@ website:
                 href: notes/predictive-modeling/model-optimization/grid-search.qmd
                 text: "Model Optimization"
 
-          - "--------------"
-          - section:
-            href: notes/predictive-modeling/unsupervised-learning.qmd
-            text: "Unsupervised Learning"
-            contents:
-
-              - section:
-                href: notes/predictive-modeling/dimensionality-reduction/pca.qmd
-                text: "Dimensionality Reduction"
-
-              - section:
-                href: notes/predictive-modeling/clustering/index.qmd
-                text: "Clustering"
 
 
       #- "---------"

@@ -15,4 +15,6 @@ Finance professionals can write application software programs to perform analyse
 1. Gain marketable skills in programming and data analysis.
 1. Have fun!
 
-## Course Outline
+## Course Content
+
+See the ["Intro to Python Programming" Book](https://prof-rossetti.github.io/intro-software-dev-python-book/).
