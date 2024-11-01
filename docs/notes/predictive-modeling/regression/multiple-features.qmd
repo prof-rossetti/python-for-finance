@@ -147,16 +147,17 @@ We see the most expensive homes are on the coast. So we can consider using latit
 
 #### Pair Plots
 
-One way to visualize the relationships between each combination of variables is using pairplots, however in practice this can take a long time to finish.
+One way to visualize the relationships between each combination of variables is using the [`pairplots` function](https://seaborn.pydata.org/generated/seaborn.pairplot.html) from `seaborn`, however in practice this can take a long time to finish.
 
 ```{python}
-#from seaborn import pairplot
-#
+from seaborn import pairplot
+
 # using all the data (might take a long time):
 #pairplot(df, hue="value")
-#
-# taking a sample in case it might complete faster:
-#pairplot(df.sample(500, random_state=99), hue="value")
+
+# taking sample of rows and less columns helps the plot complete faster:
+df_sample = df.sample(100, random_state=99)
+pairplot(df_sample[["rooms","income", "population", "value"]], height=1.3)
 ```
 
 #### Correlation
