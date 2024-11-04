@@ -75,7 +75,7 @@ import plotly.express as px
 # https://plotly.com/python-api-reference/generated/plotly.express.box.html
 px.box(df, x="fed", orientation="h", points="all",
         title="Distribution of Federal Funds Rate (Monthly)",
-        hover_data=["timestamp"]
+        hover_data=["timestamp"], height=400
 )
 ```
 
@@ -85,7 +85,7 @@ A violin plot:
 # https://plotly.com/python-api-reference/generated/plotly.express.violin.html
 px.violin(df, x="fed", orientation="h", points="all", box=True,
         title="Distribution of Federal Funds Rate (Monthly)",
-        hover_data=["timestamp"]
+        hover_data=["timestamp"], height=400
 )
 ```
 
@@ -93,12 +93,10 @@ A histogram:
 ```{python}
 # https://plotly.com/python-api-reference/generated/plotly.express.histogram.html
 px.histogram(df, x="fed", #nbins=12,
-        title="Distribution of Federal Funds Rate (Monthly)", height=350)
+        title="Distribution of Federal Funds Rate (Monthly)", height=400)
 
 ```
 
 When we make a histogram, we can specify the number of bins, using the `nbins` parameter.
 
 These charts help us visually identify distributions in the data.
-
-Based on this view, is hard to say for sure if this data is normally distributed, or multi-modal, or whether it is too skewed by the outliers. In the next chapter, we will perform more official statistical tests to determine if this data is normally distributed.
